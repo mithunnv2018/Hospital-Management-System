@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IPDPaymentdischargereport" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9b1d5a6d-1702-4bb0-a76e-ffa9a56d2be8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="118"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_fromdate" class="java.lang.String"/>
+	<parameter name="param_todate" class="java.lang.String"/>
+	<parameter name="param_hospitalid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT c.IPDId,c.IPDName,b.HSPAdminId,b.HSPAdminDate,b.HSPAdminDischargeDate,
+(SELECT SUM(sub1.RCPPayAmount) FROM hspreceiptpaymentdetails sub1 WHERE sub1.HSPAdminIdhspreceiptpaymentdetails=a.HSPAdminIdAdminFees) AS 'Payment',
+
+(SELECT SUM(sub3.AdminFeesCharges)  FROM adminfees sub3 WHERE sub3.AdminFeesCharges > 0 AND sub3.HSPAdminIdAdminFees=a.HSPAdminIdAdminFees ) AS 'Total',
+(SELECT SUM(sub2.AdminFeesCharges)
+FROM adminfees sub2 WHERE sub2.AdminFeesServiceHeads='Concession'
+AND sub2.HSPAdminIdAdminFees=a.HSPAdminIdAdminFees) AS 'Concession',
+(SELECT SUM(sub2.AdminFeesCharges)
+FROM adminfees sub2 WHERE  sub2.HSPAdminIdAdminFees=a.HSPAdminIdAdminFees) AS 'Grand Total'
+FROM adminfees a,hospitalization b, ipdmaster c
+WHERE b.HSPAdminDischargeDate BETWEEN $P{param_fromdate} AND $P{param_todate} AND a.HSPAdminIdAdminFees=b.HSPAdminId AND b.IPDIdHospitalization=c.IPDId AND
+ b.HSPAdminStatus='D' AND b.HospitalIdHospitalization=$P{param_hospitalid}  GROUP BY a.HSPAdminIdAdminFees ORDER BY b.HSPAdminDate DESC]]>
+	</queryString>
+	<field name="IPDId" class="java.lang.String">
+		<fieldDescription><![CDATA[{
+"mailtable":"",
+"pkprefix":"IPD",
+"pkid":"IPDId",
+"tsname":"ipdmaster","formmodelname":"ipdmaster","whereclause":"HospitalIdIPDMaster","gridtable":"VwIPDDepartmentTypeHospital",
+"subtables":
+[]
+
+}]]></fieldDescription>
+	</field>
+	<field name="IPDName" class="java.lang.String">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "txt","formcontrolname": "","ngmodel": "","errorstring": "Patient Name","drptblpkname": "BedsNos","placeholder": "Patient Name","options": "drpNameoptions","drpptblname": "tbl_Name_master","drptblpk": "Name_id","drptblwhere": "country_id","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<field name="HSPAdminId" class="java.lang.String">
+		<fieldDescription><![CDATA[{
+"mailtable":"",
+"pkprefix":"HSP",
+"pkid":"HSPAdminId",
+"tsname":"Hospitalization","formmodelname":"Hospitalization","whereclause":"HospitalIdHospitalization","gridtable":"vwhospitalizationipdpackagetrustcategorydiseasedetails",
+"subtables":
+[]
+
+}]]></fieldDescription>
+	</field>
+	<field name="HSPAdminDate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "date","formcontrolname": "","ngmodel": "","errorstring": "Admin Date ","drptblpkname": "BedsNos","placeholder": "Admin Date","options": "drpCityoptions","drpptblname": "tbl_City_master","drptblpk": "City_id","drptblwhere": "country_id","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<field name="HSPAdminDischargeDate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Payment" class="java.math.BigDecimal"/>
+	<field name="Total" class="java.math.BigDecimal"/>
+	<field name="Concession" class="java.math.BigDecimal"/>
+	<field name="Grand Total" class="java.math.BigDecimal"/>
+	<variable name="totalamount" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{Total}]]></variableExpression>
+	</variable>
+	<variable name="totalconcession" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{Concession}]]></variableExpression>
+	</variable>
+	<variable name="grandtotalamount" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{Grand Total}]]></variableExpression>
+	</variable>
+	<variable name="totalpayment" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{Payment}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="20" uuid="f17f6d6e-b738-4994-bf19-6bb7d4282d11"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IPD Payment Discharge Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="2c2e43b2-0d58-49dc-affd-cecfd1c08ead"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Admit ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="73" height="20" uuid="f153d928-b9b0-49bb-a2af-97b71caf62e2"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[IPD ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="434" y="0" width="81" height="20" uuid="9b4d0d63-df7f-4da7-844f-e9769246a8c7"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Discharge Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="353" y="0" width="81" height="20" uuid="28cc1930-1e29-4e13-b3d0-97cd64f4e1d8"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Admit Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="173" y="0" width="180" height="20" uuid="a06fc131-3721-4fb8-bb80-d3f9664227ff"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[IPD NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="515" y="0" width="71" height="20" uuid="65f513ef-3fa7-4f5f-8554-74c748ae2e85"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="586" y="0" width="71" height="20" uuid="a859ff22-9b91-45a7-adc3-0c5c9ba7d0a3"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concession]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="657" y="0" width="71" height="20" uuid="132ad051-d9c5-46f8-a619-4bc845ddf0f6"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grand Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="728" y="0" width="71" height="20" uuid="b700c8e2-8ca4-4579-9e87-96494ce42f50"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="9a0b5762-748a-472d-9396-31f834a1b547"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{HSPAdminId}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="100" y="0" width="73" height="20" isPrintWhenDetailOverflows="true" uuid="4d32824b-f761-490a-aa92-067a0c6a20d3"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{IPDId}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="MM/dd/yyyy">
+				<reportElement stretchType="RelativeToBandHeight" x="434" y="0" width="81" height="20" isPrintWhenDetailOverflows="true" uuid="527a4879-ca0a-47a1-910f-0a3e0b094e09"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{HSPAdminDischargeDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="353" y="0" width="81" height="20" isPrintWhenDetailOverflows="true" uuid="34c669c3-91cc-400e-b09e-8df58a5fc92f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{HSPAdminDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="173" y="0" width="180" height="20" isPrintWhenDetailOverflows="true" uuid="9eddfc95-c1e5-4d69-9d23-046d39e063f5"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{IPDName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement stretchType="RelativeToBandHeight" x="515" y="0" width="71" height="20" isPrintWhenDetailOverflows="true" uuid="816de16f-e091-4f6c-bec0-40db64f15712"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="586" y="0" width="71" height="20" isPrintWhenDetailOverflows="true" uuid="937b86a2-7699-4c74-83e3-dce62d4e4326"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Concession}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement stretchType="RelativeToBandHeight" x="657" y="0" width="71" height="20" isPrintWhenDetailOverflows="true" uuid="9f935d43-a46f-46fc-8fe2-f96296d51ed0"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Grand Total}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="728" y="0" width="71" height="20" isPrintWhenDetailOverflows="true" uuid="d171fdab-a866-4eb5-b50f-e9aeb8acb605"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Payment}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="85" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement x="712" y="0" width="87" height="20" isPrintWhenDetailOverflows="true" uuid="f12763e1-f152-4272-a809-80b7c90a2aba"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalamount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="612" y="0" width="100" height="20" uuid="120dce1c-de75-48b0-bf9c-4cf4e19a5012"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="597" y="20" width="115" height="20" uuid="d023db3b-bffc-486a-8e65-8390dd82b567"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concession:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="712" y="20" width="87" height="20" isPrintWhenDetailOverflows="true" uuid="463c7b21-8ea3-449f-96ec-aee8d961fe4e"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalconcession}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement x="712" y="40" width="87" height="20" isPrintWhenDetailOverflows="true" uuid="962a92ea-d9db-4846-8a63-b0e3b6805201"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{grandtotalamount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="612" y="40" width="100" height="20" uuid="368cf609-6ebf-45bc-b996-754f15eff3b8"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grand Total:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="597" y="60" width="115" height="20" uuid="92fefdca-7811-4134-ba6e-b5fcaeba515b"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment :]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement x="712" y="60" width="87" height="20" isPrintWhenDetailOverflows="true" uuid="6af53147-47ca-408a-bc0b-b1c08df4bdbd"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalpayment}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

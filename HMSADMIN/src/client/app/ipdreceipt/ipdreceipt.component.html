@@ -1,0 +1,173 @@
+
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Advance Receipt</h1><br/>
+<p-fieldset legend="Patient Details">
+<div class="ui-g" *ngIf="vwhospitalization">
+    <div class="ui-g-4"><b>Hospital ID:</b> {{vwhospitalization.HSPAdminId}}</div>
+    <div class="ui-g-4"><b>Patient ID:</b> {{vwhospitalization.IPDIdHospitalization}} </div>
+    <div class="ui-g-4"><b>Department:</b> {{vwhospitalization.CategoryName}} </div>
+    
+</div>
+
+<div class="ui-g" *ngIf="vwhospitalization">
+    <div class="ui-g-12"><b>Name of patient:</b> {{vwhospitalization.IPDName}} </div>
+    
+</div>
+
+<div class="ui-g" *ngIf="vwhospitalization">
+    <div class="ui-g-4"><b>Date Admitted:</b> {{vwhospitalization.HSPAdminDate | date:'shortDate'}} </div>
+    <div class="ui-g-4"><b>Time Admitted:</b> {{vwhospitalization.HSPAdmintime}} </div>
+    <div class="ui-g-4"><b>Status :</b> {{HSPAdminStatus}} </div>
+    
+</div>
+
+<div class="ui-g" *ngIf="vwhospitalization">
+    <div class="ui-g-4"><b>Trust Name:</b> {{vwhospitalization.TrustName}} </div>
+    <div class="ui-g-4"><b>Package Name:</b> {{vwhospitalization.PackageName}} </div>
+    
+    
+</div>
+
+</p-fieldset>
+
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Receipt Date:
+<p-calendar [(ngModel)]="RCPPayDate"  dateFormat="mm/dd/yy" formControlName="RCPPayDate" [showIcon]="true"> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RCPPayDate'].valid&&userform.controls['RCPPayDate'].touched">Receipt Date   Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield' *ngIf="amountOutstanding">
+ <label>Outstanding Amount: {{amountOutstanding}} </label>
+ 
+ </span>
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='hspreceiptpaymentdetailsVar.RCPPayAmount' formControlName='RCPPayAmount' /> <label> Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RCPPayAmount'].valid&&userform.controls['RCPPayAmount'].touched">Receipt Amount  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<!--<input pInputText type='text' [(ngModel)]='hspreceiptpaymentdetailsVar.RCPPayPaymentType' formControlName='RCPPayPaymentType' /> <label>Payment Type</label>-->
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drppymntypeptions" [(ngModel)]='hspreceiptpaymentdetailsVar.RCPPayPaymentType' formControlName='RCPPayPaymentType'></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RCPPayPaymentType'].valid&&userform.controls['RCPPayPaymentType'].touched">Payment Type  Required
+</div>
+</div>
+</div>
+
+ 
+ 
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Remarks:
+<textarea pInputTextarea [(ngModel)]="hspreceiptpaymentdetailsVar.RCPPayRemarks" formControlName='RCPPayRemarks' autoResize="autoResize"></textarea> 
+ 
+ </span>
+</div>
+</div>
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RCPPayRemarks'].valid&&userform.controls['RCPPayRemarks'].touched">Remarks  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="vwhspreceiptpaymentdetails" 
+	selectionMode="single" [rows]="10" [paginator]="true"  
+	[(selection)]="selectedRow">
+
+<p-column field="RCPPayId" [filter]="true" 
+filterPlaceholder="Search Receipt Nos."  header="Receipt Nos.">
+</p-column>
+     
+<p-column field="RCPPayDate" [filter]="true" 
+filterPlaceholder="Search RCPPayDate"  header="RCPPayDate">
+</p-column>
+
+<p-column field="RCPPayAmount" [filter]="true" 
+filterPlaceholder="Search RCPPayAmount"  header="RCPPayAmount">
+</p-column>
+
+<p-column field="RCPPayPaymentType" [filter]="true" 
+filterPlaceholder="Search RCPPayPaymentType"  header="RCPPayPaymentType">
+</p-column>
+
+<p-column field="RCPPayType" [filter]="true" 
+filterPlaceholder="Search RCPPayType"  header="RCPPayType">
+</p-column>
+
+<p-column styleClass="col-button">
+        <template pTemplate="header">
+            <button type="button" pButton icon="ui-icon-search"></button>
+        </template>
+        <template let-receipt="rowData" pTemplate="body">
+            <button type="button" pButton (click)="printReceipt(receipt)" icon="ui-icon-print"></button>
+        </template>
+</p-column>  
+
+</p-dataTable>

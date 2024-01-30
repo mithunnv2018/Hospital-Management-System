@@ -1,0 +1,113 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create sonographyheads</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='sonographyheadsVar.SonographyHeadsName' formControlName='SonographyHeadsName' /> <label>SonographyHeads Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['SonographyHeadsName'].valid&&userform.controls['SonographyHeadsName'].touched">SonographyHeads Name  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='sonographyheadsVar.SonographyHeadsAliasName' formControlName='SonographyHeadsAliasName' /> <label>SonographyHeads Alias Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['SonographyHeadsAliasName'].valid&&userform.controls['SonographyHeadsAliasName'].touched">SonographyHeads Alias Name  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='sonographyheadsVar.SonographyHeadsTrustAmount' formControlName='SonographyHeadsTrustAmount' /> <label>SonographyHeads Trust Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['SonographyHeadsTrustAmount'].valid&&userform.controls['SonographyHeadsTrustAmount'].touched">SonographyHeads Trust Amount  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='sonographyheadsVar.SonographyHeadsAmount' formControlName='SonographyHeadsAmount' /> <label>SonographyHeads Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['SonographyHeadsAmount'].valid&&userform.controls['SonographyHeadsAmount'].touched">SonographyHeads Amount  Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="VwSonographyHeadsHospital" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectVwSonographyHeadsHospital($event)" 
+	[(selection)]="selectedRow">
+
+ 
+<p-column field="SonographyHeadsName" [filter]="true" 
+filterPlaceholder="Search SonographyHeadsName"  header="SonographyHeadsName">
+</p-column>
+
+<p-column field="SonographyHeadsAliasName" [filter]="true" 
+filterPlaceholder="Search SonographyHeadsAliasName"  header="SonographyHeadsAliasName">
+</p-column>
+
+<p-column field="SonographyHeadsTrustAmount" [filter]="true" 
+filterPlaceholder="Search SonographyHeadsTrustAmount"  header="SonographyHeadsTrustAmount">
+</p-column>
+
+<p-column field="SonographyHeadsAmount" [filter]="true" 
+filterPlaceholder="Search SonographyHeadsAmount"  header="SonographyHeadsAmount">
+</p-column>
+
+</p-dataTable>
+

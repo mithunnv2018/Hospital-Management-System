@@ -1,0 +1,80 @@
+
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create Generic Chemical Master</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='genericchemicalmasterVar.GenericChemicalName' formControlName='GenericChemicalName' /> <label>Generic Chemical Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['GenericChemicalName'].valid&&userform.controls['GenericChemicalName'].touched">Generic Chemical Name  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='genericchemicalmasterVar.GenericChemicalAliasname' formControlName='GenericChemicalAliasname' /> <label>Generic Chemical Aliasname</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['GenericChemicalAliasname'].valid&&userform.controls['GenericChemicalAliasname'].touched">Generic Chemical Aliasname  Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()"  [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="genericchemicalmaster" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectgenericchemicalmaster($event)" 
+	[(selection)]="selectedRow">
+
+<p-column field="GenericChemicalId" [filter]="true" 
+filterPlaceholder="Search GenericChemicalId"  header="GenericChemicalId">
+</p-column>
+
+<p-column field="GenericChemicalName" [filter]="true" 
+filterPlaceholder="Search GenericChemicalName"  header="GenericChemicalName">
+</p-column>
+
+<p-column field="GenericChemicalAliasname" [filter]="true" 
+filterPlaceholder="Search GenericChemicalAliasname"  header="GenericChemicalAliasname">
+</p-column>
+
+<p-column field="HospitalIdgenericchemicalmaster" [filter]="true" 
+filterPlaceholder="Search HospitalIdgenericchemicalmaster"  header="HospitalIdgenericchemicalmaster">
+</p-column>
+</p-dataTable>
+

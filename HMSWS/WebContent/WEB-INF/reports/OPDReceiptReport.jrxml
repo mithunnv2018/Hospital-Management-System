@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OPDReceiptReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c1350c9d-91b5-447f-af78-c364ea7f3346">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="46"/>
+	<parameter name="param_receiptid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     vwopdreceiptpatientdoctorhospital.`OPDReceiptId` AS vwopdreceiptpatientdoctorhospital_OPDReceiptId,
+     vwopdreceiptpatientdoctorhospital.`OPDReceiptYear` AS vwopdreceiptpatientdoctorhospital_OPDReceiptYear,
+     vwopdreceiptpatientdoctorhospital.`OPDReceiptNos` AS vwopdreceiptpatientdoctorhospital_OPDReceiptNos,
+     vwopdreceiptpatientdoctorhospital.`OPDReceiptDate` AS vwopdreceiptpatientdoctorhospital_OPDReceiptDate,
+     vwopdreceiptpatientdoctorhospital.`IPDIdOPDReceipt` AS vwopdreceiptpatientdoctorhospital_IPDIdOPDReceipt,
+     vwopdreceiptpatientdoctorhospital.`DoctorIdOPDReceipt` AS vwopdreceiptpatientdoctorhospital_DoctorIdOPDReceipt,
+     vwopdreceiptpatientdoctorhospital.`OPDReceiptAmount` AS vwopdreceiptpatientdoctorhospital_OPDReceiptAmount,
+     vwopdreceiptpatientdoctorhospital.`OPDReceiptSuffering` AS vwopdreceiptpatientdoctorhospital_OPDReceiptSuffering,
+     vwopdreceiptpatientdoctorhospital.`OPDReceiptAppointmentType` AS vwopdreceiptpatientdoctorhospital_OPDReceiptAppointmentType,
+     vwopdreceiptpatientdoctorhospital.`OPDReceiptFromDate` AS vwopdreceiptpatientdoctorhospital_OPDReceiptFromDate,
+     vwopdreceiptpatientdoctorhospital.`OPDReceiptToDate` AS vwopdreceiptpatientdoctorhospital_OPDReceiptToDate,
+     vwopdreceiptpatientdoctorhospital.`MemberIdOPDReceipt` AS vwopdreceiptpatientdoctorhospital_MemberIdOPDReceipt,
+     vwopdreceiptpatientdoctorhospital.`HospitalIdOPDReceipt` AS vwopdreceiptpatientdoctorhospital_HospitalIdOPDReceipt,
+     vwopdreceiptpatientdoctorhospital.`StatusOPDReceipt` AS vwopdreceiptpatientdoctorhospital_StatusOPDReceipt,
+     vwopdreceiptpatientdoctorhospital.`IPDId` AS vwopdreceiptpatientdoctorhospital_IPDId,
+     vwopdreceiptpatientdoctorhospital.`CategoryIdDepartmentType` AS vwopdreceiptpatientdoctorhospital_CategoryIdDepartmentType,
+     vwopdreceiptpatientdoctorhospital.`IPDName` AS vwopdreceiptpatientdoctorhospital_IPDName,
+     vwopdreceiptpatientdoctorhospital.`IPDFName` AS vwopdreceiptpatientdoctorhospital_IPDFName,
+     vwopdreceiptpatientdoctorhospital.`IPDMName` AS vwopdreceiptpatientdoctorhospital_IPDMName,
+     vwopdreceiptpatientdoctorhospital.`IPDLName` AS vwopdreceiptpatientdoctorhospital_IPDLName,
+     vwopdreceiptpatientdoctorhospital.`IPDAddress1` AS vwopdreceiptpatientdoctorhospital_IPDAddress1,
+     vwopdreceiptpatientdoctorhospital.`IPDAddress2` AS vwopdreceiptpatientdoctorhospital_IPDAddress2,
+     vwopdreceiptpatientdoctorhospital.`IPDCity` AS vwopdreceiptpatientdoctorhospital_IPDCity,
+     vwopdreceiptpatientdoctorhospital.`IPDPin` AS vwopdreceiptpatientdoctorhospital_IPDPin,
+     vwopdreceiptpatientdoctorhospital.`IPDPhone` AS vwopdreceiptpatientdoctorhospital_IPDPhone,
+     vwopdreceiptpatientdoctorhospital.`IPDMobile` AS vwopdreceiptpatientdoctorhospital_IPDMobile,
+     vwopdreceiptpatientdoctorhospital.`IPDEmail` AS vwopdreceiptpatientdoctorhospital_IPDEmail,
+     vwopdreceiptpatientdoctorhospital.`IPDFax` AS vwopdreceiptpatientdoctorhospital_IPDFax,
+     vwopdreceiptpatientdoctorhospital.`IPDDob` AS vwopdreceiptpatientdoctorhospital_IPDDob,
+     vwopdreceiptpatientdoctorhospital.`IPDSex` AS vwopdreceiptpatientdoctorhospital_IPDSex,
+     vwopdreceiptpatientdoctorhospital.`IPDMaritalStatus` AS vwopdreceiptpatientdoctorhospital_IPDMaritalStatus,
+     vwopdreceiptpatientdoctorhospital.`IPDBG` AS vwopdreceiptpatientdoctorhospital_IPDBG,
+     vwopdreceiptpatientdoctorhospital.`IPDKeenname` AS vwopdreceiptpatientdoctorhospital_IPDKeenname,
+     vwopdreceiptpatientdoctorhospital.`IPDKeenrelation` AS vwopdreceiptpatientdoctorhospital_IPDKeenrelation,
+     vwopdreceiptpatientdoctorhospital.`IPDKeenphone` AS vwopdreceiptpatientdoctorhospital_IPDKeenphone,
+     vwopdreceiptpatientdoctorhospital.`IPDRef` AS vwopdreceiptpatientdoctorhospital_IPDRef,
+     vwopdreceiptpatientdoctorhospital.`IPDRemarks` AS vwopdreceiptpatientdoctorhospital_IPDRemarks,
+     vwopdreceiptpatientdoctorhospital.`IPDComplaint` AS vwopdreceiptpatientdoctorhospital_IPDComplaint,
+     vwopdreceiptpatientdoctorhospital.`IPDWeight` AS vwopdreceiptpatientdoctorhospital_IPDWeight,
+     vwopdreceiptpatientdoctorhospital.`IPDBP` AS vwopdreceiptpatientdoctorhospital_IPDBP,
+     vwopdreceiptpatientdoctorhospital.`IPDFamilydoc` AS vwopdreceiptpatientdoctorhospital_IPDFamilydoc,
+     vwopdreceiptpatientdoctorhospital.`IPDFamilydocphone` AS vwopdreceiptpatientdoctorhospital_IPDFamilydocphone,
+     vwopdreceiptpatientdoctorhospital.`IPDPulse` AS vwopdreceiptpatientdoctorhospital_IPDPulse,
+     vwopdreceiptpatientdoctorhospital.`InsuranceIdIPDMaster` AS vwopdreceiptpatientdoctorhospital_InsuranceIdIPDMaster,
+     vwopdreceiptpatientdoctorhospital.`CategoryIdInsurancePolicyType` AS vwopdreceiptpatientdoctorhospital_CategoryIdInsurancePolicyType,
+     vwopdreceiptpatientdoctorhospital.`IPDInsuranceLimit` AS vwopdreceiptpatientdoctorhospital_IPDInsuranceLimit,
+     vwopdreceiptpatientdoctorhospital.`IPDInsurancePolicyNos` AS vwopdreceiptpatientdoctorhospital_IPDInsurancePolicyNos,
+     vwopdreceiptpatientdoctorhospital.`HospitalIdIPDMaster` AS vwopdreceiptpatientdoctorhospital_HospitalIdIPDMaster,
+     vwopdreceiptpatientdoctorhospital.`StatusIPDMaster` AS vwopdreceiptpatientdoctorhospital_StatusIPDMaster,
+     vwopdreceiptpatientdoctorhospital.`DoctorId` AS vwopdreceiptpatientdoctorhospital_DoctorId,
+     vwopdreceiptpatientdoctorhospital.`CategoryIdDepartmentDoctorMaster` AS vwopdreceiptpatientdoctorhospital_CategoryIdDepartmentDoctorMast,
+     vwopdreceiptpatientdoctorhospital.`CategoryIdConsultantDoctorMaster` AS vwopdreceiptpatientdoctorhospital_CategoryIdConsultantDoctorMast,
+     vwopdreceiptpatientdoctorhospital.`HospitalIdDoctorMaster` AS vwopdreceiptpatientdoctorhospital_HospitalIdDoctorMaster,
+     vwopdreceiptpatientdoctorhospital.`DoctorFName` AS vwopdreceiptpatientdoctorhospital_DoctorFName,
+     vwopdreceiptpatientdoctorhospital.`DoctorMName` AS vwopdreceiptpatientdoctorhospital_DoctorMName,
+     vwopdreceiptpatientdoctorhospital.`DoctorLName` AS vwopdreceiptpatientdoctorhospital_DoctorLName,
+     vwopdreceiptpatientdoctorhospital.`DoctorName` AS vwopdreceiptpatientdoctorhospital_DoctorName,
+     vwopdreceiptpatientdoctorhospital.`DoctorPhoneno` AS vwopdreceiptpatientdoctorhospital_DoctorPhoneno,
+     vwopdreceiptpatientdoctorhospital.`DoctorMobileno` AS vwopdreceiptpatientdoctorhospital_DoctorMobileno,
+     vwopdreceiptpatientdoctorhospital.`DoctorEmailid` AS vwopdreceiptpatientdoctorhospital_DoctorEmailid,
+     vwopdreceiptpatientdoctorhospital.`DoctorFax` AS vwopdreceiptpatientdoctorhospital_DoctorFax,
+     vwopdreceiptpatientdoctorhospital.`DoctorAddress1` AS vwopdreceiptpatientdoctorhospital_DoctorAddress1,
+     vwopdreceiptpatientdoctorhospital.`DoctorAddress2` AS vwopdreceiptpatientdoctorhospital_DoctorAddress2,
+     vwopdreceiptpatientdoctorhospital.`DoctorCity` AS vwopdreceiptpatientdoctorhospital_DoctorCity,
+     vwopdreceiptpatientdoctorhospital.`DoctorPin` AS vwopdreceiptpatientdoctorhospital_DoctorPin,
+     vwopdreceiptpatientdoctorhospital.`CategoryIdDoctorType` AS vwopdreceiptpatientdoctorhospital_CategoryIdDoctorType,
+     vwopdreceiptpatientdoctorhospital.`CategoryIdQualificationType` AS vwopdreceiptpatientdoctorhospital_CategoryIdQualificationType,
+     vwopdreceiptpatientdoctorhospital.`DoctorQualification` AS vwopdreceiptpatientdoctorhospital_DoctorQualification,
+     vwopdreceiptpatientdoctorhospital.`DoctorAvailableDays` AS vwopdreceiptpatientdoctorhospital_DoctorAvailableDays,
+     vwopdreceiptpatientdoctorhospital.`DoctorChargesNormal` AS vwopdreceiptpatientdoctorhospital_DoctorChargesNormal,
+     vwopdreceiptpatientdoctorhospital.`StatusDoctorMaster` AS vwopdreceiptpatientdoctorhospital_StatusDoctorMaster,
+     vwopdreceiptpatientdoctorhospital.`HospitalId` AS vwopdreceiptpatientdoctorhospital_HospitalId,
+     vwopdreceiptpatientdoctorhospital.`HospitalName` AS vwopdreceiptpatientdoctorhospital_HospitalName,
+     vwopdreceiptpatientdoctorhospital.`HospitalRegNo` AS vwopdreceiptpatientdoctorhospital_HospitalRegNo,
+     vwopdreceiptpatientdoctorhospital.`HospitalAddress1` AS vwopdreceiptpatientdoctorhospital_HospitalAddress1,
+     vwopdreceiptpatientdoctorhospital.`HospitalAddress2` AS vwopdreceiptpatientdoctorhospital_HospitalAddress2,
+     vwopdreceiptpatientdoctorhospital.`HospitalTaxNo` AS vwopdreceiptpatientdoctorhospital_HospitalTaxNo,
+     vwopdreceiptpatientdoctorhospital.`HospitalPanNo` AS vwopdreceiptpatientdoctorhospital_HospitalPanNo
+FROM
+     `vwopdreceiptpatientdoctorhospital` vwopdreceiptpatientdoctorhospital
+WHERE
+     OPDReceiptId = $P{param_receiptid}]]>
+	</queryString>
+	<field name="vwopdreceiptpatientdoctorhospital_OPDReceiptId" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_OPDReceiptYear" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_OPDReceiptNos" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_OPDReceiptDate" class="java.sql.Timestamp"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDIdOPDReceipt" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorIdOPDReceipt" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_OPDReceiptAmount" class="java.math.BigDecimal"/>
+	<field name="vwopdreceiptpatientdoctorhospital_OPDReceiptSuffering" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_OPDReceiptAppointmentType" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_OPDReceiptFromDate" class="java.sql.Timestamp"/>
+	<field name="vwopdreceiptpatientdoctorhospital_OPDReceiptToDate" class="java.sql.Timestamp"/>
+	<field name="vwopdreceiptpatientdoctorhospital_MemberIdOPDReceipt" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_HospitalIdOPDReceipt" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_StatusOPDReceipt" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDId" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_CategoryIdDepartmentType" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDName" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDFName" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDMName" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDLName" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDAddress1" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDAddress2" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDCity" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDPin" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDPhone" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDMobile" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDEmail" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDFax" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDDob" class="java.sql.Timestamp"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDSex" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDMaritalStatus" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDBG" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDKeenname" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDKeenrelation" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDKeenphone" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDRef" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDRemarks" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDComplaint" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDWeight" class="java.math.BigDecimal"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDBP" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDFamilydoc" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDFamilydocphone" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDPulse" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_InsuranceIdIPDMaster" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_CategoryIdInsurancePolicyType" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDInsuranceLimit" class="java.math.BigDecimal"/>
+	<field name="vwopdreceiptpatientdoctorhospital_IPDInsurancePolicyNos" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_HospitalIdIPDMaster" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_StatusIPDMaster" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorId" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_CategoryIdDepartmentDoctorMast" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_CategoryIdConsultantDoctorMast" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_HospitalIdDoctorMaster" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorFName" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorMName" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorLName" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorName" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorPhoneno" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorMobileno" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorEmailid" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorFax" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorAddress1" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorAddress2" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorCity" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorPin" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_CategoryIdDoctorType" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_CategoryIdQualificationType" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorQualification" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorAvailableDays" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_DoctorChargesNormal" class="java.math.BigDecimal"/>
+	<field name="vwopdreceiptpatientdoctorhospital_StatusDoctorMaster" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_HospitalId" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_HospitalName" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_HospitalRegNo" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_HospitalAddress1" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_HospitalAddress2" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_HospitalTaxNo" class="java.lang.String"/>
+	<field name="vwopdreceiptpatientdoctorhospital_HospitalPanNo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch"/>
+	</title>
+	<detail>
+		<band height="210" splitType="Stretch">
+			<staticText>
+				<reportElement x="4" y="1" width="34" height="20" uuid="7d7e5a9b-b30d-4a1d-aa75-cdc32b5bb412"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="38" y="1" width="100" height="20" uuid="6088ed59-d477-4837-a810-da013153bff3"/>
+				<textFieldExpression><![CDATA[$F{vwopdreceiptpatientdoctorhospital_OPDReceiptNos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="353" y="1" width="100" height="20" uuid="13f66c7b-64d2-4d99-9856-9b5f450bd03c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yy">
+				<reportElement stretchType="RelativeToBandHeight" x="453" y="1" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="a354d825-7ab0-4d96-b797-a8c9901c8275"/>
+				<textFieldExpression><![CDATA[$F{vwopdreceiptpatientdoctorhospital_OPDReceiptDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="22" width="100" height="20" uuid="acf5ee79-aae4-4700-b9e0-16b29b1144de"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doctor Name]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="290" y="22" width="263" height="20" isPrintWhenDetailOverflows="true" uuid="5e9ba6a5-572d-4a96-9dcd-a951d4c6b23b"/>
+				<textFieldExpression><![CDATA[$F{vwopdreceiptpatientdoctorhospital_DoctorName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="42" width="207" height="20" uuid="e659561f-9336-4af4-a123-e2ea46bf9ba5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Received with thanks from Mr. / Mrs.]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="290" y="42" width="263" height="20" isPrintWhenDetailOverflows="true" uuid="e83305ad-0a8c-4579-bfc4-3c9ec3941d41"/>
+				<textFieldExpression><![CDATA[$F{vwopdreceiptpatientdoctorhospital_IPDName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="62" width="100" height="20" uuid="7b67a8a7-5e03-4752-a7a0-5a1d08472d00"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[as a ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="290" y="62" width="263" height="20" uuid="00a8d988-27b6-411b-89bf-128bf04e3b4c"/>
+				<textFieldExpression><![CDATA[$F{vwopdreceiptpatientdoctorhospital_OPDReceiptAppointmentType}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="82" width="100" height="20" uuid="8277a15e-430d-402b-8c5b-3517f9c47df7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient ID]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="290" y="82" width="263" height="20" isPrintWhenDetailOverflows="true" uuid="93131951-8193-4067-8451-cebdf91a328e"/>
+				<textFieldExpression><![CDATA[$F{vwopdreceiptpatientdoctorhospital_IPDId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="102" width="100" height="20" uuid="d8a14e0b-b070-4e07-86cf-b9747ef89dd4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Being Charges for]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement stretchType="RelativeToBandHeight" x="290" y="102" width="263" height="20" isPrintWhenDetailOverflows="true" uuid="89aaaebe-71e4-41ee-a6f2-3494d6d0cafb"/>
+				<textFieldExpression><![CDATA[$F{vwopdreceiptpatientdoctorhospital_OPDReceiptAmount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="122" width="100" height="20" uuid="370c8633-c47e-4ffd-98b3-8af489758e11"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Since]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yy">
+				<reportElement stretchType="RelativeToBandHeight" x="290" y="122" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="642a0324-6758-40af-b99f-1ebc521999d9"/>
+				<textFieldExpression><![CDATA[$F{vwopdreceiptpatientdoctorhospital_OPDReceiptFromDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="390" y="122" width="41" height="20" uuid="fb003f7b-3119-4199-b84b-ddc129da0636"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[to]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yy">
+				<reportElement stretchType="RelativeToBandHeight" x="431" y="122" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="2bf7ce35-3fd4-4bde-9ebf-87cc06a4b966"/>
+				<textFieldExpression><![CDATA[$F{vwopdreceiptpatientdoctorhospital_OPDReceiptToDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="309" y="187" width="244" height="20" uuid="c127edac-bc7c-43dd-b210-6a0c6ffd996f"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["For "+$F{vwopdreceiptpatientdoctorhospital_HospitalName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

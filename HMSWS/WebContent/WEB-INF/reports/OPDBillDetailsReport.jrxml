@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OPDBillDetailsReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aec60469-1c1b-45f6-8dea-d467899a5a07">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="86"/>
+	<parameter name="param_opdbilldetailsid" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     vwopdbilldetailspatientdoctorhospital.`OPDBillDetailsId` AS vwopdbilldetailspatientdoctorhospital_OPDBillDetailsId,
+     vwopdbilldetailspatientdoctorhospital.`OPDBillDetailsNos` AS vwopdbilldetailspatientdoctorhospital_OPDBillDetailsNos,
+     vwopdbilldetailspatientdoctorhospital.`IPDIdOPDBillDetails` AS vwopdbilldetailspatientdoctorhospital_IPDIdOPDBillDetails,
+     vwopdbilldetailspatientdoctorhospital.`OPDBillDetailsBillAmt` AS vwopdbilldetailspatientdoctorhospital_OPDBillDetailsBillAmt,
+     vwopdbilldetailspatientdoctorhospital.`OPDBillDetailsDiscount` AS vwopdbilldetailspatientdoctorhospital_OPDBillDetailsDiscount,
+     vwopdbilldetailspatientdoctorhospital.`OPDBillDetailsTotalAmt` AS vwopdbilldetailspatientdoctorhospital_OPDBillDetailsTotalAmt,
+     vwopdbilldetailspatientdoctorhospital.`OPDBillDetailsDate` AS vwopdbilldetailspatientdoctorhospital_OPDBillDetailsDate,
+     vwopdbilldetailspatientdoctorhospital.`DoctorIdOPDBillDetails` AS vwopdbilldetailspatientdoctorhospital_DoctorIdOPDBillDetails,
+     vwopdbilldetailspatientdoctorhospital.`OPDBillDetailsPaymentType` AS vwopdbilldetailspatientdoctorhospital_OPDBillDetailsPaymentType,
+     vwopdbilldetailspatientdoctorhospital.`OPDBillDetailsRemarks` AS vwopdbilldetailspatientdoctorhospital_OPDBillDetailsRemarks,
+     vwopdbilldetailspatientdoctorhospital.`MemberIdOPDBillDetails` AS vwopdbilldetailspatientdoctorhospital_MemberIdOPDBillDetails,
+     vwopdbilldetailspatientdoctorhospital.`HospitalIdOPDBillDetails` AS vwopdbilldetailspatientdoctorhospital_HospitalIdOPDBillDetails,
+     vwopdbilldetailspatientdoctorhospital.`OPDBillDetailsYear` AS vwopdbilldetailspatientdoctorhospital_OPDBillDetailsYear,
+     vwopdbilldetailspatientdoctorhospital.`StatusOPDBillDetails` AS vwopdbilldetailspatientdoctorhospital_StatusOPDBillDetails,
+     vwopdbilldetailspatientdoctorhospital.`IPDId` AS vwopdbilldetailspatientdoctorhospital_IPDId,
+     vwopdbilldetailspatientdoctorhospital.`CategoryIdDepartmentType` AS vwopdbilldetailspatientdoctorhospital_CategoryIdDepartmentType,
+     vwopdbilldetailspatientdoctorhospital.`IPDName` AS vwopdbilldetailspatientdoctorhospital_IPDName,
+     vwopdbilldetailspatientdoctorhospital.`IPDFName` AS vwopdbilldetailspatientdoctorhospital_IPDFName,
+     vwopdbilldetailspatientdoctorhospital.`IPDMName` AS vwopdbilldetailspatientdoctorhospital_IPDMName,
+     vwopdbilldetailspatientdoctorhospital.`IPDLName` AS vwopdbilldetailspatientdoctorhospital_IPDLName,
+     vwopdbilldetailspatientdoctorhospital.`IPDAddress1` AS vwopdbilldetailspatientdoctorhospital_IPDAddress1,
+     vwopdbilldetailspatientdoctorhospital.`IPDAddress2` AS vwopdbilldetailspatientdoctorhospital_IPDAddress2,
+     vwopdbilldetailspatientdoctorhospital.`IPDCity` AS vwopdbilldetailspatientdoctorhospital_IPDCity,
+     vwopdbilldetailspatientdoctorhospital.`IPDPin` AS vwopdbilldetailspatientdoctorhospital_IPDPin,
+     vwopdbilldetailspatientdoctorhospital.`IPDPhone` AS vwopdbilldetailspatientdoctorhospital_IPDPhone,
+     vwopdbilldetailspatientdoctorhospital.`IPDMobile` AS vwopdbilldetailspatientdoctorhospital_IPDMobile,
+     vwopdbilldetailspatientdoctorhospital.`IPDEmail` AS vwopdbilldetailspatientdoctorhospital_IPDEmail,
+     vwopdbilldetailspatientdoctorhospital.`IPDFax` AS vwopdbilldetailspatientdoctorhospital_IPDFax,
+     vwopdbilldetailspatientdoctorhospital.`IPDSex` AS vwopdbilldetailspatientdoctorhospital_IPDSex,
+     vwopdbilldetailspatientdoctorhospital.`IPDMaritalStatus` AS vwopdbilldetailspatientdoctorhospital_IPDMaritalStatus,
+     vwopdbilldetailspatientdoctorhospital.`IPDBG` AS vwopdbilldetailspatientdoctorhospital_IPDBG,
+     vwopdbilldetailspatientdoctorhospital.`IPDKeenname` AS vwopdbilldetailspatientdoctorhospital_IPDKeenname,
+     vwopdbilldetailspatientdoctorhospital.`IPDKeenrelation` AS vwopdbilldetailspatientdoctorhospital_IPDKeenrelation,
+     vwopdbilldetailspatientdoctorhospital.`IPDKeenphone` AS vwopdbilldetailspatientdoctorhospital_IPDKeenphone,
+     vwopdbilldetailspatientdoctorhospital.`IPDRef` AS vwopdbilldetailspatientdoctorhospital_IPDRef,
+     vwopdbilldetailspatientdoctorhospital.`IPDRemarks` AS vwopdbilldetailspatientdoctorhospital_IPDRemarks,
+     vwopdbilldetailspatientdoctorhospital.`IPDComplaint` AS vwopdbilldetailspatientdoctorhospital_IPDComplaint,
+     vwopdbilldetailspatientdoctorhospital.`IPDWeight` AS vwopdbilldetailspatientdoctorhospital_IPDWeight,
+     vwopdbilldetailspatientdoctorhospital.`IPDBP` AS vwopdbilldetailspatientdoctorhospital_IPDBP,
+     vwopdbilldetailspatientdoctorhospital.`IPDFamilydoc` AS vwopdbilldetailspatientdoctorhospital_IPDFamilydoc,
+     vwopdbilldetailspatientdoctorhospital.`IPDFamilydocphone` AS vwopdbilldetailspatientdoctorhospital_IPDFamilydocphone,
+     vwopdbilldetailspatientdoctorhospital.`IPDPulse` AS vwopdbilldetailspatientdoctorhospital_IPDPulse,
+     vwopdbilldetailspatientdoctorhospital.`InsuranceIdIPDMaster` AS vwopdbilldetailspatientdoctorhospital_InsuranceIdIPDMaster,
+     vwopdbilldetailspatientdoctorhospital.`CategoryIdInsurancePolicyType` AS vwopdbilldetailspatientdoctorhospital_CategoryIdInsurancePolicyT,
+     vwopdbilldetailspatientdoctorhospital.`IPDInsuranceLimit` AS vwopdbilldetailspatientdoctorhospital_IPDInsuranceLimit,
+     vwopdbilldetailspatientdoctorhospital.`IPDInsurancePolicyNos` AS vwopdbilldetailspatientdoctorhospital_IPDInsurancePolicyNos,
+     vwopdbilldetailspatientdoctorhospital.`HospitalIdIPDMaster` AS vwopdbilldetailspatientdoctorhospital_HospitalIdIPDMaster,
+     vwopdbilldetailspatientdoctorhospital.`StatusIPDMaster` AS vwopdbilldetailspatientdoctorhospital_StatusIPDMaster,
+     vwopdbilldetailspatientdoctorhospital.`DoctorId` AS vwopdbilldetailspatientdoctorhospital_DoctorId,
+     vwopdbilldetailspatientdoctorhospital.`CategoryIdDepartmentDoctorMaster` AS vwopdbilldetailspatientdoctorhospital_CategoryIdDepartmentDoctor,
+     vwopdbilldetailspatientdoctorhospital.`CategoryIdConsultantDoctorMaster` AS vwopdbilldetailspatientdoctorhospital_CategoryIdConsultantDoctor,
+     vwopdbilldetailspatientdoctorhospital.`HospitalIdDoctorMaster` AS vwopdbilldetailspatientdoctorhospital_HospitalIdDoctorMaster,
+     vwopdbilldetailspatientdoctorhospital.`DoctorFName` AS vwopdbilldetailspatientdoctorhospital_DoctorFName,
+     vwopdbilldetailspatientdoctorhospital.`DoctorMName` AS vwopdbilldetailspatientdoctorhospital_DoctorMName,
+     vwopdbilldetailspatientdoctorhospital.`DoctorLName` AS vwopdbilldetailspatientdoctorhospital_DoctorLName,
+     vwopdbilldetailspatientdoctorhospital.`DoctorName` AS vwopdbilldetailspatientdoctorhospital_DoctorName,
+     vwopdbilldetailspatientdoctorhospital.`DoctorPhoneno` AS vwopdbilldetailspatientdoctorhospital_DoctorPhoneno,
+     vwopdbilldetailspatientdoctorhospital.`DoctorMobileno` AS vwopdbilldetailspatientdoctorhospital_DoctorMobileno,
+     vwopdbilldetailspatientdoctorhospital.`DoctorEmailid` AS vwopdbilldetailspatientdoctorhospital_DoctorEmailid,
+     vwopdbilldetailspatientdoctorhospital.`DoctorFax` AS vwopdbilldetailspatientdoctorhospital_DoctorFax,
+     vwopdbilldetailspatientdoctorhospital.`DoctorAddress1` AS vwopdbilldetailspatientdoctorhospital_DoctorAddress1,
+     vwopdbilldetailspatientdoctorhospital.`DoctorAddress2` AS vwopdbilldetailspatientdoctorhospital_DoctorAddress2,
+     vwopdbilldetailspatientdoctorhospital.`DoctorCity` AS vwopdbilldetailspatientdoctorhospital_DoctorCity,
+     vwopdbilldetailspatientdoctorhospital.`DoctorPin` AS vwopdbilldetailspatientdoctorhospital_DoctorPin,
+     vwopdbilldetailspatientdoctorhospital.`CategoryIdDoctorType` AS vwopdbilldetailspatientdoctorhospital_CategoryIdDoctorType,
+     vwopdbilldetailspatientdoctorhospital.`CategoryIdQualificationType` AS vwopdbilldetailspatientdoctorhospital_CategoryIdQualificationTyp,
+     vwopdbilldetailspatientdoctorhospital.`DoctorQualification` AS vwopdbilldetailspatientdoctorhospital_DoctorQualification,
+     vwopdbilldetailspatientdoctorhospital.`DoctorAvailableDays` AS vwopdbilldetailspatientdoctorhospital_DoctorAvailableDays,
+     vwopdbilldetailspatientdoctorhospital.`DoctorChargesNormal` AS vwopdbilldetailspatientdoctorhospital_DoctorChargesNormal,
+     vwopdbilldetailspatientdoctorhospital.`HospitalName` AS vwopdbilldetailspatientdoctorhospital_HospitalName
+FROM
+     `vwopdbilldetailspatientdoctorhospital` vwopdbilldetailspatientdoctorhospital
+WHERE
+     OPDBillDetailsId = $P{param_opdbilldetailsid}]]>
+	</queryString>
+	<field name="vwopdbilldetailspatientdoctorhospital_OPDBillDetailsId" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_OPDBillDetailsNos" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDIdOPDBillDetails" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_OPDBillDetailsBillAmt" class="java.math.BigDecimal"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_OPDBillDetailsDiscount" class="java.math.BigDecimal"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_OPDBillDetailsTotalAmt" class="java.math.BigDecimal"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_OPDBillDetailsDate" class="java.sql.Timestamp"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorIdOPDBillDetails" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_OPDBillDetailsPaymentType" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_OPDBillDetailsRemarks" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_MemberIdOPDBillDetails" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_HospitalIdOPDBillDetails" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_OPDBillDetailsYear" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_StatusOPDBillDetails" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDId" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_CategoryIdDepartmentType" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDName" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDFName" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDMName" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDLName" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDAddress1" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDAddress2" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDCity" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDPin" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDPhone" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDMobile" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDEmail" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDFax" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDSex" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDMaritalStatus" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDBG" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDKeenname" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDKeenrelation" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDKeenphone" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDRef" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDRemarks" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDComplaint" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDWeight" class="java.math.BigDecimal"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDBP" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDFamilydoc" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDFamilydocphone" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDPulse" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_InsuranceIdIPDMaster" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_CategoryIdInsurancePolicyT" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDInsuranceLimit" class="java.math.BigDecimal"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_IPDInsurancePolicyNos" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_HospitalIdIPDMaster" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_StatusIPDMaster" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorId" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_CategoryIdDepartmentDoctor" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_CategoryIdConsultantDoctor" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_HospitalIdDoctorMaster" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorFName" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorMName" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorLName" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorName" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorPhoneno" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorMobileno" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorEmailid" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorFax" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorAddress1" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorAddress2" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorCity" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorPin" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_CategoryIdDoctorType" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_CategoryIdQualificationTyp" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorQualification" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorAvailableDays" class="java.lang.String"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_DoctorChargesNormal" class="java.math.BigDecimal"/>
+	<field name="vwopdbilldetailspatientdoctorhospital_HospitalName" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch"/>
+	</title>
+	<detail>
+		<band height="153" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f8805ef3-0370-4d38-83c2-f42eac2009f8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Receipt No.]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="100" y="0" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="cfdd36f0-ec63-45a4-8f6c-b7062fca4eda"/>
+				<textFieldExpression><![CDATA[$F{vwopdbilldetailspatientdoctorhospital_OPDBillDetailsNos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="352" y="0" width="100" height="20" uuid="6f33c1a5-4758-45d7-8f58-0db47b62465f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yy">
+				<reportElement stretchType="RelativeToTallestObject" x="452" y="0" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="da95509d-8c05-474e-88e7-a3e0c93864f7"/>
+				<textFieldExpression><![CDATA[$F{vwopdbilldetailspatientdoctorhospital_OPDBillDetailsDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="24" width="100" height="20" uuid="4d35ebe6-d651-488f-bf0c-74199ea33555"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient Name:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="102" y="24" width="146" height="20" isPrintWhenDetailOverflows="true" uuid="308ab41b-1858-4c6f-9391-22b858658035"/>
+				<textFieldExpression><![CDATA[$F{vwopdbilldetailspatientdoctorhospital_IPDName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="263" y="24" width="100" height="20" uuid="27615a2d-ffb8-44f1-8e25-326248b37ed0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doctor Name:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="363" y="24" width="188" height="20" isPrintWhenDetailOverflows="true" uuid="a8d97f68-7e5d-4880-aa94-743127b0a3f5"/>
+				<textFieldExpression><![CDATA[$F{vwopdbilldetailspatientdoctorhospital_DoctorName}]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="false" runToBottom="false">
+				<reportElement stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" x="30" y="52" width="505" height="91" isPrintWhenDetailOverflows="true" uuid="6efc17ad-53e3-46ca-b201-7fd651a29bf6"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="param_subreportopdbilldetailsid">
+					<subreportParameterExpression><![CDATA[$F{vwopdbilldetailspatientdoctorhospital_OPDBillDetailsId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="param_opdbilldetailsid">
+					<subreportParameterExpression><![CDATA[$P{param_opdbilldetailsid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["./" + "OPDBillDetailsReport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="141">
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="13" y="12" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="b0b19377-d08f-4f46-853d-0671c3711bbc"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Type:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="113" y="12" width="133" height="20" isPrintWhenDetailOverflows="true" uuid="8e667d4f-43af-4ead-bd23-d7528ee7ffd7"/>
+				<textFieldExpression><![CDATA[$F{vwopdbilldetailspatientdoctorhospital_OPDBillDetailsPaymentType}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="246" y="11" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="876561f5-8e80-422b-a045-e915d6b19024"/>
+				<text><![CDATA[Total:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="346" y="11" width="188" height="20" isPrintWhenDetailOverflows="true" uuid="642f723e-856c-4704-a8ee-a721d14afbd6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{vwopdbilldetailspatientdoctorhospital_OPDBillDetailsBillAmt}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="248" y="32" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="164e67b1-88e4-48c5-9f91-878625556bf9"/>
+				<text><![CDATA[Discount:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="346" y="32" width="188" height="20" isPrintWhenDetailOverflows="true" uuid="3a3d46c3-0fc1-42bf-8ee8-fc7b85fde990"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{vwopdbilldetailspatientdoctorhospital_OPDBillDetailsDiscount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="13" y="34" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="f6ba743b-8e3d-4d66-bc28-9ed517d18d48"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Remarks:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="113" y="34" width="133" height="55" isPrintWhenDetailOverflows="true" uuid="cbcd2d92-d9e2-4f79-8cff-d76d7186c29f"/>
+				<textFieldExpression><![CDATA[$F{vwopdbilldetailspatientdoctorhospital_OPDBillDetailsRemarks}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="248" y="52" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="f98ee0a4-2de2-4321-916a-601278c449a9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount Paid:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="346" y="54" width="188" height="20" isPrintWhenDetailOverflows="true" uuid="507a1feb-bdc2-4b33-8693-ff55a682deef"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vwopdbilldetailspatientdoctorhospital_OPDBillDetailsTotalAmt}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="348" y="120" width="100" height="20" uuid="22cb0845-e2e9-4a0e-a880-0215523e7b2f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sign]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

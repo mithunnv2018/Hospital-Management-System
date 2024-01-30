@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IPDReceiptCancelReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9b1d5a6d-1702-4bb0-a76e-ffa9a56d2be8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_fromdate" class="java.lang.String"/>
+	<parameter name="param_todate" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     hspreceiptpaymentdetails.`RCPPayId` AS hspreceiptpaymentdetails_RCPPayId,
+     hspreceiptpaymentdetails.`RCPPayDate` AS hspreceiptpaymentdetails_RCPPayDate,
+     hspreceiptpaymentdetails.`RCPPayAmount` AS hspreceiptpaymentdetails_RCPPayAmount,
+     hspreceiptpaymentdetails.`RCPPayPaymentType` AS hspreceiptpaymentdetails_RCPPayPaymentType,
+     hspreceiptpaymentdetails.`RCPPayType` AS hspreceiptpaymentdetails_RCPPayType,
+     hspreceiptpaymentdetails.`RCPPayBankCashDetails` AS hspreceiptpaymentdetails_RCPPayBankCashDetails,
+     hspreceiptpaymentdetails.`RCPPayRemarks` AS hspreceiptpaymentdetails_RCPPayRemarks,
+     hspreceiptpaymentdetails.`RCPPayStatus` AS hspreceiptpaymentdetails_RCPPayStatus,
+     hspreceiptpaymentdetails.`HSPAdminIdhspreceiptpaymentdetails` AS hspreceiptpaymentdetails_HSPAdminIdhspreceiptpaymentdetails,
+     hspreceiptpaymentdetails.`MemberIdhspreceiptpaymentdetails` AS hspreceiptpaymentdetails_MemberIdhspreceiptpaymentdetails,
+     hspreceiptpaymentdetails.`Statushspreceiptpaymentdetails` AS hspreceiptpaymentdetails_Statushspreceiptpaymentdetails,
+     tbl_member_master.`member_id` AS tbl_member_master_member_id,
+     tbl_member_master.`member_name` AS tbl_member_master_member_name,
+     hspreceiptpaymentdetails.`CreateDatehspreceiptpaymentdetails` AS hspreceiptpaymentdetails_CreateDatehspreceiptpaymentdetails,
+     hospitalization.`HSPAdminId` AS hospitalization_HSPAdminId,
+     hospitalization.`HSPAdminDate` AS hospitalization_HSPAdminDate,
+     hospitalization.`HSPAdmintime` AS hospitalization_HSPAdmintime,
+     hospitalization.`HSPAdminStatus` AS hospitalization_HSPAdminStatus,
+     hospitalization.`HSPAdminDischargeNos` AS hospitalization_HSPAdminDischargeNos,
+     hospitalization.`HSPAdminDischargeDate` AS hospitalization_HSPAdminDischargeDate,
+     hospitalization.`HSPAdminDischargetime` AS hospitalization_HSPAdminDischargetime,
+     hospitalization.`HSPAdminYear` AS hospitalization_HSPAdminYear,
+     hospitalization.`IPDIdHospitalization` AS hospitalization_IPDIdHospitalization,
+     hospitalization.`StatusHospitalization` AS hospitalization_StatusHospitalization,
+     ipdmaster.`IPDId` AS ipdmaster_IPDId,
+     ipdmaster.`IPDName` AS ipdmaster_IPDName,
+     ipdmaster.`StatusIPDMaster` AS ipdmaster_StatusIPDMaster
+FROM
+     `hspreceiptpaymentdetails` hspreceiptpaymentdetails INNER JOIN `tbl_member_master` tbl_member_master ON hspreceiptpaymentdetails.`MemberIdhspreceiptpaymentdetails` = tbl_member_master.`member_id`
+     INNER JOIN `hospitalization` hospitalization ON hspreceiptpaymentdetails.`HSPAdminIdhspreceiptpaymentdetails` = hospitalization.`HSPAdminId`
+     INNER JOIN `ipdmaster` ipdmaster ON hospitalization.`IPDIdHospitalization` = ipdmaster.`IPDId`
+WHERE
+     RCPPayStatus = 'active'
+     and RCPPayDate BETWEEN $P{param_fromdate} and $P{param_todate}
+     ORDER BY HSPAdminIdhspreceiptpaymentdetails DESC]]>
+	</queryString>
+	<field name="hspreceiptpaymentdetails_RCPPayId" class="java.lang.String"/>
+	<field name="hspreceiptpaymentdetails_RCPPayDate" class="java.sql.Timestamp"/>
+	<field name="hspreceiptpaymentdetails_RCPPayAmount" class="java.math.BigDecimal"/>
+	<field name="hspreceiptpaymentdetails_RCPPayPaymentType" class="java.lang.String"/>
+	<field name="hspreceiptpaymentdetails_RCPPayType" class="java.lang.String"/>
+	<field name="hspreceiptpaymentdetails_RCPPayBankCashDetails" class="java.lang.String"/>
+	<field name="hspreceiptpaymentdetails_RCPPayRemarks" class="java.lang.String"/>
+	<field name="hspreceiptpaymentdetails_RCPPayStatus" class="java.lang.String"/>
+	<field name="hspreceiptpaymentdetails_HSPAdminIdhspreceiptpaymentdetails" class="java.lang.String"/>
+	<field name="hspreceiptpaymentdetails_MemberIdhspreceiptpaymentdetails" class="java.lang.String"/>
+	<field name="hspreceiptpaymentdetails_Statushspreceiptpaymentdetails" class="java.lang.String"/>
+	<field name="tbl_member_master_member_id" class="java.lang.String"/>
+	<field name="tbl_member_master_member_name" class="java.lang.String"/>
+	<field name="hspreceiptpaymentdetails_CreateDatehspreceiptpaymentdetails" class="java.sql.Timestamp"/>
+	<field name="hospitalization_HSPAdminId" class="java.lang.String"/>
+	<field name="hospitalization_HSPAdminDate" class="java.sql.Timestamp"/>
+	<field name="hospitalization_HSPAdmintime" class="java.sql.Time"/>
+	<field name="hospitalization_HSPAdminStatus" class="java.lang.String"/>
+	<field name="hospitalization_HSPAdminDischargeNos" class="java.lang.String"/>
+	<field name="hospitalization_HSPAdminDischargeDate" class="java.sql.Timestamp"/>
+	<field name="hospitalization_HSPAdminDischargetime" class="java.sql.Time"/>
+	<field name="hospitalization_HSPAdminYear" class="java.lang.String"/>
+	<field name="hospitalization_IPDIdHospitalization" class="java.lang.String"/>
+	<field name="hospitalization_StatusHospitalization" class="java.lang.String"/>
+	<field name="ipdmaster_IPDId" class="java.lang.String"/>
+	<field name="ipdmaster_IPDName" class="java.lang.String"/>
+	<field name="ipdmaster_StatusIPDMaster" class="java.lang.String"/>
+	<variable name="totalamount" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{hspreceiptpaymentdetails_RCPPayAmount}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="f17f6d6e-b738-4994-bf19-6bb7d4282d11"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IPD RECEIPT's ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="85" height="20" uuid="2c2e43b2-0d58-49dc-affd-cecfd1c08ead"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Receipt Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="0" width="97" height="20" uuid="f153d928-b9b0-49bb-a2af-97b71caf62e2"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hospitalization ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="424" y="0" width="69" height="20" uuid="9b4d0d63-df7f-4da7-844f-e9769246a8c7"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Receipt Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="493" y="0" width="62" height="20" uuid="65f513ef-3fa7-4f5f-8554-74c748ae2e85"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="0" width="69" height="20" uuid="86416a02-97a2-4acc-a1bc-9823f932547e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Printed By]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="319" y="0" width="105" height="20" uuid="ac1a4e6a-a391-4228-a343-87be167a22a0"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="0" width="68" height="20" uuid="5b594319-edf7-4f27-914e-2473237a6b12"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Type]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="85" height="20" isPrintWhenDetailOverflows="true" uuid="9a0b5762-748a-472d-9396-31f834a1b547"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hspreceiptpaymentdetails_RCPPayId}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="85" y="0" width="97" height="20" isPrintWhenDetailOverflows="true" uuid="4d32824b-f761-490a-aa92-067a0c6a20d3"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hspreceiptpaymentdetails_HSPAdminIdhspreceiptpaymentdetails}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="MM/dd/yyyy">
+				<reportElement stretchType="RelativeToBandHeight" x="424" y="0" width="69" height="20" isPrintWhenDetailOverflows="true" uuid="527a4879-ca0a-47a1-910f-0a3e0b094e09"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hspreceiptpaymentdetails_RCPPayDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement stretchType="RelativeToBandHeight" x="493" y="0" width="62" height="20" isPrintWhenDetailOverflows="true" uuid="816de16f-e091-4f6c-bec0-40db64f15712"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hspreceiptpaymentdetails_RCPPayAmount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="182" y="0" width="69" height="20" isPrintWhenDetailOverflows="true" uuid="2929adc0-3490-433f-aee1-49ddafcc4a7d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tbl_member_master_member_name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="319" y="0" width="105" height="20" isPrintWhenDetailOverflows="true" uuid="dfeeb7e7-cec8-427e-8003-e87b99f04554"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ipdmaster_IPDName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="251" y="0" width="68" height="20" isPrintWhenDetailOverflows="true" uuid="20301f35-b3da-49d3-902c-ab78d521c47b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hspreceiptpaymentdetails_RCPPayType}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement x="429" y="0" width="125" height="20" isPrintWhenDetailOverflows="true" uuid="f12763e1-f152-4272-a809-80b7c90a2aba"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalamount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="329" y="0" width="100" height="20" uuid="120dce1c-de75-48b0-bf9c-4cf4e19a5012"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Amount:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

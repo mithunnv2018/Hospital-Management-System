@@ -1,0 +1,80 @@
+{
+'Mith':{
+'Customers':[
+	
+    {
+      'Phone': '(26) 642-7012',
+      'PostalCode': '01-012',
+      'ContactName': 'Zbyszek Piestrzeniewicz',
+      'Fax': '(26) 642-7012',
+      'Address': 'ul. Filtrowa 68',
+      'CustomerID': 'WOLZA',
+      'CompanyName': 'Wolski  Zajazd',
+      'Country': 'Poland',
+      'City': 'Warszawa',
+      'ContactTitle': 'Owner',
+      'Designation':[
+      	{
+      		'post':'MANAGER1',
+			'salary':100
+      	},
+      	{
+      		'post':'MANAGER2',
+			'salary':200
+      	}
+      	
+      ]
+    },
+
+    {
+      'Phone': '(26) 642-7012999',
+      'PostalCode': '01-012999',
+      'ContactName': '999Zbyszek Piestrzeniewicz',
+      'Fax': '99(26) 642-7012',
+      'Address': '999ul. Filtrowa 68',
+      'CustomerID': '999WOLZA',
+      'CompanyName': '999Wolski  Zajazd',
+      'Country': '999Poland',
+      'City': '99Warszawa',
+      'ContactTitle': '99Owner',
+      'Designation':[
+      	{
+      		'post':'MANAGER12',
+			'salary':300
+      	},
+      	{
+      		'post':'MANAGER22',
+			'salary':400
+      	}
+      	
+      ]
+      
+    }
+,
+    {
+      'Phone': '88(26) 642-7012',
+      'PostalCode': '8801-012',
+      'ContactName': '88Zbyszek Piestrzeniewicz',
+      'Fax': '88(26) 642-7012',
+      'Address': '88ul. Filtrowa 68',
+      'CustomerID': '88WOLZA',
+      'CompanyName': '88Wolski  Zajazd',
+      'Country': '88Poland',
+      'City': '88Warszawa',
+      'ContactTitle': '88Owner',
+      'Designation':[
+      	{
+      		'post':'MANAGER13',
+			'salary':500
+      	},
+      	{
+      		'post':'MANAGER23',
+			'salary':600
+      	}
+      	
+      ]
+    }
+
+]
+}
+}

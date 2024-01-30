@@ -1,0 +1,113 @@
+
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create Cosmetic Bill Particulars</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='CosmeticBillParticularsVar.CosmeticBillParticularsName' formControlName='CosmeticBillParticularsName' /> <label>Cosmetic Bill Particulars Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CosmeticBillParticularsName'].valid&&userform.controls['CosmeticBillParticularsName'].touched">Cosmetic Bill Particulars Name  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='CosmeticBillParticularsVar.CosmeticBillParticularsAliasName' formControlName='CosmeticBillParticularsAliasName' /> <label>CosmeticBill Alias Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CosmeticBillParticularsAliasName'].valid&&userform.controls['CosmeticBillParticularsAliasName'].touched">Cosmetic Bill Alias Name  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='CosmeticBillParticularsVar.CosmeticBillParticularsTrustAmount' formControlName='CosmeticBillParticularsTrustAmount' /> <label>Cosmetic Bill Trust Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CosmeticBillParticularsTrustAmount'].valid&&userform.controls['CosmeticBillParticularsTrustAmount'].touched">Cosmetic Bill Trust Amount  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='CosmeticBillParticularsVar.CosmeticBillParticularsAmount' formControlName='CosmeticBillParticularsAmount' /> <label>Cosmetic Bill Particulars Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CosmeticBillParticularsAmount'].valid&&userform.controls['CosmeticBillParticularsAmount'].touched">Cosmetic Bill  Amount  Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="VwCosmeticBillParticulars" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectVwOPDBillHospital($event)" 
+	[(selection)]="selectedRow">
+
+ 
+<p-column field="CosmeticBillParticularsName" [filter]="true" 
+filterPlaceholder="Search CosmeticBillParticularsName"  header="CosmeticBillParticularsName">
+</p-column>
+
+ 
+<p-column field="CosmeticBillParticularsTrustAmount" [filter]="true" 
+filterPlaceholder="Search CosmeticBillParticularsTrustAmount"  header="CosmeticBillParticularsTrustAmount">
+</p-column>
+
+<p-column field="CosmeticBillParticularsAmount" [filter]="true" 
+filterPlaceholder="Search CosmeticBillParticularsAmount"  header="CosmeticBillParticularsAmount">
+</p-column>
+
+        
+</p-dataTable>
+ 
+

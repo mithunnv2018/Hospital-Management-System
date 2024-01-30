@@ -1,0 +1,313 @@
+<p-growl [value]="msgs"></p-growl>
+<p-confirmDialog width="425"></p-confirmDialog>
+<p-dialog header="Enter Number of Days" [(visible)]="displaynewnoofdays" modal="modal" width="300" [responsive]="true">
+    
+    <p-spinner [min]="1" [step]="1" [(ngModel)]="noofdays"  ></p-spinner>
+    <button type="button" pButton icon="fa-save" (click)="gotoScheduleDialog()" label="Next"></button>
+     
+</p-dialog>
+<p-dialog header="Enter Schedule" [(visible)]="displayschedule" modal="modal" width="300" [responsive]="true">
+    
+    <p-selectButton [options]="scheduleslist" [(ngModel)]="selectedschedules" multiple="multiple"></p-selectButton>
+    
+    <footer>
+            <button type="button" pButton icon="fa-save" (click)="onSubmitDischargePrescription()" label="SAVE"></button>
+            
+    </footer>
+</p-dialog>
+
+    <h1>Discharge</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Discharge date:
+<p-calendar [(ngModel)]="DischargeDate"  dateFormat="mm/dd/yy" formControlName='DischargeDate'> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DischargeDate'].valid&&userform.controls['DischargeDate'].touched">Discharge Date  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Diagnosis 
+<textarea pInputTextarea [(ngModel)]="hspipddischargedetailsVar.DischargeDiagnosis" formControlName='DischargeDiagnosis' autoResize="autoResize"></textarea>  </span>
+</div>
+</div>
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DischargeDiagnosis'].valid&&userform.controls['DischargeDiagnosis'].touched">Diagnosis  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+History Of Present Illness
+<textarea pInputTextarea [(ngModel)]="hspipddischargedetailsVar.DischargeHistfPrsntIll" formControlName='DischargeHistfPrsntIll' autoResize="autoResize"></textarea>  </span>
+</div>
+</div>
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DischargeHistfPrsntIll'].valid&&userform.controls['DischargeHistfPrsntIll'].touched">History Of Present Illness  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Examination
+<textarea pInputTextarea [(ngModel)]="hspipddischargedetailsVar.DischargeExamination" formControlName='DischargeExamination' autoResize="autoResize"></textarea>  </span>
+</div>
+</div>
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DischargeExamination'].valid&&userform.controls['DischargeExamination'].touched">Examination  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Treatment
+<textarea pInputTextarea [(ngModel)]="hspipddischargedetailsVar.DischargeTreatment" formControlName='DischargeTreatment' autoResize="autoResize"></textarea>  </span>
+</div>
+</div>
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DischargeTreatment'].valid&&userform.controls['DischargeTreatment'].touched">Treatment  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Followup 	
+<textarea pInputTextarea [(ngModel)]="hspipddischargedetailsVar.DischargeFollowup" formControlName='DischargeFollowup' autoResize="autoResize"></textarea>  </span>
+</div>
+</div>
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DischargeFollowup'].valid&&userform.controls['DischargeFollowup'].touched">Followup  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='hspipddischargedetailsVar.DischargeVerifiedby' formControlName='DischargeVerifiedby' /> <label>Verified By</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DischargeVerifiedby'].valid&&userform.controls['DischargeVerifiedby'].touched">Verified By  Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<!--<p-dropdown [style]="{'width':'90%'}" [options]="drpdoctoroptions" [(ngModel)]="hspipddischargedetailsVar.DoctorIdhspipddischargedetails" formControlName='DoctorIdhspipddischargedetails'></p-dropdown> -->
+<p-autoComplete [(ngModel)]="docselected" [suggestions]="docresults" (completeMethod)="filterDOCName($event)"  field="label"  formControlName='DoctorIdhspipddischargedetails' ></p-autoComplete>
+ <label>Doctor Name</label>
+
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorIdhspipddischargedetails'].valid&&userform.controls['DoctorIdhspipddischargedetails'].touched">Doctor  Required
+</div>
+</div>
+</div>
+
+
+
+<!-- here code for sub form -->
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+            <label>Prescription Details</label>
+
+            <!--as done on 7 feb 2017 by Mandar removed  formGroupName="keyword_subgroup"-->
+            <div >
+                <div class='ui-grid-row' style='width:100%;'>
+                        <div class='ui-g form-group' style='width:80%;'>
+                        <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                        <span class='md-inputfield'>
+
+                        <!--<p-dropdown [style]="{'width':'90%'}" [options]="drpdoctoroptions" [(ngModel)]="hspipddischargedetailsVar.DoctorIdhspipddischargedetails" formControlName='DoctorIdhspipddischargedetails'></p-dropdown> -->
+                        <p-autoComplete [(ngModel)]="medselected" [suggestions]="medresults" (completeMethod)="filterMedicineName($event)"  (onSelect)="displaynewnoofdays=true" field="label"   [ngModelOptions]="{standalone: true}" ></p-autoComplete>
+                        <label>Generic Medicine</label>
+
+                        </span>
+                        </div>
+                        </div>
+
+
+                 </div>
+
+                <!--<div class='ui-grid-row' style='width:100%;'>
+                    <div class='ui-g form-group' style='width:80%;'>
+                        <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                            <span class='md-inputfield'>
+ 
+                                <label>No Of Days</label>
+                                <p-spinner [min]="0" [step]="1" [(ngModel)]="hspdischargeprescription.DischargePrecNosofDays" [ngModelOptions]="{standalone: true}"></p-spinner>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-4">
+
+                    </div>
+                </div>
+-->
+
+                <!--<div class='ui-grid-row' style='width:100%;'>
+                    <div class='ui-g form-group' style='width:80%;'>
+                        <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                            <span class='md-inputfield'>
+                                
+                                Morning (Yes/No):
+                                <p-inputSwitch onLabel='Yes' offLabel='No' [(ngModel)]='hspdischargeprescription.DischargePrecMorning'  [ngModelOptions]="{standalone: true}" ></p-inputSwitch>
+            
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-4">
+                    
+                    </div>
+                </div>-->
+
+                <!--<div class='ui-grid-row' style='width:100%;'>
+                    <div class='ui-g form-group' style='width:80%;'>
+                        <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                            <span class='md-inputfield'>
+                                
+                                Afternoon (Yes/No):
+                                <p-inputSwitch onLabel='Yes' offLabel='No' [(ngModel)]='hspdischargeprescription.DischargePrecAfternoon'  [ngModelOptions]="{standalone: true}" ></p-inputSwitch>
+            
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-4">
+         
+                    </div>
+                </div>-->
+
+                <!--<div class='ui-grid-row' style='width:100%;'>
+                    <div class='ui-g form-group' style='width:80%;'>
+                        <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                            <span class='md-inputfield'>
+                                
+                                Evening (Yes/No):
+                                <p-inputSwitch onLabel='Yes' offLabel='No' [(ngModel)]='hspdischargeprescription.DischargePrecEvening'  [ngModelOptions]="{standalone: true}" ></p-inputSwitch>
+            
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-4">
+                  
+                    </div>
+                </div>-->
+         
+         
+            </div>
+
+            <!--<div class="ui-grid-row" style="width:100%;">
+                <div class="ui-g form-group" style="width:80%;">
+
+                    <div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+                        <div style="width:50%"><button pButton (click)="onSubmitDischargePrescription()" label="Add"></button><br/></div>
+                    </div>
+                </div>
+            </div>-->
+            <p-dataTable [value]="hspdischargeprescriptions" selectionMode="single" [rows]="10" [paginator]="true" >
+
+
+                <p-column field="GenericMedName" [filter]="true" filterPlaceholder="Medicine Name" header="Medicine Name"></p-column>
+                <p-column field="DischargePrecNosofDays" [filter]="true" filterPlaceholder="No Of Days" header="No Of Days"></p-column>
+                 <p-column field="DischargePrecMorning" header="Morning">
+                    <template let-col let-pres="rowData" pTemplate="body">
+                        <span >{{pres[col.field]==="true"?'1':'0'}}</span>
+                    </template>
+                </p-column>
+                <p-column field="DischargePrecAfternoon" header="Afternoon">
+                    <template let-col let-pres="rowData" pTemplate="body">
+                        <span >{{pres[col.field]==="true"?'1':'0'}}</span>
+                    </template>
+                </p-column>
+                <p-column field="DischargePrecEvening" header="Evening">
+                    <template let-col let-pres="rowData" pTemplate="body">
+                        <span >{{pres[col.field]==="true"?'1':'0'}}</span>
+                    </template>
+                </p-column>
+                 <p-column styleClass="col-button" header="Delete">
+                      <template let-col let-cont="rowData" pTemplate="body">
+                        <span [style.color]="cont[col.field]">{{cont[col.field]}}</span>
+                     </template>
+                    <template pTemplate="header">
+                            <button type="button" pButton icon="fa-refresh"></button>
+                    </template>
+                    <template let-cont="rowData" pTemplate="body">
+                            <button type="button" pButton (click)="deleteSubmitDischargePrescriptionRow(cont)"  icon="fa-close" label="Delete"></button>
+                    </template>
+                </p-column>
+            </p-dataTable>
+        </div>
+
+<!-- END here code for sub form -->
+
+
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Print" ></button>
+<br/>
+
+</div>  
+<!--<div style="width:50%;float:right;">-->
+<!--<button pButton  (click)="clear()" label="Clear" ></button>-->
+<!--</div>-->
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+

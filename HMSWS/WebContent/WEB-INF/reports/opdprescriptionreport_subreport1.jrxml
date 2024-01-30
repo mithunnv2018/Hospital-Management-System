@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="opdprescriptionreport_subreport1" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="4ae07f63-5797-4e30-8f70-84c9ab92641c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="subparam_opddocpid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     vwopddocprescriptionmedicinechemicaldetails.`OpdDocPresDetId` AS vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetId,
+     vwopddocprescriptionmedicinechemicaldetails.`OpdDocPresDetNosOfDays` AS vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetNosOfDa,
+     vwopddocprescriptionmedicinechemicaldetails.`OpdDocPresDetMorning` AS vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetMorning,
+     vwopddocprescriptionmedicinechemicaldetails.`OpdDocPresDetAfternoon` AS vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetAfterno,
+     vwopddocprescriptionmedicinechemicaldetails.`OpdDocPresDetEvening` AS vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetEvening,
+     vwopddocprescriptionmedicinechemicaldetails.`GenericMedicinename` AS vwopddocprescriptionmedicinechemicaldetails_GenericMedicinename,
+     vwopddocprescriptionmedicinechemicaldetails.`GenericChemicalName` AS vwopddocprescriptionmedicinechemicaldetails_GenericChemicalName,
+     vwopddocprescriptionmedicinechemicaldetails.`GenericIdopddocprescriptiondetails` AS vwopddocprescriptionmedicinechemicaldetails_GenericIdopddocpresc,
+     vwopddocprescriptionmedicinechemicaldetails.`OpdDocPIdopddocprescriptiondetails` AS vwopddocprescriptionmedicinechemicaldetails_OpdDocPIdopddocpresc,
+     vwopddocprescriptionmedicinechemicaldetails.`GenericId` AS vwopddocprescriptionmedicinechemicaldetails_GenericId
+FROM
+     `vwopddocprescriptionmedicinechemicaldetails` vwopddocprescriptionmedicinechemicaldetails
+WHERE
+     OpdDocPIdopddocprescriptiondetails = $P{subparam_opddocpid}]]>
+	</queryString>
+	<field name="vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetId" class="java.lang.Long"/>
+	<field name="vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetNosOfDa" class="java.lang.Integer"/>
+	<field name="vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetMorning" class="java.lang.String"/>
+	<field name="vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetAfterno" class="java.lang.String"/>
+	<field name="vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetEvening" class="java.lang.String"/>
+	<field name="vwopddocprescriptionmedicinechemicaldetails_GenericMedicinename" class="java.lang.String"/>
+	<field name="vwopddocprescriptionmedicinechemicaldetails_GenericChemicalName" class="java.lang.String"/>
+	<field name="vwopddocprescriptionmedicinechemicaldetails_GenericIdopddocpresc" class="java.lang.String"/>
+	<field name="vwopddocprescriptionmedicinechemicaldetails_OpdDocPIdopddocpresc" class="java.lang.String"/>
+	<field name="vwopddocprescriptionmedicinechemicaldetails_GenericId" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="0" width="267" height="20" uuid="3fab2ea6-98b8-4bb9-8cba-a32d38f17bb2"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineStyle="Double" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Medicine Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="60" height="20" uuid="0a823974-6ce9-4ad2-a3d3-5e589d921948"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineStyle="Double" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Days]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="0" width="75" height="20" uuid="b17465e6-171f-44f8-901b-477c8475b60f"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineStyle="Double" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Morning]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="0" width="75" height="20" uuid="b866499f-96b1-4cd1-9817-02975619fd4e"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineStyle="Double" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Afternoon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="0" width="75" height="20" uuid="c8c8b9c4-0210-4254-9f37-da0211f06984"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0" lineStyle="Double" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Evening]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="21" width="555" height="1" uuid="56aa37c6-5b73-4f1a-b13e-b039a2766c23"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="3" y="0" width="267" height="20" isPrintWhenDetailOverflows="true" uuid="b3e1a49f-fd66-4a4e-b72e-9882bbf4aa31"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{vwopddocprescriptionmedicinechemicaldetails_GenericMedicinename}+"\n("+$F{vwopddocprescriptionmedicinechemicaldetails_GenericChemicalName}+")"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="270" y="0" width="60" height="20" isPrintWhenDetailOverflows="true" uuid="b374acd3-3062-47d5-ac6a-59d4a5c3cf34"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetNosOfDa}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="354" y="2" width="27" height="18" uuid="c19e7f9f-0d5b-4d1a-931a-3d379e9ec551"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<imageExpression><![CDATA[$F{vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetMorning}.equals("true")?"tick.png":"cross.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="431" y="2" width="27" height="18" uuid="aefa7819-324e-48cc-a4d9-c3bddd23ed3c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<imageExpression><![CDATA[$F{vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetAfterno}.equals("true")?"tick.png":"cross.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="502" y="2" width="27" height="18" uuid="334ad877-de42-4305-a824-f60bdcfdab39"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<imageExpression><![CDATA[$F{vwopddocprescriptionmedicinechemicaldetails_OpdDocPresDetEvening}.equals("true")?"tick.png":"cross.png"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="50">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="009e4acf-6c63-45d6-8bce-32606e34904b"/>
+			</line>
+		</band>
+	</columnFooter>
+</jasperReport>

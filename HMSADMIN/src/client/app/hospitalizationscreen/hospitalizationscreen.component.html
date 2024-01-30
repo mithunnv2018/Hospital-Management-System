@@ -1,0 +1,87 @@
+<p-growl [value]="msgs"></p-growl>
+
+     
+<p-fieldset legend="Patient Details">
+<div class="ui-g" *ngIf="vwhospitalization">
+    <div class="ui-g-4"><b>Hospital ID:</b> {{vwhospitalization.HSPAdminId}}</div>
+    <div class="ui-g-4"><b>Patient ID:</b> {{vwhospitalization.IPDIdHospitalization}} </div>
+    <div class="ui-g-4"><b>Department:</b> {{vwhospitalization.CategoryName}} </div>
+    
+</div>
+
+<div class="ui-g" *ngIf="vwhospitalization">
+    <div class="ui-g-12"><b>Name of patient:</b> {{vwhospitalization.IPDName}} </div>
+    
+</div>
+
+<div class="ui-g" *ngIf="vwhospitalization">
+    <div class="ui-g-4"><b>Date Admitted:</b> {{vwhospitalization.HSPAdminDate | date:'shortDate'}} </div>
+    <div class="ui-g-4"><b>Time Admitted:</b> {{vwhospitalization.HSPAdmintime}} </div>
+    <div class="ui-g-4"><b>Status :</b> {{HSPAdminStatus}} </div>
+    
+</div>
+
+<div class="ui-g" *ngIf="vwhospitalization">
+    <div class="ui-g-4"><b>Trust Name:</b> {{vwhospitalization.TrustName}} </div>
+    <div class="ui-g-4"><b>Package Name:</b> {{vwhospitalization.PackageName}} </div>
+    <div class="ui-g-4">  <button pButton  [routerLink]="['/hospitalization', vwhospitalization.HSPAdminId]" label="Edit" style="width: 100%;"></button> </div>
+    
+    
+</div>
+
+</p-fieldset>
+
+<p-fieldset legend="Other Details" [toggleable]="true" [collapsed]="true" *ngIf="vwhospitalization">
+<div class="ui-g" *ngIf="vwhospitalization">
+    <div class="ui-g-4"><b>Address1:</b> {{vwhospitalization.IPDAddress1}} </div>
+    <div class="ui-g-4"><b>Phone:</b> {{vwhospitalization.IPDPhone}} </div>
+    <div class="ui-g-4"><b>DOB :</b> {{vwhospitalization.IPDDob | date:'shortDate'}} </div>
+    
+</div>
+
+<div class="ui-g" *ngIf="vwhospitalization">
+    <div class="ui-g-4"><b>Address2:</b> {{vwhospitalization.IPDAddress2}} </div>
+    <div class="ui-g-4"><b>Mobile:</b> {{vwhospitalization.IPDMobile}} </div>
+    <div class="ui-g-4"><b>Sex :</b> {{vwhospitalization.IPDSex}} </div>
+    
+</div>
+
+<div class="ui-g" *ngIf="vwhospitalization">
+    <div class="ui-g-4"><b>City:</b> {{vwhospitalization.IPDCity}} </div>
+    <div class="ui-g-4"><b>E-mail:</b> {{vwhospitalization.IPDEmail}} </div>
+    <div class="ui-g-4"><b>Marital Status :</b> {{vwhospitalization.IPDMaritalStatus}} </div>
+    
+</div>
+
+<div class="ui-g" *ngIf="vwhospitalization">
+    <div class="ui-g-4"></div>
+    <div class="ui-g-4"><b>Fax:</b> {{vwhospitalization.IPDFax}} </div>
+    <div class="ui-g-4"><b>Blood Group :</b> {{vwhospitalization.IPDBG}} </div>
+    
+</div>
+</p-fieldset>
+
+<p-fieldset legend=""  >
+
+<div class="ui-g" >
+    <div class="ui-g-3 "><button pButton  (click)="onbtnclick('ipdreceipt')" label="Advance Payment" style="width: 100%;"></button></div>
+    <div class="ui-g-3 "><button pButton  (click)="onbtnclick('billing')" label="Billing" style="width: 100%;"></button></div>
+    <div class="ui-g-3 "><button pButton  (click)="onbtnclick('none')" label="Surgery" style="width: 100%;"></button> </div>
+    <div class="ui-g-3 "><button pButton  (click)="onbtnclick('sonographycharges')" label="Sonography" style="width: 100%;"></button> </div>
+    
+</div>
+
+<div class="ui-g" >
+    <div class="ui-g-3"><button pButton  (click)="onbtnclick('roomallotment')" label="Room Allotment" style="width: 100%;"></button></div>
+    <div class="ui-g-3"><button pButton  (click)="onbtnclick('hspipdheads')" label="Bill Particulars" style="width: 100%;"></button></div>
+    <div class="ui-g-3"><button pButton  (click)="onbtnclick('none')" label="Operation" style="width: 100%;"></button> </div>
+    <div class="ui-g-3"><button pButton  (click)="onbtnclick('hspdoctorvisitdetails')" label="Doc. Visit" style="width: 100%;"></button> </div>
+</div>
+
+<div class="ui-g" >
+    <div class="ui-g-3"><button pButton  (click)="onbtnclick('hspdailychargesdetails')" label="Daily Charges" style="width: 100%;"></button></div>
+    <div class="ui-g-3"><button pButton  (click)="onbtnclick('hspipddischargedetails')" label="Discharge" style="width: 100%;"></button></div>
+    <div class="ui-g-3"><button pButton  (click)="onbtnclick('hspotherheadsdetails')" label="Others" style="width: 100%;"></button> </div>
+    <div class="ui-g-3"></div>
+</div>
+</p-fieldset>

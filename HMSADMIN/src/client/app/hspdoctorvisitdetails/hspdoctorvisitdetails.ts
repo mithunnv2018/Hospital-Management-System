@@ -1,0 +1,1 @@
+export class hspdoctorvisitdetailsTS {DocVisitID:string;DocVisitDate:string;DocVisitHeads:string;DocVisitAmount:string;DocVisitObservations:string;DoctorIdhspdoctorvisitdetails:string;HSPAdminIdhspdoctorvisitdetails:string;MemberIdhspdoctorvisitdetails:string;CreateDatehspdoctorvisitdetails:string;ModifiedDatehspdoctorvisitdetails:string;Statushspdoctorvisitdetails:string;}

@@ -1,0 +1,312 @@
+<p-growl [value]="msgs"></p-growl>
+<p-confirmDialog width="425"></p-confirmDialog>
+
+    <h1>Create Cosmetic Bill</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<p-calendar [(ngModel)]="cosmeticbilldetailsVar.CosmeticBillDetailsDate"  dateFormat="mm/dd/yy" formControlName='CosmeticBillDetailsDate'> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CosmeticBillDetailsDate'].valid&&userform.controls['CosmeticBillDetailsDate'].touched">Bill Date Required
+</div>
+</div>
+</div>
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12' style='width:100%;'>
+<span class='md-inputfield'>
+
+<!--<p-dropdown [options]="drpipdoptions" [(ngModel)]="cosmeticbilldetailsVar.IPDIdCosmeticBillDetails" formControlName='IPDIdCosmeticBillDetails'></p-dropdown> -->
+<p-autoComplete [(ngModel)]="ipdselected" [suggestions]="ipdresults" (completeMethod)="filterIPDName($event)" field="label" formControlName='IPDIdCosmeticBillDetails'></p-autoComplete>
+ <label>Patient Name</label>
+
+
+</span>
+ 
+
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+    <button pButton (click)="gotoIPDNew()" label="NEW"></button>
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDIdCosmeticBillDetails'].valid&&userform.controls['IPDIdCosmeticBillDetails'].touched">Patient  Required
+</div>
+</div>
+</div>
+<!-- here code for sub form -->
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+            <label>Particular Details</label>
+
+            <!--as done on 7 feb 2017 by Mandar removed  formGroupName="keyword_subgroup"-->
+            <div >
+                <div class='ui-grid-row' style='width:100%;'>
+                    <div class='ui-g form-group' style='width:80%;'>
+                        <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                            <span class='md-inputfield'>
+                                
+                                <p-dropdown [style]="{'width':'90%'}" [options]="drpbillparticularsoptions" [(ngModel)]="cosmeticbillparticularsVar.CosmeticBillParticularsIdCosmeticBillParticularsDetails" [ngModelOptions]="{standalone: true}" ></p-dropdown> 
+            
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-4">
+                        <!--<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroupName.keysubcat_name.valid&&formGroupName.keysubcat_name.touched">Name Required</div>-->
+                    </div>
+                </div>
+
+
+
+                <div class='ui-grid-row' style='width:100%;'>
+                    <div class='ui-g form-group' style='width:80%;'>
+                        <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                            <span class='md-inputfield'>
+ 
+                                <label>Amount</label>
+                                <p-spinner [min]="0" [step]="0.25" [(ngModel)]="cosmeticbillparticularsVar.CosmeticBillParticularsDetailsAmount" [ngModelOptions]="{standalone: true}"></p-spinner>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-4">
+                        <!--<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroupName.keysubcat_searchtext.valid&&formGroupName.keysubcat_searchtext.touched">Search Text Required</div>-->
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="ui-grid-row" style="width:100%;">
+                <div class="ui-g form-group" style="width:80%;">
+
+                    <div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+                        <div style="width:50%"><button pButton (click)="onSubmitParticulars()" label="Add"></button><br/></div>
+                    </div>
+                </div>
+            </div>
+            <p-dataTable [value]="vwcosmeticbillparticularsdetailsVar" selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onKeywordSubcatRowSelected($event)"
+                [(selection)]="selectedkeywordgridRow">
+
+
+                <p-column field="CosmeticBillParticularsName" [filter]="true" filterPlaceholder="Name" header="Name"></p-column>
+                <p-column field="CosmeticBillParticularsDetailsAmount" [filter]="true" filterPlaceholder="Amount" header="Amount"></p-column>
+                 <p-column styleClass="col-button" header="Delete">
+                      <template let-col let-cont="rowData" pTemplate="body">
+                        <span [style.color]="cont[col.field]">{{cont[col.field]}}</span>
+                     </template>
+                    <template pTemplate="header">
+                            <button type="button" pButton icon="fa-refresh"></button>
+                    </template>
+                    <template let-cont="rowData" pTemplate="body">
+                            <button type="button" pButton (click)="deleteSubmitParticularsRow(cont)"  icon="fa-close" label="Delete"></button>
+                    </template>
+                </p-column>
+            </p-dataTable>
+        </div>
+
+<!-- END here code for sub form -->
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='cosmeticbilldetailsVar.CosmeticBillDetailsBillAmt'  formControlName='CosmeticBillDetailsBillAmt' /> <label>Bill Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CosmeticBillDetailsBillAmt'].valid&&userform.controls['CosmeticBillDetailsBillAmt'].touched">Bill Amount  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='cosmeticbilldetailsVar.CosmeticBillDetailsDiscount' (change)="calculateAmountSum()" [ngModelOptions]="{standalone: true}" /> <label>Discount </label></span>
+</div>
+</div>
+
+
+</div>
+
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+            <label>Tax Details</label>
+            <p-dataTable [value]="cosmeticBillTaxDetailsTSVar" [rows]="10" [paginator]="true" >
+
+                <p-column field="CosmeticBillTaxName" [filter]="true" filterPlaceholder="Tax Name" header="Tax Name"></p-column>
+                <p-column field="CosmeticBillTaxPercentage" [filter]="true" filterPlaceholder="%" header="%"></p-column>
+                <p-column field="CosmeticBillTaxAmount" [filter]="true" filterPlaceholder="Amount" header="Amount"></p-column>
+            </p-dataTable>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='cosmeticbilldetailsVar.CosmeticBillDetailsTotalAmt' formControlName='CosmeticBillDetailsTotalAmt' /> <label>Total Amount  </label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CosmeticBillDetailsTotalAmt'].valid&&userform.controls['CosmeticBillDetailsTotalAmt'].touched">Total Amount    Required
+</div>
+</div>
+</div>
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<!--<p-dropdown [style]="{'width':'90%'}" [options]="drpdoctoroptions" [(ngModel)]="cosmeticbilldetailsVar.DoctorIdCosmeticBillDetails" formControlName='DoctorIdCosmeticBillDetails'></p-dropdown> -->
+<p-autoComplete [(ngModel)]="docselected" [suggestions]="docresults" (completeMethod)="filterDOCName($event)" field="label"  formControlName='DoctorIdCosmeticBillDetails' ></p-autoComplete>
+ <label>Doctor Name</label>
+
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorIdCosmeticBillDetails'].valid&&userform.controls['DoctorIdCosmeticBillDetails'].touched">Doctor  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drppaymenttypeoptions" [(ngModel)]="cosmeticbilldetailsVar.CosmeticBillDetailsPaymentType" formControlName='CosmeticBillDetailsPaymentType'></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CosmeticBillDetailsPaymentType'].valid&&userform.controls['CosmeticBillDetailsPaymentType'].touched">Payment Type    Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='cosmeticbilldetailsVar.CosmeticBillDetailsRemarks' [ngModelOptions]="{standalone: true}" /> <label>Remarks  </label></span>
+</div>
+</div>
+
+
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+ 
+ <div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+    From Date:
+<p-calendar [(ngModel)]="fromdate"  dateFormat="mm/dd/yy" > </p-calendar>
+To Date:
+<p-calendar [(ngModel)]="todate"  dateFormat="mm/dd/yy" > </p-calendar>
+<br>
+Status:
+ <p-dropdown [style]="{'width':'40%'}" [options]="drpstatuscosbill" [(ngModel)]="selectedstatuscobill" ></p-dropdown>
+
+<button pButton  (click)="search()" label="Search" ></button>
+</span>
+</div>
+</div>
+ </div>
+
+<p-dataTable [value]="VwCosmeticBillDetailsPatientDoctorHospital" 
+    sortField="CosmeticBillDetailsDate" sortOrder="-1"       
+	selectionMode="single" [rows]="10" [paginator]="true"  
+	>
+ 
+
+<p-column field="CosmeticBillDetailsNos" [filter]="true" 
+filterPlaceholder="Search CosmeticBillDetailsNos"  header="CosmeticBillDetailsNos">
+</p-column>
+ 
+ <p-column field="IPDName" [filter]="true" 
+filterPlaceholder="Search IPDName"  header="IPDName">
+</p-column>
+
+<p-column field="CosmeticBillDetailsBillAmt" [filter]="true" 
+filterPlaceholder="Search CosmeticBillDetailsBillAmt"  header="CosmeticBillDetailsBillAmt">
+</p-column>
+
+<p-column field="CosmeticBillDetailsDiscount" [filter]="true" 
+filterPlaceholder="Search CosmeticBillDetailsDiscount"  header="CosmeticBillDetailsDiscount">
+</p-column>
+
+<p-column field="CosmeticBillDetailsTotalAmt" [filter]="true" 
+filterPlaceholder="Search CosmeticBillDetailsTotalAmt"  header="CosmeticBillDetailsTotalAmt">
+</p-column>
+
+<p-column field="CosmeticBillDetailsDate" sortable="custom" (sortFunction)="mysort($event)"  [filter]="true" 
+filterPlaceholder="Search CosmeticBillDetailsDate"  header="CosmeticBillDetailsDate">
+</p-column>
+ 
+
+
+<p-column styleClass="col-button">
+        <template pTemplate="header">
+            <button type="button" pButton icon="ui-icon-search"></button>
+        </template>
+        <template let-receipt="rowData" pTemplate="body">
+            <button type="button" pButton (click)="printReceipt(receipt)" icon="ui-icon-print"></button>
+        </template>
+</p-column>
+
+<p-column styleClass="col-button">
+        <template pTemplate="header">
+            <button type="button" pButton icon="ui-icon-search"></button>
+        </template>
+        <template let-receipt="rowData" pTemplate="body">
+            <button type="button" pButton (click)="cancelReceipt(receipt)" icon="ui-icon-cancel"></button>
+        </template>
+</p-column>
+</p-dataTable>

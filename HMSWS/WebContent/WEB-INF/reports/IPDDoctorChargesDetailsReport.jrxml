@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IPDDoctorChargesDetailsReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9b1d5a6d-1702-4bb0-a76e-ffa9a56d2be8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_fromdate" class="java.lang.String"/>
+	<parameter name="param_todate" class="java.lang.String"/>
+	<parameter name="param_hospitalid" class="java.lang.String"/>
+	<parameter name="param_doctorid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     f.`IPDName`,
+     b.`HSPAdminId`,
+     a.`DoctorIdhspdoctorvisitdetails`,
+     a.`DocVisitDate`,
+     a.`DocVisitAmount` AS Amount,
+     a.`DocVisitHeads` ,
+     a.`DocVisitObservations` ,
+     c.`DoctorName` ,
+     d.`CategoryName`
+FROM
+     `hspdoctorvisitdetails` a INNER JOIN `hospitalization` b ON a.`HSPAdminIdhspdoctorvisitdetails` = b.`HSPAdminId`
+     INNER JOIN `doctormaster` c ON a.`DoctorIdhspdoctorvisitdetails` = c.`DoctorId`
+     INNER JOIN `categorymaster` d ON c.`CategoryIdDoctorType` = d.`CategoryId`
+     INNER JOIN `hspipddischargedetails` e ON b.`HSPAdminId` = e.`HSPAdminIdhspipddischargedetails`
+     INNER JOIN `ipdmaster` f ON b.`IPDIdHospitalization` = f.`IPDId`
+WHERE
+     b.HospitalIdHospitalization = $P{param_hospitalid}
+ AND (e.DischargeDate BETWEEN $P{param_fromdate} AND $P{param_todate})
+ AND a.DoctorIdhspdoctorvisitdetails = $P{param_doctorid}
+ AND b.HSPAdminStatus = 'D'
+ORDER BY
+     a.DocVisitDate ASC]]>
+	</queryString>
+	<field name="IPDName" class="java.lang.String">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "txt","formcontrolname": "","ngmodel": "","errorstring": "Patient Name","drptblpkname": "BedsNos","placeholder": "Patient Name","options": "drpNameoptions","drpptblname": "tbl_Name_master","drptblpk": "Name_id","drptblwhere": "country_id","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<field name="HSPAdminId" class="java.lang.String">
+		<fieldDescription><![CDATA[{
+"mailtable":"",
+"pkprefix":"HSP",
+"pkid":"HSPAdminId",
+"tsname":"Hospitalization","formmodelname":"Hospitalization","whereclause":"HospitalIdHospitalization","gridtable":"vwhospitalizationipdpackagetrustcategorydiseasedetails",
+"subtables":
+[]
+
+}]]></fieldDescription>
+	</field>
+	<field name="DoctorIdhspdoctorvisitdetails" class="java.lang.String">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "drp","formcontrolname": "","ngmodel": "","errorstring": "Doctor Name ","drptblpkname": "DoctorName","placeholder": "Admin Date","options": "drpdoctoroptions","drpptblname":"doctormaster","drptblname": "doctormaster","drptblpk": "DoctorId","drptblwhere":"HospitalIdDoctorMaster","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<field name="DocVisitDate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "date","formcontrolname": "","ngmodel": "","errorstring": "Visit Date  ","drptblpkname": "BedsNos","placeholder": "Visit Date ","options": "drpCityoptions","drpptblname": "tbl_City_master","drptblpk": "City_id","drptblwhere": "country_id","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<field name="Amount" class="java.math.BigDecimal"/>
+	<field name="DocVisitHeads" class="java.lang.String">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "txt","formcontrolname": "","ngmodel": "","errorstring": "Heads should be static dropdown ","drptblpkname": "BedsNos","placeholder": "Heads should be static dropdown","options": "drpCityoptions","drpptblname": "tbl_City_master","drptblpk": "City_id","drptblwhere": "country_id","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<field name="DocVisitObservations" class="java.lang.String">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "txt","formcontrolname": "","ngmodel": "","errorstring": "Observations ","drptblpkname": "BedsNos","placeholder": "Observations","options": "drpCityoptions","drpptblname": "tbl_City_master","drptblpk": "City_id","drptblwhere": "country_id","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<field name="DoctorName" class="java.lang.String">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "txt","formcontrolname": "","ngmodel": "","errorstring": "DoctorName","drptblpkname": "BedsNos","placeholder": "DoctorName","options": "drpCityoptions","drpptblname": "tbl_City_master","drptblpk": "City_id","drptblwhere": "country_id","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<field name="CategoryName" class="java.lang.String">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "txt","formcontrolname": "","ngmodel": "","errorstring": "Category Name ","drptblpkname": "HospitalName","placeholder": "Category Name","options": "drpCityoptions","drpptblname": "tbl_City_master","drptblpk": "City_id","drptblwhere": "country_id","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<variable name="totalamount" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{Amount}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="f17f6d6e-b738-4994-bf19-6bb7d4282d11"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IPD Doctor Charges Detailed Report]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yyyy">
+				<reportElement stretchType="RelativeToBandHeight" x="106" y="40" width="87" height="20" isPrintWhenDetailOverflows="true" uuid="a9ce644a-7103-44ba-b78a-61669601eb87"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new Date($P{param_fromdate})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="193" y="39" width="15" height="20" uuid="5721ef93-80e2-4a8f-ba10-bc1ac586bb02"/>
+				<text><![CDATA[ To]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yyyy">
+				<reportElement stretchType="RelativeToBandHeight" x="210" y="40" width="87" height="20" isPrintWhenDetailOverflows="true" uuid="78ef5eb4-3069-4127-8659-5e2bb7ffa44c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new Date($P{param_todate})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="100" y="20" width="454" height="20" isPrintWhenDetailOverflows="true" uuid="16d7945c-fad3-4304-8045-b0f518bd20ec"/>
+				<textFieldExpression><![CDATA[$F{DoctorName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="88" height="20" uuid="fb22cfa2-8e9b-4e71-9700-65d4889e2922"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doctor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="40" width="87" height="20" uuid="dceb05bb-332d-4fc4-a77d-a4f10ec1321b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Discharge Date:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="106" height="20" uuid="2c2e43b2-0d58-49dc-affd-cecfd1c08ead"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Visit Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="0" width="124" height="20" uuid="65f513ef-3fa7-4f5f-8554-74c748ae2e85"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="0" width="222" height="20" uuid="13b04bb3-1318-433a-b996-2cbd6428bf36"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="0" width="102" height="20" uuid="456f8406-8b92-4171-af5d-7d800dae9e1c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Admit ID]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yy">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="106" height="20" isPrintWhenDetailOverflows="true" uuid="9a0b5762-748a-472d-9396-31f834a1b547"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DocVisitDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement stretchType="RelativeToBandHeight" x="430" y="0" width="124" height="20" isPrintWhenDetailOverflows="true" uuid="816de16f-e091-4f6c-bec0-40db64f15712"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Amount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="208" y="0" width="222" height="20" isPrintWhenDetailOverflows="true" uuid="c5658c9d-9ae2-4853-9372-2f2393abf189"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{IPDName}+"\n"+$F{DocVisitHeads}+" - "+"("+$F{DocVisitObservations}+")"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yy">
+				<reportElement stretchType="RelativeToBandHeight" x="106" y="0" width="102" height="20" isPrintWhenDetailOverflows="true" uuid="b624a70b-3b18-4005-afe6-3eeae0600585"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{HSPAdminId}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement x="430" y="0" width="124" height="20" isPrintWhenDetailOverflows="true" uuid="f12763e1-f152-4272-a809-80b7c90a2aba"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalamount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="330" y="0" width="100" height="20" uuid="120dce1c-de75-48b0-bf9c-4cf4e19a5012"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Amount:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

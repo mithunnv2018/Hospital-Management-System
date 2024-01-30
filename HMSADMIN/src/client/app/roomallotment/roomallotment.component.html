@@ -1,0 +1,173 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Room Allotment</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+From Date:
+<p-calendar [(ngModel)]="RoomAllotFromDate" [showTime]="true" hourFormat="12" dateFormat="mm/dd/yy" formControlName='RoomAllotFromDate'> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RoomAllotFromDate'].valid&&userform.controls['RoomAllotFromDate'].touched">From Date  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+To Date:
+<p-calendar [(ngModel)]="RoomAllotToDate"  [showTime]="true" hourFormat="12" dateFormat="mm/dd/yy" formControlName='RoomAllotToDate'> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RoomAllotToDate'].valid&&userform.controls['RoomAllotToDate'].touched">To Date  Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'> 
+<p-dropdown [style]="{'width':'90%'}" [options]="optRoomsId" [ngModelOptions]="{standalone: true}" [(ngModel)]="ngModelRoomsId"  (onChange)="populatebeds($event)">
+</p-dropdown> 
+</span>
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpbedsnosoptions" [(ngModel)]="hsproomallotmentdetailsVar.BedsIdhsproomallotmentdetails" (onChange)="loadamount($event)" formControlName='BedsIdhsproomallotmentdetails'></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['BedsIdhsproomallotmentdetails'].valid&&userform.controls['BedsIdhsproomallotmentdetails'].touched">Beds  Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='hsproomallotmentdetailsVar.RoomAllotCharges' formControlName='RoomAllotCharges' /> <label>Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RoomAllotCharges'].valid&&userform.controls['RoomAllotCharges'].touched">Amount  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<!--<input pInputText type='text' [(ngModel)]='hsproomallotmentdetailsVar.RoomAllotStatus' formControlName='RoomAllotStatus' /> <label>Need dropdown here static</label>-->
+<p-dropdown [style]="{'width':'90%'}" [options]="drproomallotstatusoptions" [(ngModel)]="hsproomallotmentdetailsVar.RoomAllotStatus" formControlName='RoomAllotStatus'></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RoomAllotStatus'].valid&&userform.controls['RoomAllotStatus'].touched">Need dropdown here static  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<!--<input pInputText type='text' [(ngModel)]='hsproomallotmentdetailsVar.RoomAllotRoundOff' formControlName='RoomAllotRoundOff' /> -->
+Round Off (Yes/No):
+<p-inputSwitch onLabel='Yes' offLabel='No' [(ngModel)]='RoomAllotRoundOff' formControlName='RoomAllotRoundOff' ></p-inputSwitch>
+
+</span>
+
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RoomAllotRoundOff'].valid&&userform.controls['RoomAllotRoundOff'].touched">Need checkbox here static  Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="vwhsproomallotmentdetails" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectvwhsproomallotmentdetails($event)" 
+	[(selection)]="selectedRow">
+
+ 
+ 
+<p-column field="RoomAllotFromDate" [filter]="true" 
+filterPlaceholder="Search RoomAllotFromDate"  header="RoomAllotFromDate">
+</p-column>
+
+<p-column field="RoomAllotToDate" [filter]="true" 
+filterPlaceholder="Search RoomAllotToDate"  header="RoomAllotToDate">
+</p-column>
+
+<p-column field="RoomAllotCharges" [filter]="true" 
+filterPlaceholder="Search RoomAllotCharges"  header="RoomAllotCharges">
+</p-column>
+
+ 
+<p-column field="RoomAllotRoundOff" [filter]="true" 
+filterPlaceholder="Search RoomAllotRoundOff"  header="RoomAllotRoundOff">
+</p-column>
+
+   
+</p-dataTable>
+

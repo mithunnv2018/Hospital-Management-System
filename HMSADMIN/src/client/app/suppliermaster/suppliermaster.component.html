@@ -1,0 +1,94 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create supplier</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='supplierVar.SupplierName' formControlName='SupplierName' /> <label>Supplier Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['SupplierName'].valid&&userform.controls['SupplierName'].touched">Supplier Name  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='supplierVar.SupplierAliasName' formControlName='SupplierAliasName' /> <label>Supplier Alias Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['SupplierAliasName'].valid&&userform.controls['SupplierAliasName'].touched">Supplier Alias Name  Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpmanufactureroptions" [(ngModel)]="supplierVar.ManufacturerIdSupplier" formControlName='ManufacturerIdSupplier'></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['ManufacturerIdSupplier'].valid&&userform.controls['ManufacturerIdSupplier'].touched">Manufacturer  Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="VwSupplierManufacturerHospital" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectVwSupplierManufacturerHospital($event)" 
+	[(selection)]="selectedRow">
+
+ 
+<p-column field="SupplierName" [filter]="true" 
+filterPlaceholder="Search SupplierName"  header="SupplierName">
+</p-column>
+
+<p-column field="SupplierAliasName" [filter]="true" 
+filterPlaceholder="Search SupplierAliasName"  header="SupplierAliasName">
+</p-column>
+  
+<p-column field="ManufacturerName" [filter]="true" 
+filterPlaceholder="Search ManufacturerName"  header="ManufacturerName">
+</p-column>
+               
+</p-dataTable>
+

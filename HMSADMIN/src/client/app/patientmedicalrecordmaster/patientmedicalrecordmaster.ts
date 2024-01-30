@@ -1,0 +1,2 @@
+export class patientmedicalrecordTS {PatientMedicalRecordId:string; PatientMedicalRecordName:string; PatientMedicalRecordAliasName:string; HospitalIdPatientMedicalRecord:string;}
+

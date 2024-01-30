@@ -1,0 +1,173 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create hosptialmaster</h1><br>
+<form [formGroup]="userform">
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="hosptialmasterVar.HospitalName" formControlName="HospitalName"> <label>Hospital Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['HospitalName'].valid&&userform.controls['HospitalName'].touched">Hospital Name  Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="hosptialmasterVar.HospitalRegNo" formControlName="HospitalRegNo"> <label>Hospital RegNo</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['HospitalRegNo'].valid&&userform.controls['HospitalRegNo'].touched">Hospital RegNo  Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+Address1:
+<textarea pInputTextarea [(ngModel)]="hosptialmasterVar.HospitalAddress1" formControlName="HospitalAddress1" autoResize="autoResize"></textarea> 
+ </span>
+</div>
+</div>
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['HospitalAddress1'].valid&&userform.controls['HospitalAddress1'].touched">Hospital Address1  Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+Address2:
+<textarea pInputTextarea [(ngModel)]="hosptialmasterVar.HospitalAddress2" [ngModelOptions]="{standalone: true}" autoResize="autoResize"></textarea>  </span>
+</div>
+</div>
+
+</div>
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="hosptialmasterVar.HospitalTaxNo" [ngModelOptions]="{standalone: true}"> <label>Taxno </label></span>
+</div>
+</div>
+
+
+</div>
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="hosptialmasterVar.HospitalPanNo" [ngModelOptions]="{standalone: true}"> <label>PanNos. </label></span>
+</div>
+</div>
+
+
+</div>
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<textarea pInputTextarea [(ngModel)]="hosptialmasterVar.HospitalOtherDetails" [ngModelOptions]="{standalone: true}" autoResize="autoResize"></textarea>  </span>
+</div>
+</div>
+
+</div>
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield"> 
+<p-dropdown [style]="{'width':'90%'}" [options]="drpcountryoptionss" [ngModelOptions]="{standalone: true}" [(ngModel)]="ngModelCountryId" (onChange)="populateStateMaster($event)">
+</p-dropdown> 
+</span>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield"> 
+<p-dropdown [style]="{'width':'90%'}" [options]="drpstateoptions" [ngModelOptions]="{standalone: true}" [(ngModel)]="ngModelStateId" (onChange)="populateCityMaster($event)">
+</p-dropdown> 
+</span>
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpcityoptions" [(ngModel)]="hosptialmasterVar.CityIdHospitalMaster" formControlName="CityIdHospitalMaster"></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CityIdHospitalMaster'].valid&&userform.controls['CityIdHospitalMaster'].touched">City  Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton (click)="onSubmit()" [disabled]="!userform.valid" label="Submit"></button>
+<br>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton (click)="clear()" label="Clear"></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+
+<p-dataTable [value]="vwhospitalcitystatecountry" selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectvwhospitalcitystatecountry($event)" [(selection)]="selectedRow">
+
+ 
+<p-column field="HospitalName" [filter]="true" filterPlaceholder="Search HospitalName" header="HospitalName">
+</p-column>
+
+<p-column field="HospitalRegNo" [filter]="true" filterPlaceholder="Search HospitalRegNo" header="HospitalRegNo">
+</p-column>
+
+ 
+<p-column field="CityName" [filter]="true" filterPlaceholder="Search CityName" header="CityName">
+</p-column>
+ 
+<p-column field="StateName" [filter]="true" filterPlaceholder="Search StateName" header="StateName">
+</p-column>
+ 
+<p-column field="CountryName" [filter]="true" filterPlaceholder="Search CountryName" header="CountryName">
+</p-column>
+
+</p-dataTable>
+

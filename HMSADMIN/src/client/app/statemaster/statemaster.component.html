@@ -1,0 +1,95 @@
+
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create statemaster</h1><br>
+    <form [formGroup]="userform">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+            <div class="ui-grid-row" style="width:100%;">
+                <div class="ui-g form-group" style="width:80%;">
+                    <div class="ui-g-12 ui-md-4" style="width:100%;">
+                        <span class="md-inputfield">
+                            <input type="text" pInputText [(ngModel)]="statemasterVar.StateName" formControlName="StateName"> <label>state name</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="ui-grid-col-4">   
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['StateName'].valid&&userform.controls['StateName'].touched">State Name  Required
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-grid-row" style="width:100%;">
+                <div class="ui-g form-group" style="width:80%;">
+                    <div class="ui-g-12 ui-md-4" style="width:100%;">
+                        <span class="md-inputfield">
+                            <input type="text" pInputText [(ngModel)]="statemasterVar.StateAliasName" formControlName="StateAliasName"> <label>state Alias name</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="ui-grid-col-4">   
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['StateAliasName'].valid&&userform.controls['StateAliasName'].touched">State Alias Name  Required
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-row" style="width:100%;">
+                <div class='ui-g form-group' style='width:80%;'>
+                    <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                        <span class='md-inputfield'>
+                            <p-dropdown [style]="{'width':'90%'}" [options]="drpcountryoptionss" [(ngModel)]="ngModelCountryName" formControlName="CountryName"></p-dropdown> 
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="ui-grid-col-4">   
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CountryName'].valid&&userform.controls['CountryName'].touched">Country  Required
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="ui-grid-row" style="width:100%;"> 
+            <div class="ui-g form-group" style="width:80%;">
+                <div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+                    <div style="width:50%">
+                        <button pButton (click)="onSubmit()" [disabled]="!userform.valid" label="Submit"></button>
+                        <br>
+
+                    </div>  
+                    <div style="width:50%;float:right;">
+                        <button pButton (click)="clear()" label="Clear"></button>
+                        <!--<button pButton (click)="downloadfile('dummy')" label="REPORTDEMO"></button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</form>
+
+<p-dataTable [value]="vw_state_country" selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectvw_state_country($event)" [(selection)]="selectedRow">
+
+    <p-column field="StateId" [filter]="true" filterPlaceholder="Search StateId" header="StateId">
+    </p-column>
+
+    <p-column field="StateName" [filter]="true" filterPlaceholder="Search StateName" header="StateName">
+    </p-column>
+
+    <p-column field="StateAliasName" [filter]="true" filterPlaceholder="Search StateAliasName" header="StateAliasName">
+    </p-column>
+
+    <p-column field="CountryIdState" [filter]="true" filterPlaceholder="Search CountryIdState" header="CountryIdState">
+    </p-column>
+
+    <p-column field="CountryId" [filter]="true" filterPlaceholder="Search CountryId" header="CountryId">
+    </p-column>
+
+    <p-column field="CountryName" [filter]="true" filterPlaceholder="Search CountryName" header="CountryName">
+    </p-column>
+
+    <p-column field="CountryAliasName" [filter]="true" filterPlaceholder="Search CountryAliasName" header="CountryAliasName">
+    </p-column>
+</p-dataTable>

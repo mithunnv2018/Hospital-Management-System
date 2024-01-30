@@ -1,0 +1,382 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create doctormaster</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<p-dropdown [style]="{'width':'90%'}" [options]="drpcategorytypedepartmentoptions" [(ngModel)]='doctormasterVar.CategoryIdDepartmentDoctorMaster' formControlName='CategoryIdDepartmentDoctorMaster'></p-dropdown> 
+
+<!--<label>Department Type </label>-->
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CategoryIdDepartmentDoctorMaster'].valid&&userform.controls['CategoryIdDepartmentDoctorMaster'].touched">Department Type  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<p-dropdown [style]="{'width':'90%'}" [options]="drpcategorytypeconsultantoptions" [(ngModel)]='doctormasterVar.CategoryIdConsultantDoctorMaster' formControlName='CategoryIdConsultantDoctorMaster'></p-dropdown> 
+	
+
+<!--<label>Consultant Type </label>-->
+
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CategoryIdConsultantDoctorMaster'].valid&&userform.controls['CategoryIdConsultantDoctorMaster'].touched">Consultant Type  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='doctormasterVar.DoctorFName' formControlName='DoctorFName' /> <label>DoctorFName</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorFName'].valid&&userform.controls['DoctorFName'].touched">DoctorFName Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='doctormasterVar.DoctorMName' formControlName='DoctorMName' /> <label>DoctorMName</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorMName'].valid&&userform.controls['DoctorMName'].touched">DoctorMName Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='doctormasterVar.DoctorLName' formControlName='DoctorLName' /> <label>DoctorLName</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorLName'].valid&&userform.controls['DoctorLName'].touched">DoctorLName Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='doctormasterVar.DoctorName' formControlName='DoctorName' /> <label>DoctorName</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorName'].valid&&userform.controls['DoctorName'].touched">DoctorName Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+D.O.B.:
+<p-calendar [(ngModel)]="DoctorDob"  dateFormat="mm/dd/yy" formControlName='DoctorDob'></p-calendar> </span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorDob'].valid&&userform.controls['DoctorDob'].touched">Dob Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='doctormasterVar.DoctorPhoneno' formControlName='DoctorPhoneno' /> <label>Phoneno</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorPhoneno'].valid&&userform.controls['DoctorPhoneno'].touched">Phoneno Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='doctormasterVar.DoctorMobileno' formControlName='DoctorMobileno' /> <label>Mobileno</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorMobileno'].valid&&userform.controls['DoctorMobileno'].touched">Mobileno Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='doctormasterVar.DoctorEmailid' formControlName='DoctorEmailid' /> <label>EmailId</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorEmailid'].valid&&userform.controls['DoctorEmailid'].touched">EmailId Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='doctormasterVar.DoctorFax' formControlName='DoctorFax' /> <label>Fax</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorFax'].valid&&userform.controls['DoctorFax'].touched">Fax Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Address1
+<textarea pInputTextarea [(ngModel)]="doctormasterVar.DoctorAddress1" formControlName='DoctorAddress1' autoResize="autoResize"></textarea>  
+
+</span>
+</div>
+</div>
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorAddress1'].valid&&userform.controls['DoctorAddress1'].touched">Address1 Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Address1
+<textarea pInputTextarea [(ngModel)]="doctormasterVar.DoctorAddress2" formControlName='DoctorAddress2' autoResize="autoResize"></textarea>  </span>
+</div>
+</div>
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorAddress2'].valid&&userform.controls['DoctorAddress2'].touched">Address2 Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='doctormasterVar.DoctorCity' formControlName='DoctorCity' /> <label>City</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorCity'].valid&&userform.controls['DoctorCity'].touched">City Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='doctormasterVar.DoctorPin' formControlName='DoctorPin' /> <label>Pin</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorPin'].valid&&userform.controls['DoctorPin'].touched">Pin Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+	<p-dropdown [style]="{'width':'90%'}" [options]="drpcategorytypedoctoroptions" [(ngModel)]='doctormasterVar.CategoryIdDoctorType' formControlName='CategoryIdDoctorType'></p-dropdown> 
+	<!--<label>Doctor Type </label>-->
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CategoryIdDoctorType'].valid&&userform.controls['CategoryIdDoctorType'].touched">Doctor Type  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+	<p-dropdown [style]="{'width':'90%'}" [options]="drpcategorytypequalificationoptions" [(ngModel)]='doctormasterVar.CategoryIdQualificationType' formControlName='CategoryIdQualificationType'></p-dropdown> 
+
+ <!--<label>Qualification Type </label>-->
+ 
+ </span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CategoryIdQualificationType'].valid&&userform.controls['CategoryIdQualificationType'].touched">Qualification Type  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='doctormasterVar.DoctorQualification' formControlName='DoctorQualification' /> <label>Doctor Qualification</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorQualification'].valid&&userform.controls['DoctorQualification'].touched">Doctor Qualification Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='doctormasterVar.DoctorAvailableDays' formControlName='DoctorAvailableDays' /> <label>Available Days</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorAvailableDays'].valid&&userform.controls['DoctorAvailableDays'].touched">Available Days Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='doctormasterVar.DoctorChargesNormal' formControlName='DoctorChargesNormal' /> <label>Charges Normal</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorChargesNormal'].valid&&userform.controls['DoctorChargesNormal'].touched">Charges Normal Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="VwDoctorDepartmentConsultantTypeHospital" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectVwDoctorDepartmentConsultantTypeHospital($event)" 
+	[(selection)]="selectedRow">
+
+<p-column field="DoctorName" [filter]="true" 
+filterPlaceholder="Search DoctorName"  header="DoctorName">
+</p-column>
+
+ 
+<p-column field="DoctorPhoneno" [filter]="true" 
+filterPlaceholder="Search DoctorPhoneno"  header="DoctorPhoneno">
+</p-column>
+
+<p-column field="DoctorMobileno" [filter]="true" 
+filterPlaceholder="Search DoctorMobileno"  header="DoctorMobileno">
+</p-column>
+       
+</p-dataTable>
+

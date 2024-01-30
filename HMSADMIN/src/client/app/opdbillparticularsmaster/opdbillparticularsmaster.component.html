@@ -1,0 +1,113 @@
+
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create OPDBillParticulars</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='OPDBillParticularsVar.OPDBillParticularsName' formControlName='OPDBillParticularsName' /> <label>OPDBillParticulars Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDBillParticularsName'].valid&&userform.controls['OPDBillParticularsName'].touched">OPDBillParticulars Name  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='OPDBillParticularsVar.OPDBillParticularsAliasName' formControlName='OPDBillParticularsAliasName' /> <label>OPDBillParticulars Alias Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDBillParticularsAliasName'].valid&&userform.controls['OPDBillParticularsAliasName'].touched">OPDBillParticulars Alias Name  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='OPDBillParticularsVar.OPDBillParticularsTrustAmount' formControlName='OPDBillParticularsTrustAmount' /> <label>OPDBillParticulars Trust Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDBillParticularsTrustAmount'].valid&&userform.controls['OPDBillParticularsTrustAmount'].touched">OPDBillParticulars Trust Amount  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='OPDBillParticularsVar.OPDBillParticularsAmount' formControlName='OPDBillParticularsAmount' /> <label>OPDBillParticulars Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDBillParticularsAmount'].valid&&userform.controls['OPDBillParticularsAmount'].touched">OPDBillParticulars Amount  Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="VwOPDBillHospital" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectVwOPDBillHospital($event)" 
+	[(selection)]="selectedRow">
+
+ 
+<p-column field="OPDBillParticularsName" [filter]="true" 
+filterPlaceholder="Search OPDBillParticularsName"  header="OPDBillParticularsName">
+</p-column>
+
+ 
+<p-column field="OPDBillParticularsTrustAmount" [filter]="true" 
+filterPlaceholder="Search OPDBillParticularsTrustAmount"  header="OPDBillParticularsTrustAmount">
+</p-column>
+
+<p-column field="OPDBillParticularsAmount" [filter]="true" 
+filterPlaceholder="Search OPDBillParticularsAmount"  header="OPDBillParticularsAmount">
+</p-column>
+
+        
+</p-dataTable>
+ 
+

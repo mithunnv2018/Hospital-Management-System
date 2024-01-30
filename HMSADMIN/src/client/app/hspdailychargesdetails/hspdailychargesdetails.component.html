@@ -1,0 +1,141 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Daily Charges</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+From Date:
+<p-calendar [(ngModel)]="DailyChargesDetailsFromDate"  [showTime]="true" hourFormat="12"  dateFormat="mm/dd/yy" formControlName='DailyChargesDetailsFromDate'> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DailyChargesDetailsFromDate'].valid&&userform.controls['DailyChargesDetailsFromDate'].touched">From Date  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+To Date:
+<p-calendar [(ngModel)]="DailyChargesDetailsToDate"  [showTime]="true" hourFormat="12"  dateFormat="mm/dd/yy" formControlName='DailyChargesDetailsToDate'> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DailyChargesDetailsToDate'].valid&&userform.controls['DailyChargesDetailsToDate'].touched">To Date  Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpbillingheadsoptions" [(ngModel)]="hspdailychargesdetailsVar.IPDBillingHeadsIdhspdailychargesdetails" formControlName='IPDBillingHeadsIdhspdailychargesdetails' (onChange)="loadamount($event)"></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDBillingHeadsIdhspdailychargesdetails'].valid&&userform.controls['IPDBillingHeadsIdhspdailychargesdetails'].touched">Billing Heads  Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='hspdailychargesdetailsVar.DailyChargesDetailsAmount' formControlName='DailyChargesDetailsAmount' /> <label>Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DailyChargesDetailsAmount'].valid&&userform.controls['DailyChargesDetailsAmount'].touched">Amount  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<!--<input pInputText type='text' [(ngModel)]='hspdailychargesdetailsVar.DailyChargesDetailsRoundOff' formControlName='DailyChargesDetailsRoundOff' /> <label>Round Off</label>-->
+
+Round Off (No/Yes):
+<p-inputSwitch onLabel='Yes' offLabel='No' [(ngModel)]='DailyChargesDetailsRoundOff' formControlName='DailyChargesDetailsRoundOff' ></p-inputSwitch>
+
+</span>
+
+
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DailyChargesDetailsRoundOff'].valid&&userform.controls['DailyChargesDetailsRoundOff'].touched">Round Off  Required
+</div>
+</div>
+</div>
+
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="vwhspdailychargesdetails" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectvwhspdailychargesdetails($event)" 
+	[(selection)]="selectedRow">
+
+ 
+  
+<p-column field="DailyChargesDetailsFromDate" [filter]="true" 
+filterPlaceholder="Search DailyChargesDetailsFromDate"  header="DailyChargesDetailsFromDate">
+</p-column>
+
+<p-column field="DailyChargesDetailsToDate" [filter]="true" 
+filterPlaceholder="Search DailyChargesDetailsToDate"  header="DailyChargesDetailsToDate">
+</p-column>
+
+<p-column field="DailyChargesDetailsAmount" [filter]="true" 
+filterPlaceholder="Search DailyChargesDetailsAmount"  header="DailyChargesDetailsAmount">
+</p-column>
+
+<p-column field="DailyChargesDetailsRoundOff" [filter]="true" 
+filterPlaceholder="Search DailyChargesDetailsRoundOff"  header="DailyChargesDetailsRoundOff">
+</p-column>
+          
+</p-dataTable>

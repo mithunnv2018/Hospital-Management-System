@@ -1,0 +1,73 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Hospitalization Search</h1><br/>
+
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Status:-
+<p-dropdown [style]="{'width':'90%'}" [options]="drpStatusoptions" [(ngModel)]="statusname" (onChange)="searchByDropdown()" ></p-dropdown> 
+</span>
+</div>
+</div>
+
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='searchbyname' (change)="searchByName()" /> <label>Search By Name</label></span>
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+<p-dataTable [value]="VwBedsRoomsBedTypeHospital" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectVwDoctorDepartmentConsultantTypeHospital($event)" 
+	[(selection)]="selectedRow">
+
+<p-column field="HSPAdminId" [filter]="true" 
+filterPlaceholder="Search HSP Id"  header="HSP Id">
+</p-column>
+
+ 
+<p-column field="IPDIdHospitalization" [filter]="true" 
+filterPlaceholder="Search IPDIdHospitalization"  header="IPDId">
+</p-column>
+
+<p-column field="IPDName" [filter]="true" 
+filterPlaceholder="Search IPDName"  header="IPDName">
+</p-column>
+
+<p-column field="CategoryName" [filter]="true" 
+filterPlaceholder="Search Department"  header="Department">
+</p-column>
+
+<p-column field="HSPAdminDate" [filter]="true" 
+filterPlaceholder="Search Admit Date"  header="Admit Date">
+</p-column>
+
+<p-column styleClass="col-button" header="EDIt">
+                      <template let-col let-cont="rowData" pTemplate="body">
+                        <span [style.color]="cont[col.field]">{{cont[col.field]}}</span>
+                     </template>
+                    <template pTemplate="header">
+                            <button type="button" pButton icon="fa-edit"></button>
+                    </template>
+                    <template let-cont="rowData" pTemplate="body">
+                            <button type="button" pButton (click)="gotoHospitalizationPage(cont.HSPAdminId)"  icon="fa-edit" label="EDIT"></button>
+                    </template>
+ </p-column>
+              
+</p-dataTable>

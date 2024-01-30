@@ -1,0 +1,1 @@
+export class vwdoctormastercat_doctortypeTS {CategoryName:string;}

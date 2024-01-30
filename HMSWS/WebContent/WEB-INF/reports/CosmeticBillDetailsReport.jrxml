@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CosmeticBillDetailsReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aec60469-1c1b-45f6-8dea-d467899a5a07">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_cosmeticbilldetailsid" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     vwcosmeticbilldetailspatientdoctorhospital.`CosmeticBillDetailsId` AS vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsId,
+     vwcosmeticbilldetailspatientdoctorhospital.`CosmeticBillDetailsNos` AS vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsNo,
+     vwcosmeticbilldetailspatientdoctorhospital.`IPDIdCosmeticBillDetails` AS vwcosmeticbilldetailspatientdoctorhospital_IPDIdCosmeticBillDeta,
+     vwcosmeticbilldetailspatientdoctorhospital.`CosmeticBillDetailsBillAmt` AS vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsBi,
+     vwcosmeticbilldetailspatientdoctorhospital.`CosmeticBillDetailsDiscount` AS vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsDi,
+     vwcosmeticbilldetailspatientdoctorhospital.`CosmeticBillDetailsTotalAmt` AS vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsTo,
+     vwcosmeticbilldetailspatientdoctorhospital.`CosmeticBillDetailsDate` AS vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsDa,
+     vwcosmeticbilldetailspatientdoctorhospital.`DoctorIdCosmeticBillDetails` AS vwcosmeticbilldetailspatientdoctorhospital_DoctorIdCosmeticBillD,
+     vwcosmeticbilldetailspatientdoctorhospital.`CosmeticBillDetailsPaymentType` AS vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsPa,
+     vwcosmeticbilldetailspatientdoctorhospital.`CosmeticBillDetailsRemarks` AS vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsRe,
+     vwcosmeticbilldetailspatientdoctorhospital.`MemberIdCosmeticBillDetails` AS vwcosmeticbilldetailspatientdoctorhospital_MemberIdCosmeticBillD,
+     vwcosmeticbilldetailspatientdoctorhospital.`HospitalIdCosmeticBillDetails` AS vwcosmeticbilldetailspatientdoctorhospital_HospitalIdCosmeticBil,
+     vwcosmeticbilldetailspatientdoctorhospital.`CosmeticBillDetailsYear` AS vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsYe,
+     vwcosmeticbilldetailspatientdoctorhospital.`IPDId` AS vwcosmeticbilldetailspatientdoctorhospital_IPDId,
+     vwcosmeticbilldetailspatientdoctorhospital.`IPDName` AS vwcosmeticbilldetailspatientdoctorhospital_IPDName,
+     vwcosmeticbilldetailspatientdoctorhospital.`IPDFName` AS vwcosmeticbilldetailspatientdoctorhospital_IPDFName,
+     vwcosmeticbilldetailspatientdoctorhospital.`IPDMName` AS vwcosmeticbilldetailspatientdoctorhospital_IPDMName,
+     vwcosmeticbilldetailspatientdoctorhospital.`IPDLName` AS vwcosmeticbilldetailspatientdoctorhospital_IPDLName,
+     vwcosmeticbilldetailspatientdoctorhospital.`DoctorFName` AS vwcosmeticbilldetailspatientdoctorhospital_DoctorFName,
+     vwcosmeticbilldetailspatientdoctorhospital.`DoctorMName` AS vwcosmeticbilldetailspatientdoctorhospital_DoctorMName,
+     vwcosmeticbilldetailspatientdoctorhospital.`DoctorLName` AS vwcosmeticbilldetailspatientdoctorhospital_DoctorLName,
+     vwcosmeticbilldetailspatientdoctorhospital.`DoctorName` AS vwcosmeticbilldetailspatientdoctorhospital_DoctorName
+FROM
+     `vwcosmeticbilldetailspatientdoctorhospital` vwcosmeticbilldetailspatientdoctorhospital
+WHERE
+     CosmeticBillDetailsId = $P{param_cosmeticbilldetailsid}]]>
+	</queryString>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsId" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsNo" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_IPDIdCosmeticBillDeta" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsBi" class="java.math.BigDecimal"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsDi" class="java.math.BigDecimal"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsTo" class="java.math.BigDecimal"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsDa" class="java.sql.Timestamp"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_DoctorIdCosmeticBillD" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsPa" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsRe" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_MemberIdCosmeticBillD" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_HospitalIdCosmeticBil" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsYe" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_IPDId" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_IPDName" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_IPDFName" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_IPDMName" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_IPDLName" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_DoctorFName" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_DoctorMName" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_DoctorLName" class="java.lang.String"/>
+	<field name="vwcosmeticbilldetailspatientdoctorhospital_DoctorName" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch">
+			<staticText>
+				<reportElement x="227" y="101" width="100" height="20" uuid="7f7f990d-2288-4eb7-b14d-e36d83c19471"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[TAX INVOICE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="153" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f8805ef3-0370-4d38-83c2-f42eac2009f8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Receipt No.]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="100" y="0" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="cfdd36f0-ec63-45a4-8f6c-b7062fca4eda"/>
+				<textFieldExpression><![CDATA[$F{vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="352" y="0" width="100" height="20" uuid="6f33c1a5-4758-45d7-8f58-0db47b62465f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yy">
+				<reportElement stretchType="RelativeToTallestObject" x="452" y="0" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="da95509d-8c05-474e-88e7-a3e0c93864f7"/>
+				<textFieldExpression><![CDATA[$F{vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsDa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="24" width="100" height="20" uuid="4d35ebe6-d651-488f-bf0c-74199ea33555"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient Name:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="102" y="24" width="146" height="20" isPrintWhenDetailOverflows="true" uuid="308ab41b-1858-4c6f-9391-22b858658035"/>
+				<textFieldExpression><![CDATA[$F{vwcosmeticbilldetailspatientdoctorhospital_IPDName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="263" y="24" width="100" height="20" uuid="27615a2d-ffb8-44f1-8e25-326248b37ed0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doctor Name:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="363" y="24" width="188" height="20" isPrintWhenDetailOverflows="true" uuid="a8d97f68-7e5d-4880-aa94-743127b0a3f5"/>
+				<textFieldExpression><![CDATA[$F{vwcosmeticbilldetailspatientdoctorhospital_DoctorName}]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="false" runToBottom="false">
+				<reportElement stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" x="30" y="52" width="505" height="91" isPrintWhenDetailOverflows="true" uuid="6efc17ad-53e3-46ca-b201-7fd651a29bf6"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="param_subreportcosmeticbilldetailsid">
+					<subreportParameterExpression><![CDATA[$F{vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["./" + "CosmeticBillDetailsReport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="162">
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="13" y="12" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="b0b19377-d08f-4f46-853d-0671c3711bbc"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Type:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="113" y="12" width="133" height="20" isPrintWhenDetailOverflows="true" uuid="8e667d4f-43af-4ead-bd23-d7528ee7ffd7"/>
+				<textFieldExpression><![CDATA[$F{vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsPa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="246" y="11" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="876561f5-8e80-422b-a045-e915d6b19024"/>
+				<text><![CDATA[Total:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="346" y="11" width="188" height="20" isPrintWhenDetailOverflows="true" uuid="642f723e-856c-4704-a8ee-a721d14afbd6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsBi}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="246" y="31" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="164e67b1-88e4-48c5-9f91-878625556bf9"/>
+				<text><![CDATA[Discount:-]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement stretchType="RelativeToTallestObject" x="346" y="31" width="188" height="20" isPrintWhenDetailOverflows="true" uuid="3a3d46c3-0fc1-42bf-8ee8-fc7b85fde990"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsDi}]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="false" runToBottom="false">
+				<reportElement stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="245" y="83" width="287" height="74" isPrintWhenDetailOverflows="true" uuid="5d084fc2-4f68-460f-8e71-aa9ebe6551d5"/>
+				<subreportParameter name="param_subreportcosmeticbilldetailsid">
+					<subreportParameterExpression><![CDATA[$F{vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["./" + "CosmeticBillDetailsReport_subreport2.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="13" y="51" width="100" height="20" uuid="d55a9f07-4d6e-4dfb-a8c4-0472b8b9eeaf"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tax:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="12" y="72" width="520" height="1" uuid="9b674e89-0f9b-4ad7-9dc9-2e8112f46cab"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" mode="Opaque" x="12" y="158" width="520" height="1" forecolor="#000000" backcolor="#FFFFFF" uuid="b46bcb95-ed9c-4140-b1d0-a5fabd8f36e3"/>
+				<graphicElement fill="Solid"/>
+			</line>
+		</band>
+		<band height="94">
+			<staticText>
+				<reportElement x="13" y="0" width="100" height="20" uuid="6f233530-2b06-4b43-ba5b-ba6afa0698b1"/>
+				<text><![CDATA[Remarks:-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="113" y="0" width="133" height="55" uuid="3bd57192-fa9e-42a9-851e-6ce485bd401c"/>
+				<textFieldExpression><![CDATA[$F{vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsRe}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="248" y="0" width="100" height="20" uuid="4cf3cbd5-e620-4020-9876-7ac638aace96"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount paid:-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="346" y="0" width="188" height="20" uuid="0eec48d2-0e28-41cd-8fce-ca664a877151"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vwcosmeticbilldetailspatientdoctorhospital_CosmeticBillDetailsTo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="348" y="74" width="100" height="20" uuid="6f32cb8f-fb4a-41d2-ae54-cf91f316cb02"/>
+				<text><![CDATA[Sign]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,1 @@
+export class hspotherheadsdetailsTS {OtherHeadsId:string; HSPAdminIdHSPOtherHeadsDetails:string; OtherHeadsName:string; OtherHeadsDate:string; OtherHeadsAmount:string; CreateDateHSPOtherHeadsDetails:string; ModifiedDateHSPOtherHeadsDetails:string; StatusHSPOtherHeadsDetails:string;MemberIdHSPOtherHeadsDetails:string;}

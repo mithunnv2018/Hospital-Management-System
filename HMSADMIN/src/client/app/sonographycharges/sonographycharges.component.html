@@ -1,0 +1,116 @@
+<p-growl [value]="msgs"></p-growl>
+<p-confirmDialog width="425"></p-confirmDialog>
+
+    <h1>Sonography Charges</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Date:
+<p-calendar [(ngModel)]="SonographyHeadsDetDate"  dateFormat="mm/dd/yy" formControlName='SonographyHeadsDetDate'> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['SonographyHeadsDetDate'].valid&&userform.controls['SonographyHeadsDetDate'].touched">Sonography Date  Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpsonographyoptions" [(ngModel)]="hspsonographyheadsdetailsVar.SonographyHeadsIdhspsonographyheadsdetails" formControlName='SonographyHeadsIdhspsonographyheadsdetails' (onChange)="loadamount($event)"></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['SonographyHeadsIdhspsonographyheadsdetails'].valid&&userform.controls['SonographyHeadsIdhspsonographyheadsdetails'].touched">Sonography Name  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='hspsonographyheadsdetailsVar.SonographyHeadsDetAmount' formControlName='SonographyHeadsDetAmount' /> <label>Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['SonographyHeadsDetAmount'].valid&&userform.controls['SonographyHeadsDetAmount'].touched">Amount  Required
+</div>
+</div>
+</div>
+
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="vwhspsonographyheadsdetails" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectvwhspsonographyheadsdetails($event)" 
+	[(selection)]="selectedRow">
+
+ 
+<p-column field="SonographyHeadsDetDate" [filter]="true" 
+filterPlaceholder="Search SonographyHeadsDetDate"  header="SonographyHeadsDetDate">
+</p-column>
+
+<p-column field="SonographyHeadsDetAmount" [filter]="true" 
+filterPlaceholder="Search SonographyHeadsDetAmount"  header="SonographyHeadsDetAmount">
+</p-column>
+
+<p-column field="SonographyHeadsIdhspsonographyheadsdetails" [filter]="true" 
+filterPlaceholder="Search SonographyHeadsIdhspsonographyheadsdetails"  header="SonographyHeadsIdhspsonographyheadsdetails">
+</p-column>
+
+<p-column field="HSPAdminIdhspsonographyheadsdetails" [filter]="true" 
+filterPlaceholder="Search HSPAdminIdhspsonographyheadsdetails"  header="HSPAdminIdhspsonographyheadsdetails">
+</p-column>
+ 
+    
+<p-column field="SonographyHeadsName" [filter]="true" 
+filterPlaceholder="Search SonographyHeadsName"  header="SonographyHeadsName">
+</p-column>
+    
+<p-column styleClass="col-button" header="Delete">
+                      <template let-col let-cont="rowData" pTemplate="body">
+                        <span [style.color]="cont[col.field]">{{cont[col.field]}}</span>
+                     </template>
+                    <template pTemplate="header">
+                            <button type="button" pButton icon="fa-refresh"></button>
+                    </template>
+                    <template let-cont="rowData" pTemplate="body">
+                            <button type="button" pButton (click)="deleteSubmitParticularsRow(cont)"  icon="fa-close" label="Delete"></button>
+                    </template>
+</p-column>
+</p-dataTable>

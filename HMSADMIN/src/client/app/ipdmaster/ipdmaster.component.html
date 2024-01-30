@@ -1,0 +1,520 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create ipdmaster</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield' *ngIf="ipdmasterVar.IPDName">
+<!--<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDName'  [disabled]='true'/> -->
+
+	Patient Name: {{ipdmasterVar.IPDName}}
+	
+</span>
+</div>
+</div>
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDFName' formControlName='IPDFName' (change)='onPatientNameChange()'/> <label>First Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDFName'].valid&&userform.controls['IPDFName'].touched">First Name Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDMName' formControlName='IPDMName' (change)='onPatientNameChange()'/> <label>Middle Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDMName'].valid&&userform.controls['IPDMName'].touched">Middle Name Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDLName' formControlName='IPDLName' (change)='onPatientNameChange()'/> <label>Last Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDLName'].valid&&userform.controls['IPDLName'].touched">Last Name Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDAgeMonths' formControlName='IPDAgeMonths'/> <label>Age Month</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDAgeMonths'].valid&&userform.controls['IPDAgeMonths'].touched">Age Month Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDAgeYears' formControlName='IPDAgeYears'/> <label>Age Years</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDAgeYears'].valid&&userform.controls['IPDAgeYears'].touched">Age Years Required
+</div>
+</div>
+</div>
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDAddress1' formControlName='IPDAddress1' /> <label>Address1</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDAddress1'].valid&&userform.controls['IPDAddress1'].touched">Address1 Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDAddress2' [ngModelOptions]="{standalone: true}" /> <label>Address2</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDCity' [ngModelOptions]="{standalone: true}" /> <label>city</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDPin' [ngModelOptions]="{standalone: true}" /> <label>Pin</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDPhone' [ngModelOptions]="{standalone: true}" /> <label>Phone Nos.</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDMobile' [ngModelOptions]="{standalone: true}" /> <label>Mobile Nos.</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDEmail' [ngModelOptions]="{standalone: true}" /> <label>EmailId</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDFax' [ngModelOptions]="{standalone: true}" /> <label>Fax</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+DOB:<p-calendar  [(ngModel)]="IPDDob"  dateFormat="mm/dd/yy" [ngModelOptions]="{standalone: true}"></p-calendar> </span>
+</div>
+</div>
+
+
+
+</div>
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDBG' [ngModelOptions]="{standalone: true}" /> <label>BG</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDKeenname' [ngModelOptions]="{standalone: true}" /> <label>Keen name</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDKeenrelation' [ngModelOptions]="{standalone: true}" /> <label>Keen Relation</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDKeenphone' [ngModelOptions]="{standalone: true}" /> <label>Keen Phonenos.</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDRef' [ngModelOptions]="{standalone: true}" /> <label>Reference</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDRemarks' [ngModelOptions]="{standalone: true}" /> <label>Remarks</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDComplaint' [ngModelOptions]="{standalone: true}" /> <label>Complaints</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDWeight' [ngModelOptions]="{standalone: true}" /> <label>Weight</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDBP' [ngModelOptions]="{standalone: true}" /> <label>BP</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDFamilydoc' [ngModelOptions]="{standalone: true}" /> <label>Family Doc</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDFamilydocphone' [ngModelOptions]="{standalone: true}" /> <label>Family Doc Phone</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDPulse' [ngModelOptions]="{standalone: true}" /> <label>Pulse</label></span>
+</div>
+</div>
+
+
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpgenderptions" [(ngModel)]="ipdmasterVar.IPDSex" formControlName='IPDSex'></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDSex'].valid&&userform.controls['IPDSex'].touched">Gender  Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpMaritalStatusoptions" [(ngModel)]="ipdmasterVar.IPDMaritalStatus" [ngModelOptions]="{standalone: true}" ></p-dropdown> 
+</span>
+</div>
+</div>
+
+</div>
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpinsuranceipdoptions" [(ngModel)]="ipdmasterVar.InsuranceIdIPDMaster" [ngModelOptions]="{standalone: true}"></p-dropdown> 
+</span>
+</div>
+</div>
+
+ 
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpcategorytypedepartmentoptions" [(ngModel)]="ipdmasterVar.CategoryIdDepartmentType" formControlName='CategoryIdDepartmentType' ></p-dropdown> 
+</span>
+</div>
+</div>
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CategoryIdDepartmentType'].valid&&userform.controls['CategoryIdDepartmentType'].touched">DepartmentType Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpcategorytypeinsurancepolicyoptions" [(ngModel)]="ipdmasterVar.CategoryIdInsurancePolicyType" [ngModelOptions]="{standalone: true}" ></p-dropdown> 
+</span>
+</div>
+</div>
+
+</div>
+
+
+ 
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDInsuranceLimit' [ngModelOptions]="{standalone: true}" /> <label>Insurance Limit</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdmasterVar.IPDInsurancePolicyNos' [ngModelOptions]="{standalone: true}" /> <label>Policy Nos.</label></span>
+</div>
+</div>
+
+
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()"  label="Submit" [disabled]="!userform.valid"></button>
+
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='searchbyname' (change)="searchByName()" [ngModelOptions]="{standalone: true}"/> <label>Search By Patient Name</label></span>
+
+</div>
+</div>
+
+</div>
+
+
+</div>
+
+</form>
+
+<p-dataTable [value]="VwIPDDepartmentTypeHospital" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectVwIPDDepartmentTypeHospital($event)" 
+	[(selection)]="selectedRow">
+
+ 
+ 
+<p-column field="IPDName" [filter]="true" 
+filterPlaceholder="Search IPDName"  header="IPDName">
+</p-column>
+ 
+<p-column field="IPDPhone" [filter]="true" 
+filterPlaceholder="Search IPDPhone"  header="IPDPhone">
+</p-column>
+
+<p-column field="IPDMobile" [filter]="true" 
+filterPlaceholder="Search IPDMobile"  header="IPDMobile">
+</p-column>
+ 
+<p-column field="IPDSex" [filter]="true" 
+filterPlaceholder="Search IPDSex"  header="IPDSex">
+</p-column>
+
+      
+<p-column field="CategoryName" [filter]="true" 
+filterPlaceholder="Search Department Type"  header="Department Type">
+</p-column>
+
+ </p-dataTable>
+

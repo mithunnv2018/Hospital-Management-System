@@ -1,0 +1,162 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Hospitalization</h1><br/>
+    <h1 *ngIf="!newVwBedsRoomsBedTypeHospital">
+        {{HSPAdminId}}
+    </h1>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Admit Date:-
+<p-calendar [(ngModel)]="HSPAdminDate" [showIcon]="true"  dateFormat="mm/dd/yy" formControlName='HSPAdminDate'> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['HSPAdminDate'].valid&&userform.controls['HSPAdminDate'].touched">Admin Date  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Admit Time:-
+<p-calendar [(ngModel)]="HSPAdmintime" [showIcon]="true" showTime="showTime" [timeOnly]="true" hourFormat="12"   formControlName='HSPAdmintime'> </p-calendar>
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['HSPAdmintime'].valid&&userform.controls['HSPAdmintime'].touched">Admin Date  Required
+</div>
+</div>
+</div>
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<p-autoComplete [(ngModel)]="ipdselected" [disabled]="!newVwBedsRoomsBedTypeHospital" [suggestions]="ipdresults" (completeMethod)="filterIPDName($event)" field="label"  formControlName='IPDIdHospitalization' ></p-autoComplete>
+ <label>Patient Name</label>
+
+<!--<p-dropdown [options]="drpipdroptions" [(ngModel)]="hospitalizationVar.IPDIdHospitalization" formControlName='IPDIdHospitalization'></p-dropdown> -->
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+    <button pButton (click)="gotoIPDNew()" label="NEW"></button>
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDIdHospitalization'].valid&&userform.controls['IPDIdHospitalization'].touched">IPD Name  Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpPackageoptions" [(ngModel)]="hospitalizationVar.PackageIdHospitalization" [ngModelOptions]="{standalone: true}"></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpTrustroptions" [(ngModel)]="hospitalizationVar.TrustIdHospitalization" [ngModelOptions]="{standalone: true}"></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpCategoryroptions" [(ngModel)]="hospitalizationVar.CategoryIdHospitalizationDepartment" formControlName='CategoryIdHospitalizationDepartment'></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CategoryIdHospitalizationDepartment'].valid&&userform.controls['CategoryIdHospitalizationDepartment'].touched">Category Name  Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpDiseaseroptions" [(ngModel)]="hospitalizationVar.DiseaseIdHospitalization" formControlName='DiseaseIdHospitalization'></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DiseaseIdHospitalization'].valid&&userform.controls['DiseaseIdHospitalization'].touched">Disease Name  Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;' *ngIf="!newVwBedsRoomsBedTypeHospital">
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpstatusoptions" [(ngModel)]="hospitalizationVar.HSPAdminStatus" [ngModelOptions]="{standalone: true}"></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<!--  -->
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+

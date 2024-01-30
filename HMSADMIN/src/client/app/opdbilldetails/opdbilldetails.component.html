@@ -1,0 +1,275 @@
+<p-growl [value]="msgs"></p-growl>
+<p-confirmDialog width="425"></p-confirmDialog>
+
+    <h1>Create opdbilldetails</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+Bill Date
+<p-calendar [(ngModel)]="OPDBillDetailsDate"  dateFormat="mm/dd/yy" formControlName='OPDBillDetailsDate'> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDBillDetailsDate'].valid&&userform.controls['OPDBillDetailsDate'].touched">Bill Date Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12' style='width:100%;'>
+<span class='md-inputfield'>
+
+<!--<p-dropdown [options]="drpipdoptions" [(ngModel)]="opdbilldetailsVar.IPDIdOPDBillDetails" formControlName='IPDIdOPDBillDetails'></p-dropdown> -->
+<p-autoComplete [(ngModel)]="ipdselected" [suggestions]="ipdresults" (completeMethod)="filterIPDName($event)" field="label" formControlName='IPDIdOPDBillDetails'></p-autoComplete>
+ <label>Patient Name</label>
+
+
+</span>
+ 
+
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+    <button pButton (click)="gotoIPDNew()" label="NEW"></button>
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDIdOPDBillDetails'].valid&&userform.controls['IPDIdOPDBillDetails'].touched">Patient  Required
+</div>
+</div>
+</div>
+<!-- here code for sub form -->
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+            <label>Particular Details</label>
+
+            <!--as done on 7 feb 2017 by Mandar removed  formGroupName="keyword_subgroup"-->
+            <div >
+                <div class='ui-grid-row' style='width:100%;'>
+                    <div class='ui-g form-group' style='width:80%;'>
+                        <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                            <span class='md-inputfield'>
+                                
+                                <p-dropdown [style]="{'width':'90%'}" [options]="drpbillparticularsoptions" [(ngModel)]="vwopdbillhospitalVar.OPDBillParticularsIdOPDBillParticularsDetails" [ngModelOptions]="{standalone: true}" ></p-dropdown> 
+            
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-4">
+                        <!--<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroupName.keysubcat_name.valid&&formGroupName.keysubcat_name.touched">Name Required</div>-->
+                    </div>
+                </div>
+
+
+
+                <div class='ui-grid-row' style='width:100%;'>
+                    <div class='ui-g form-group' style='width:80%;'>
+                        <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                            <span class='md-inputfield'>
+ 
+                                <label>Amount</label>
+                                <p-spinner [min]="0" [step]="0.25" [(ngModel)]="vwopdbillhospitalVar.OPDBillParticularsDetailsAmount" [ngModelOptions]="{standalone: true}"></p-spinner>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ui-grid-col-4">
+                        <!--<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroupName.keysubcat_searchtext.valid&&formGroupName.keysubcat_searchtext.touched">Search Text Required</div>-->
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="ui-grid-row" style="width:100%;">
+                <div class="ui-g form-group" style="width:80%;">
+
+                    <div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+                        <div style="width:50%"><button pButton (click)="onSubmitParticulars()" label="Add"></button><br/></div>
+                    </div>
+                </div>
+            </div>
+            <p-dataTable [value]="vw_opdbillparticularsdetails" selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onKeywordSubcatRowSelected($event)"
+                [(selection)]="selectedkeywordgridRow">
+
+
+                <p-column field="OPDBillParticularsName" [filter]="true" filterPlaceholder="Name" header="Name"></p-column>
+                <p-column field="OPDBillParticularsDetailsAmount" [filter]="true" filterPlaceholder="Amount" header="Amount"></p-column>
+                 <p-column styleClass="col-button" header="Delete">
+                      <template let-col let-cont="rowData" pTemplate="body">
+                        <span [style.color]="cont[col.field]">{{cont[col.field]}}</span>
+                     </template>
+                    <template pTemplate="header">
+                            <button type="button" pButton icon="fa-refresh"></button>
+                    </template>
+                    <template let-cont="rowData" pTemplate="body">
+                            <button type="button" pButton (click)="deleteSubmitParticularsRow(cont)"  icon="fa-close" label="Delete"></button>
+                    </template>
+                </p-column>
+            </p-dataTable>
+        </div>
+
+<!-- END here code for sub form -->
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='opdbilldetailsVar.OPDBillDetailsBillAmt'  formControlName='OPDBillDetailsBillAmt' /> <label>Bill Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDBillDetailsBillAmt'].valid&&userform.controls['OPDBillDetailsBillAmt'].touched">Bill Amount  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='opdbilldetailsVar.OPDBillDetailsDiscount' (change)="calculateAmountSum()" [ngModelOptions]="{standalone: true}" /> <label>Discount </label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='opdbilldetailsVar.OPDBillDetailsTotalAmt' formControlName='OPDBillDetailsTotalAmt' /> <label>Total Amount  </label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDBillDetailsTotalAmt'].valid&&userform.controls['OPDBillDetailsTotalAmt'].touched">Total Amount    Required
+</div>
+</div>
+</div>
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<!--<p-dropdown [style]="{'width':'90%'}" [options]="drpdoctoroptions" [(ngModel)]="opdbilldetailsVar.DoctorIdOPDBillDetails" formControlName='DoctorIdOPDBillDetails'></p-dropdown> -->
+<p-autoComplete [(ngModel)]="docselected" [suggestions]="docresults" (completeMethod)="filterDOCName($event)" field="label"  formControlName='DoctorIdOPDBillDetails' ></p-autoComplete>
+ <label>Doctor Name</label>
+
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorIdOPDBillDetails'].valid&&userform.controls['DoctorIdOPDBillDetails'].touched">Doctor  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drppaymenttypeoptions" [(ngModel)]="opdbilldetailsVar.OPDBillDetailsPaymentType" formControlName='OPDBillDetailsPaymentType'></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDBillDetailsPaymentType'].valid&&userform.controls['OPDBillDetailsPaymentType'].touched">Payment Type    Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='opdbilldetailsVar.OPDBillDetailsRemarks' [ngModelOptions]="{standalone: true}" /> <label>Remarks  </label></span>
+</div>
+</div>
+
+
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+
+<p-dataTable [value]="VwOPDBillDetailsPatientDoctorHospital" 
+    sortField="OPDBillDetailsDate" sortOrder="-1"       
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectVwOPDBillDetailsPatientDoctorHospital($event)" 
+	[(selection)]="selectedRow">
+ 
+<p-column field="OPDBillDetailsNos" [filter]="true" 
+filterPlaceholder="Search OPDBillDetailsNos"  header="OPDBillDetailsNos">
+</p-column>
+ 
+<p-column field="OPDBillDetailsBillAmt" [filter]="true" 
+filterPlaceholder="Search OPDBillDetailsBillAmt"  header="OPDBillDetailsBillAmt">
+</p-column>
+
+<p-column field="OPDBillDetailsDiscount" [filter]="true" 
+filterPlaceholder="Search OPDBillDetailsDiscount"  header="OPDBillDetailsDiscount">
+</p-column>
+
+<p-column field="OPDBillDetailsTotalAmt" [filter]="true" 
+filterPlaceholder="Search OPDBillDetailsTotalAmt"  header="OPDBillDetailsTotalAmt">
+</p-column>
+
+<p-column field="OPDBillDetailsDate" sortable="custom" (sortFunction)="mysort($event)"  [filter]="true" 
+filterPlaceholder="Search OPDBillDetailsDate"  header="OPDBillDetailsDate">
+</p-column>
+ 
+<p-column field="IPDName" [filter]="true" 
+filterPlaceholder="Search IPDName"  header="IPDName">
+</p-column>
+
+<p-column styleClass="col-button">
+        <template pTemplate="header">
+            <button type="button" pButton icon="ui-icon-search"></button>
+        </template>
+        <template let-receipt="rowData" pTemplate="body">
+            <button type="button" pButton (click)="printReceipt(receipt)" icon="ui-icon-print"></button>
+        </template>
+</p-column>
+
+</p-dataTable>

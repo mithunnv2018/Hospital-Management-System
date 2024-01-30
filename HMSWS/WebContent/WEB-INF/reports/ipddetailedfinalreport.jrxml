@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ipddetailedfinalreport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1b12d7d9-d617-4638-91ee-a983f5ccdbc6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="204"/>
+	<parameter name="param_adminid" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="param_concession" class="java.math.BigDecimal"/>
+	<parameter name="param_grandtotal" class="java.math.BigDecimal"/>
+	<parameter name="param-advance" class="java.math.BigDecimal"/>
+	<queryString>
+		<![CDATA[SELECT
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HSPAdminId` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdminI,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HSPAdminDate` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdminD,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HSPAdmintime` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdmint,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HSPAdminStatus` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdminS,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HSPAdminDischargeNos` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdminD,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HSPAdminDischargeDate` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdminD,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HSPAdminDischargetime` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdminD,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HSPAdminYear` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdminY,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDIdHospitalization` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDIdHosp,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`PackageIdHospitalization` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_PackageId,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`TrustIdHospitalization` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_TrustIdHo,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`CategoryIdHospitalizationDepartment` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_CategoryI,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HospitalIdHospitalization` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HospitalI,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`DiseaseIdHospitalization` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_DiseaseId,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`MemberIdHospitalization` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_MemberIdH,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`StatusHospitalization` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_StatusHos,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`PackageId` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_PackageId,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`PackageName` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_PackageNa,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`PackageAmount` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_PackageAm,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`PackageTrustAmount` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_PackageTr,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`PackageAddons` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_PackageAd,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HospitalIdPackage` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HospitalI,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`TrustId` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_TrustId,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`TrustName` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_TrustName,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`TrustDiscountPercentage` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_TrustDisc,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`TrustApplyDiscount` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_TrustAppl,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`TrustApplyIndividualPrice` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_TrustAppl,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HospitalIdTrust` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HospitalI,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`CategoryId` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_CategoryI,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`CategoryName` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_CategoryN,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`CategoryAliasname` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_CategoryA,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`CategoryTypeIdCategoryMaster` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_CategoryT,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HospitalIdCategoryMaster` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HospitalI,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`DiseaseId` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_DiseaseId,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`DiseaseName` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_DiseaseNa,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`DiseaseAliasName` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_DiseaseAl,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HospitalIdDiseaseMaster` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HospitalI,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDId` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDId,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`CategoryIdDepartmentType` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_CategoryI,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDName` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDName,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDFName` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDFName,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDMName` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDMName,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDLName` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDLName,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDAddress1` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDAddres,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDAddress2` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDAddres,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDCity` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDCity,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDPin` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDPin,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDPhone` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDPhone,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDMobile` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDMobile,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDEmail` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDEmail,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDFax` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDFax,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDDob` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDDob,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDSex` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDSex,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDMaritalStatus` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDMarita,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDBG` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDBG,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDKeenname` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDKeenna,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDKeenrelation` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDKeenre,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDKeenphone` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDKeenph,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDRef` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDRef,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDRemarks` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDRemark,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDComplaint` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDCompla,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDWeight` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDWeight,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDBP` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDBP,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDFamilydoc` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDFamily,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDFamilydocphone` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDFamily,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDPulse` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDPulse,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`InsuranceIdIPDMaster` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_Insurance,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`CategoryIdInsurancePolicyType` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_CategoryI,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDInsuranceLimit` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDInsura,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`IPDInsurancePolicyNos` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDInsura,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`HospitalIdIPDMaster` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_HospitalI,
+     vwhospitalizationipdpackagetrustcategorydiseasedetails.`StatusIPDMaster` AS vwhospitalizationipdpackagetrustcategorydiseasedetails_StatusIPD
+FROM
+     `vwhospitalizationipdpackagetrustcategorydiseasedetails` vwhospitalizationipdpackagetrustcategorydiseasedetails
+WHERE
+     HSPAdminId = $P{param_adminid}]]>
+	</queryString>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdminI" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdminD" class="java.sql.Timestamp"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdmint" class="java.sql.Time"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdminS" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdminY" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDIdHosp" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_PackageId" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_TrustIdHo" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_CategoryI" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_HospitalI" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_DiseaseId" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_MemberIdH" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_StatusHos" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_PackageNa" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_PackageAm" class="java.math.BigDecimal"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_PackageTr" class="java.math.BigDecimal"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_PackageAd" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_TrustId" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_TrustName" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_TrustDisc" class="java.math.BigDecimal"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_TrustAppl" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_CategoryN" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_CategoryA" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_CategoryT" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_DiseaseNa" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_DiseaseAl" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDId" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDName" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDFName" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDMName" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDLName" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDAddres" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDCity" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDPin" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDPhone" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDMobile" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDEmail" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDFax" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDDob" class="java.sql.Timestamp"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDSex" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDMarita" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDBG" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDKeenna" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDKeenre" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDKeenph" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDRef" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDRemark" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDCompla" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDWeight" class="java.math.BigDecimal"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDBP" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDFamily" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDPulse" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_Insurance" class="java.lang.String"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDInsura" class="java.math.BigDecimal"/>
+	<field name="vwhospitalizationipdpackagetrustcategorydiseasedetails_StatusIPD" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="23" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="100" y="0" width="455" height="20" isPrintWhenDetailOverflows="true" uuid="c793d814-0318-4b08-9755-262f56f4079d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vwhospitalizationipdpackagetrustcategorydiseasedetails_HSPAdminI}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="1f8f47f6-0a42-45ce-b99b-4bef61b17a78"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hopsitalzation Id: -]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="20" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="6e31c284-3863-485d-b3be-4960c6321dec"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDId}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="108" y="20" width="447" height="20" isPrintWhenDetailOverflows="true" uuid="1d47cd0f-a268-43ac-a64c-83bfa54c278c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vwhospitalizationipdpackagetrustcategorydiseasedetails_IPDName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="52" splitType="Stretch">
+			<subreport runToBottom="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="0" width="554" height="52" isPrintWhenDetailOverflows="true" uuid="62bfa5ab-f566-4a4a-9ac9-26b66ba579fe"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="sub_param_adminid">
+					<subreportParameterExpression><![CDATA[$P{param_adminid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["./" + "ipddetailedfinalreport_sonography_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="52">
+			<subreport>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="554" height="52" isPrintWhenDetailOverflows="true" uuid="5a4c8d67-a5c4-45e5-a8b1-3bf706e348d1"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="sub_param_adminid">
+					<subreportParameterExpression><![CDATA[$P{param_adminid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["./" + "ipddetailedfinalreport_hspipdheads_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="52">
+			<subreport runToBottom="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="552" height="52" isPrintWhenDetailOverflows="true" uuid="84f76e01-01b9-4668-883e-2ed1a28db403"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="sub_param_adminid">
+					<subreportParameterExpression><![CDATA[$P{param_adminid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["./" + "ipddetailedfinalreport_hspdailychargesdetails_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="52">
+			<subreport>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="2" y="0" width="552" height="52" isPrintWhenDetailOverflows="true" uuid="4ead30aa-4880-4951-a97a-b99a57d7ff51"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="sub_param_adminid">
+					<subreportParameterExpression><![CDATA[$P{param_adminid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["./" + "ipddetailedfinalreport_hspdoctorvisitdetails_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="53">
+			<subreport>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="2" y="0" width="552" height="52" isPrintWhenDetailOverflows="true" uuid="c7d9ac9f-f0cd-4b97-9158-a7cb81cd1267"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="sub_param_adminid">
+					<subreportParameterExpression><![CDATA[$P{param_adminid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["./" + "ipddetailedfinalreport_roomallotment_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="107">
+			<staticText>
+				<reportElement x="3" y="18" width="281" height="20" uuid="39e91751-d438-4368-986a-9033ec948cac"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concession/ Discount :]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="284" y="18" width="271" height="20" uuid="55eda9f3-72d0-43e2-95ea-34705a0a0d3d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{param_concession}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="38" width="281" height="20" uuid="97d1a958-3611-4128-b42b-77e1bb953abb"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grand Total :]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="284" y="38" width="271" height="20" uuid="89f0907d-2487-47b3-850c-08d40454abff"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{param_grandtotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="58" width="281" height="20" uuid="1e2af6b6-2bf8-4e95-9215-c98efba18af9"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advance :]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="284" y="58" width="271" height="20" uuid="fc578747-705f-45df-b890-79c8e2c1a369"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{param-advance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="84" width="281" height="20" uuid="4f2f8d7d-a134-4c79-affb-6078f918a3f9"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total :]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="284" y="84" width="271" height="20" uuid="df74e39e-7187-4ebd-8bd1-8594055f9527"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{param_grandtotal}.doubleValue()-$P{param-advance}.doubleValue()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="89" y="80" width="359" height="1" uuid="4a8d9d6e-daa6-4095-9d73-08beac936691"/>
+			</line>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="1" y="1" width="554" height="1" uuid="4bd4df15-90f9-4037-be35-292b2b091fd4"/>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="0" y="5" width="554" height="30" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true" uuid="5a1a1e2c-1659-4832-8dc2-3fb311089abb"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[This is a rough bill for your verification, if you have any discrepancy in this bill please inform billing
+counter.]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

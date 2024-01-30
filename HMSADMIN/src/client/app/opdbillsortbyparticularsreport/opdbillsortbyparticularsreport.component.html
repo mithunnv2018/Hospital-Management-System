@@ -1,0 +1,62 @@
+<p-growl [value]="msgs"></p-growl>
+<p-confirmDialog width="425"></p-confirmDialog>
+
+    <h1>OPD Bill Sort by Particulars Report</h1><br/>
+
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+ 
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+From Date:
+<p-calendar [(ngModel)]="fromdate" dateFormat="mm/dd/yy" > </p-calendar>
+ 
+
+<!--<p-dropdown [options]="drpipdroptions" [(ngModel)]="hospitalizationVar.IPDIdHospitalization" formControlName='IPDIdHospitalization'></p-dropdown> -->
+</span>
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+To Date:
+<p-calendar [(ngModel)]="todate" dateFormat="mm/dd/yy" > </p-calendar>
+ 
+
+<!--<p-dropdown [options]="drpipdroptions" [(ngModel)]="hospitalizationVar.IPDIdHospitalization" formControlName='IPDIdHospitalization'></p-dropdown> -->
+</span>
+</div>
+</div>
+</div>
+
+
+     
+ 
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()"  label="Print" ></button>
+
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="printReceiptDetails()" label="Print Details" ></button>
+</div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+
+

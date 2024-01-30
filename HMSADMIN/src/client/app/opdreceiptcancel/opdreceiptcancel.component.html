@@ -1,0 +1,82 @@
+<p-growl [value]="msgs"></p-growl>
+<p-confirmDialog width="425"></p-confirmDialog>
+
+    <h1>OPD RECEIPT CANCEL</h1><br/>
+
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+ 
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+From Date:
+<p-calendar [(ngModel)]="fromdate" dateFormat="mm/dd/yy" > </p-calendar>
+ 
+
+<!--<p-dropdown [options]="drpipdroptions" [(ngModel)]="hospitalizationVar.IPDIdHospitalization" formControlName='IPDIdHospitalization'></p-dropdown> -->
+</span>
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+To Date:
+<p-calendar [(ngModel)]="todate" dateFormat="mm/dd/yy" > </p-calendar>
+ 
+
+<!--<p-dropdown [options]="drpipdroptions" [(ngModel)]="hospitalizationVar.IPDIdHospitalization" formControlName='IPDIdHospitalization'></p-dropdown> -->
+</span>
+</div>
+</div>
+</div>
+
+
+     
+ 
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()"  label="Search" ></button>
+
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+
+        <p-dataTable [value]="opdreceipts" selectionMode="single" [rows]="10" [paginator]="true" >
+
+
+                <p-column field="OPDReceiptNos" [filter]="true" filterPlaceholder="Receipt Id" header="Receipt Id"></p-column>
+                <p-column field="OPDReceiptDate" [filter]="true" filterPlaceholder="Receipt Date" header="Receipt Date"></p-column>
+                <p-column field="OPDReceiptAmount" [filter]="true" filterPlaceholder="Amount" header="Amount"></p-column>
+                
+                <p-column styleClass="col-button" header="Delete">
+                      <template let-col let-cont="rowData" pTemplate="body">
+                        <span [style.color]="cont[col.field]">{{cont[col.field]}}</span>
+                     </template>
+                    <template pTemplate="header">
+                            <button type="button" pButton icon="ui-icon-refresh"></button>
+                    </template>
+                    <template let-cont="rowData" pTemplate="body">
+                            <button type="button" pButton (click)="deleteSubmitParticularsRow(cont)"  icon="ui-icon-delete" label="Cancel"></button>
+                    </template>
+                </p-column>
+            </p-dataTable>
+
+
+</div>
+
+

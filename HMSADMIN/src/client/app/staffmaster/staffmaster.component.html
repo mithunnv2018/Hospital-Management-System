@@ -1,0 +1,378 @@
+
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create staffmaster</h1><br>
+<form [formGroup]="userform">
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffFName" formControlName="StaffFName"> <label>Staff First Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['StaffFName'].valid&&userform.controls['StaffFName'].touched">Staff First Name  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffMName" formControlName="StaffMName"> <label>Staff Middle Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['StaffMName'].valid&&userform.controls['StaffMName'].touched">Staff Middle Name  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffLName" formControlName="StaffLName"> <label>Staff Last Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['StaffLName'].valid&&userform.controls['StaffLName'].touched">Staff Last Name  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffName" formControlName="StaffName"> <label>Staff Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['StaffName'].valid&&userform.controls['StaffName'].touched">Staff  Name  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<p-calendar [(ngModel)]="StaffDob" dateFormat="mm/dd/yy" formControlName="StaffDob"> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['StaffDob'].valid&&userform.controls['StaffDob'].touched">Staff  Dob  Required
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpcatstaffoptions" [(ngModel)]="staffmasterVar.CategoryIdStaffCategoryStaff" formControlName="CategoryIdStaffCategoryStaff"></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CategoryIdStaffCategoryStaff'].valid&&userform.controls['CategoryIdStaffCategoryStaff'].touched">Staff Category  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffPhoneNos" [ngModelOptions]="{standalone: true}"> <label>Phonenos.</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<p-calendar [(ngModel)]="StaffJoinDate" dateFormat="mm/dd/yy" [ngModelOptions]="{standalone: true}"> </p-calendar></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<p-calendar [(ngModel)]="StaffRetirementDate" dateFormat="mm/dd/yy" [ngModelOptions]="{standalone: true}"> </p-calendar></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<p-calendar [(ngModel)]="StaffRemovalDate" dateFormat="mm/dd/yy" [ngModelOptions]="{standalone: true}"> </p-calendar></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<textarea pInputTextarea [(ngModel)]="staffmasterVar.StaffAddress1" formControlName="StaffAddress1" autoResize="autoResize"></textarea>  </span>
+</div>
+</div>
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['StaffAddress1'].valid&&userform.controls['StaffAddress1'].touched">Address  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<textarea pInputTextarea [(ngModel)]="staffmasterVar.StaffAddress2" formControlName="StaffAddress2" autoResize="autoResize"></textarea>  </span>
+</div>
+</div>
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['StaffAddress2'].valid&&userform.controls['StaffAddress2'].touched">Address  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffCity" [ngModelOptions]="{standalone: true}"> <label>City</label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffPin" [ngModelOptions]="{standalone: true}"> <label>Pincode </label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffPhoneno" [ngModelOptions]="{standalone: true}"> <label>PhoneNos. </label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffMobileno" [ngModelOptions]="{standalone: true}"> <label>MobileNos. </label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffEmailid" [ngModelOptions]="{standalone: true}"> <label>Emailid </label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffFax" [ngModelOptions]="{standalone: true}"> <label>Fax </label></span>
+</div>
+</div>
+
+
+</div>
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpStaffSexoptions" [(ngModel)]="staffmasterVar.StaffSex" [ngModelOptions]="{standalone: true}"></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+</div>
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpMaritalStatusoptions" [(ngModel)]="staffmasterVar.StaffMaritalStatus" [ngModelOptions]="{standalone: true}"></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffBloodGroup" [ngModelOptions]="{standalone: true}"> <label>Blood Group </label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffPost" [ngModelOptions]="{standalone: true}"> <label>Post </label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffQualification" [ngModelOptions]="{standalone: true}"> <label>Qualification </label></span>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="staffmasterVar.StaffRef" [ngModelOptions]="{standalone: true}"> <label>Reference </label></span>
+</div>
+</div>
+
+
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton (click)="onSubmit()" [disabled]="!userform.valid" label="Submit"></button>
+<br>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton (click)="clear()" label="Clear"></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="staffmaster" selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectstaffmaster($event)" [(selection)]="selectedRow">
+
+ 
+ 
+<p-column field="StaffName" [filter]="true" filterPlaceholder="Search StaffName" header="StaffName">
+</p-column>
+
+<p-column field="StaffDob" [filter]="true" filterPlaceholder="Search StaffDob" header="StaffDob">
+</p-column>
+ 
+<p-column field="StaffPhoneNos" [filter]="true" filterPlaceholder="Search StaffPhoneNos" header="StaffPhoneNos">
+</p-column>
+
+  
+<p-column field="StaffSex" [filter]="true" filterPlaceholder="Search StaffSex" header="StaffSex">
+</p-column>
+
+</p-dataTable>
+
+

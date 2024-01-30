@@ -1,0 +1,100 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create citymaster</h1><br/>
+<form [formGroup]="userform" >
+    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+        <div class='ui-grid-row' style='width:100%;'>
+            <div class='ui-g form-group' style='width:80%;'>
+                <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                    <span class='md-inputfield'>
+                        <input pInputText type='text' [(ngModel)]='citymasterVar.CityName' formControlName='CityName' /> 
+                        <label>City name</label>
+                    </span>
+                </div>
+            </div>
+            <div class="ui-grid-col-4">   
+                <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CityName'].valid&&userform.controls['CityName'].touched">City Name  Required
+                </div>
+            </div>
+        </div>
+
+        <div class='ui-grid-row' style='width:100%;'>
+            <div class='ui-g form-group' style='width:80%;'>
+                <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                    <span class='md-inputfield'>
+                        <input pInputText type='text' [(ngModel)]='citymasterVar.CityAliasName' formControlName='CityAliasName' /> 
+                        <label>City Alias Name</label>
+                    </span>
+                </div>
+            </div>
+            <div class="ui-grid-col-4">   
+                <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CityAliasName'].valid&&userform.controls['CityAliasName'].touched">City Alias Name  Required
+                </div>
+            </div>
+        </div>
+        
+        <div class='ui-grid-row' style='width:100%;'>
+            <div class='ui-g form-group' style='width:80%;'>
+                <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                    <span class='md-inputfield'>
+                        <p-dropdown [style]="{'width':'90%'}" [options]="drpcountryoptionss" [(ngModel)]="ngModelCountryId"  [ngModelOptions]="{standalone: true}" (onChange)="populateStateMaster($event)">
+                        </p-dropdown> 
+                    </span>
+                </div>
+           </div>
+        </div>
+
+
+
+        <div class='ui-grid-row' style='width:100%;'>
+            <div class='ui-g form-group' style='width:80%;'>
+                <div class='ui-g-12 ui-md-4' style='width:100%;'>
+                    <span class='md-inputfield'>
+
+                        <p-dropdown [style]="{'width':'90%'}" [options]="drpstateoptions" [(ngModel)]="citymasterVar.StateIdCityMaster" formControlName="StateIdCityMaster"></p-dropdown> 
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="ui-grid-col-4">   
+                <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['StateIdCityMaster'].valid&&userform.controls['StateIdCityMaster'].touched">Country  Required
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-grid-row" style="width:100%;"> 
+            <div class="ui-g form-group" style="width:80%;">
+                <div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+                    <div style="width:50%">
+                        <button pButton  (click)="onSubmit()" label="Submit" [disabled]="!userform.valid" ></button>
+                        <br/>
+                    </div>  
+                    <div style="width:50%;float:right;">
+                        <button pButton  (click)="clear()" label="Clear" ></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+<p-dataTable [value]="vw_city_vw_state_country" selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectvw_city_vw_state_country($event)" [(selection)]="selectedRow">
+
+
+<p-column field="CityName" [filter]="true" filterPlaceholder="Search CityName"  header="CityName">
+</p-column>
+
+
+<p-column field="StateName" [filter]="true" filterPlaceholder="Search StateName"  header="StateName">
+</p-column>
+
+
+</p-dataTable>
+
+
+

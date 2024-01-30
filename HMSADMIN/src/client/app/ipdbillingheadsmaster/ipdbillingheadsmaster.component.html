@@ -1,0 +1,114 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create ipdbillingheads</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdbillingheadsVar.IPDBillingHeadsName' formControlName='IPDBillingHeadsName' /> <label>Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDBillingHeadsName'].valid&&userform.controls['IPDBillingHeadsName'].touched">Name Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdbillingheadsVar.IPDBillingHeadsAliasName' formControlName='IPDBillingHeadsAliasName' /> <label>Alias Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDBillingHeadsAliasName'].valid&&userform.controls['IPDBillingHeadsAliasName'].touched">Alias Name Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdbillingheadsVar.IPDBillingHeadsAmount' formControlName='IPDBillingHeadsAmount' /> <label>Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDBillingHeadsAmount'].valid&&userform.controls['IPDBillingHeadsAmount'].touched">Amount Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='ipdbillingheadsVar.IPDBillingHeadsTrustAmount' formControlName='IPDBillingHeadsTrustAmount' /> <label>Trust Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDBillingHeadsTrustAmount'].valid&&userform.controls['IPDBillingHeadsTrustAmount'].touched">Trust Amount Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="VwIPDBillingHeadsHospital" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectVwIPDBillingHeadsHospital($event)" 
+	[(selection)]="selectedRow">
+
+ 
+<p-column field="IPDBillingHeadsName" [filter]="true" 
+filterPlaceholder="Search IPDBillingHeadsName"  header="IPDBillingHeadsName">
+</p-column>
+
+<p-column field="IPDBillingHeadsAliasName" [filter]="true" 
+filterPlaceholder="Search IPDBillingHeadsAliasName"  header="IPDBillingHeadsAliasName">
+</p-column>
+
+<p-column field="IPDBillingHeadsAmount" [filter]="true" 
+filterPlaceholder="Search IPDBillingHeadsAmount"  header="IPDBillingHeadsAmount">
+</p-column>
+
+<p-column field="IPDBillingHeadsTrustAmount" [filter]="true" 
+filterPlaceholder="Search IPDBillingHeadsTrustAmount"  header="IPDBillingHeadsTrustAmount">
+</p-column>
+
+              
+</p-dataTable>
+

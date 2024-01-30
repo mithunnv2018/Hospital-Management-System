@@ -1,0 +1,702 @@
+@charset "utf-8";
+/* CSS Document */
+@media only screen and (min-device-width : 1024px) and (max-device-width : 1920px)
+{
+}
+
+@media only screen and (min-device-width :768px) and (max-device-width :1023px)
+{
+	.header-container
+	{
+		width:90%;
+		margin:0 auto;
+	}
+	.logo
+	{
+	  width:90%;
+	  text-align:left;
+	  margin-top:0;
+	  padding-top:2.5%;
+	  padding-bottom:2.5%;
+	}
+	.toggle-button
+	{
+	  display:block;
+	  width:10%;
+	  padding-top:1.5%;
+	  padding-bottom:0.5%;
+	  float:right;
+	  text-align:right;
+	}
+	.nav
+	{
+	  width:100%;
+	  border:1px solid #ccc;
+	  margin-top:2%;
+	  display:none;
+	}
+	.nav ul li
+	{
+	  width:100%;
+	  border-bottom:1px solid #ccc;
+	}
+	.nav ul li:none
+	{
+	  border-bottom:none;
+	} 
+	.nav-first-divider
+	{
+	  display:none;
+	}
+	.nav ul li a
+	{
+	   padding:10px 12px;
+	   width:93%;
+	   text-align:left;
+	}
+	li.nav-first
+	{
+		padding:0px 0px;
+		margin-top:1.5%;
+		padding:5px;
+		width:90%;
+	}
+	.nav-first
+	{
+		border:none;
+	}
+	li.nav-first a.dropdown-new
+	{
+		width:10%;
+	}
+	li.nav-first input[type="text"].dropdown-new
+	{
+		padding:0px 0px 10px 0px;	
+		width:75%;
+		vertical-align:middle;
+	}
+	.dropdown-content 
+	{
+		width: 250px;
+	}
+	li:last-child a.start-now-button
+	{
+		margin-top:0%;
+	}
+	.container, .filter-container
+	{
+		width:90%;
+	}
+	.popular-search-block
+	{
+		width:31%;
+		margin:1%;
+	}
+	.post-job-list
+	{
+		margin-right:0;
+	}
+	.popular-services-block2
+	{
+		width:96%;
+		margin-left:0;
+		margin-right:0;
+	}
+	.top-brands-container-inner, .top-skill-container-inner
+	{
+		width:90%;
+	}
+	.pricing-n-level-left
+	{
+		width:100%;
+		text-align:center;
+	}
+	.pricing-n-level-right
+	{
+		width:100%;
+		margin-left:0%;
+	}
+	.pricing-n-level-right > .how-it-works-block
+	{
+		width:31%;
+	}
+	.row nav li
+	{
+		margin-bottom:1%;
+	}
+	.freelancer-container, .my-profile-container
+	{
+		width:86%;
+	}
+	.freelancer-container-details
+	{
+		width:90%;
+	}
+	.for-button-left
+	{
+		width:30%;
+	}
+	td:nth-of-type(2), td:nth-of-type(3), td:nth-of-type(4), td:nth-of-type(5), td:nth-of-type(6), td:nth-of-type(7)
+	{
+		text-align:left;
+	}
+	.col-first
+	{
+		width:60%;
+	}
+	.col-second
+	{
+		width:40%;
+	}
+	.statement-col
+	{
+		width:100%;
+	}
+	.popular-services-block1
+	{
+		width:100%;
+	}
+	.left-block1
+	{
+		padding:2% 2%;
+	}
+	.freelancer-after-login-header ul
+	{
+		width:90%;
+	}
+	.row nav ul, .left-block2 ul     
+	{ 
+		display: none;
+	}
+    .row nav select, .left-block2 nav select  
+	{ 
+		display: inline-block; 
+		width:75%; 
+		padding:2%;
+	}
+	.post-job-list-paggination { width:100%;}
+	.pagination	{ width:75%; }
+	.for-button	{ width:25%; }
+	.proposal-cols, .proposal-cols-large { width:100%;}
+	.post-job-right-block-hedding h3 {width:89%;}
+	.payment-status-inner-blocks {width:auto; margin-right:5%;}
+	.membership { width:96%; margin-left:0; margin-right:0; padding:0;} 
+	.available-coins-left, .available-coins-right { width:100%; }
+	.available-coins-circle { margin:0 auto;}
+	.my-profile-container { width:100%;}
+	.textarea1{ padding:2% 1%;	}
+}
+
+@media only screen and (min-device-width : 300px) and (max-device-width : 767px) 
+{
+	h1{font-size:x-large;}
+	h2{font-size:large;}
+	h3{font-size:large;}
+	
+	.wrapper 
+	{
+		width:100%;
+		margin: 0 auto;
+	}
+
+	.header-container
+	{
+		width:90%;
+		margin:0 auto;
+	}
+	.logo
+	{
+	  width:90%;
+	  text-align:left;
+	  padding-top:2.5%;
+	  padding-bottom:2.5%;
+	}
+	.toggle-button
+	{
+	  display:block;
+	  width:10%;
+	  padding-top:2.5%;
+	  padding-bottom:2.5%;
+	  float:right;
+	  text-align:right;
+	}
+	.nav
+	{
+	  width:100%;
+	  border:1px solid #ccc;
+	  margin-top:2%;
+	  display:none;
+	}
+	.nav ul li
+	{
+	  width:100%;
+	  border-bottom:1px solid #ccc;
+	}
+	.nav ul li:none
+	{
+	  border-bottom:none;
+	} 
+	.nav-first-divider
+	{
+	  display:none;
+	}
+	.nav ul li a
+	{
+	   padding:10px 12px;
+	   width:93%;
+	   text-align:left;
+	}
+	li.nav-first
+	{
+		padding:0px 0px;
+		margin-top:1.5%;
+		padding:5px;
+		width:90%;
+	}
+	.nav-first
+	{
+		border:none;
+	}
+	li.nav-first a.dropdown-new
+	{
+		width:10%;
+	}
+	li.nav-first input[type="text"].dropdown-new
+	{
+		padding:0px 0px 10px 0px;	
+		width:75%;
+		vertical-align:middle;
+	}
+	.dropdown-content 
+	{
+		width: 250px;
+	}
+	li:last-child a.start-now-button
+	{
+		margin-top:0%;
+	}
+	.container, .filter-container
+	{
+		width:90%;
+	}
+	.left-block, .right-block
+	{
+		width:100%;
+		margin:5% 0%;
+	}
+	.left-block img, .right-block img
+	{
+		margin:5% 0%;
+	}
+	.vertical-parition
+	{
+		display:none;
+	}
+	.horizontal-parition
+	{
+		display:block;
+		height:auto;
+	}
+	.popular-search-block
+	{
+		width:46%;
+		margin:1%;
+	}
+	.popular-services-block1, .popular-services-block2
+	{
+		width:100%;
+		margin-bottom:5%;
+		margin:0% 0%;
+	}
+	.popular-services-block2-inner
+	{
+		width:100%;
+		margin-bottom:5%;
+	}
+	.popular-services-block2-inner-middle
+	{
+		margin-bottom:10%;
+	}
+	.how-it-works-block
+	{
+		width:100%;
+		margin-left:0%;
+		margin-top:10%;
+	}
+	.how-it-works-block:last-child
+	{
+		margin-bottom:0%;
+	}
+	.how-it-works-block p
+	{
+		padding:20px 10px;
+	}
+	.pricing-n-level-left, .pricing-n-level-right
+	{
+		width:100%;
+		margin-left:0%;
+	}	
+	.pricing-n-level-right > .how-it-works-block
+	{
+		width:100%;
+		margin-left:0%;
+		margin-bottom:5%;
+	}
+	.testimonial-left, .testimonial-right
+	{
+		width:100%;
+	}
+	/*.top-brands-container-inner h1, .top-skill-container-inner h1
+	{
+		font-size:x-large;
+	}*/
+	.top-brands
+	{
+		width:100%;
+	}
+	.top-skill-links
+	{
+		width:100%;
+	}
+	.logmod
+	{
+		width:90%;
+		margin:0 auto;
+	}
+	.logmod__wrapper
+	{
+		width:100%;
+	}
+	.logmod__tabs li a
+	{
+		font-size:small;
+		height:50px;
+		line-height:50px;
+		letter-spacing:normal;
+	}
+	.row nav ul, .left-block2 ul     
+	{ 
+		display: none;
+	}
+    .row nav select, .left-block2 nav select  
+	{ 
+		display: inline-block; 
+		width:100%; 
+		padding:2%;
+	}
+	label 
+	{
+		margin-right:10px; 
+		float:left;
+		width:31.5%;
+		font-size:medium;
+	}
+	.row nav
+	{
+		width:65%; 
+		float:left;
+	}
+	.filter
+	{
+		width:49%;
+		margin-right:0;
+		margin-bottom:2%;
+	}
+	.freelancer-container, .my-profile-container
+	{
+		width:86%;
+	}
+	.freelancer-col-1, .freelancer-col-2, .freelancer-col-3
+	{
+		width:100%;
+		margin:5% 0%;
+	}
+	.freelancer-col-2 h4
+	{
+		margin:2.5% 0%;
+	}
+	fieldset
+	{
+		width:90%;
+	}
+	.pagination
+	{
+		width:100%;
+	}
+	.pagination ul li
+	{
+		padding:5px 10px;
+	}
+	.for-button
+	{
+		width:100%;
+	}
+	.freelancer-container-details
+	{
+		width:90%;
+	}
+	.freelancer-container-details-left
+	{
+		width:100%;
+	}
+	.freelancer-col-2-outer
+	{
+		width:100%;
+	}
+	.freelancer-col-3-details
+	{
+		width:100%;
+		float:left;
+		text-align:center;
+	}
+	.filter
+	{
+		width:49.3%;
+	}
+	.work-history-division h3
+	{
+		width:100%;
+	}
+	.work-history-division p
+	{
+		width:100%;
+		text-align:left;
+	}
+	.freelancer-container-details-right
+	{
+		width:100%;
+	}
+	.employee-after-login-details input
+	{
+		width:98%;
+	}
+	.project-type
+	{
+		width:70%;
+		margin:0 auto;
+		margin-bottom:5%;
+		float:none;
+	}
+	.desired-experience-level
+	{
+		width:80%;
+		float:none;
+		margin:0 auto;
+		margin-bottom:5%;
+		padding:5% 2%;
+	}
+	.for-button-left
+	{
+		width:70%;
+		margin:0 auto;
+		float:none;
+		margin-top:5%;
+	}
+	td:nth-of-type(2), td:nth-of-type(3), td:nth-of-type(4), td:nth-of-type(5), td:nth-of-type(6), td:nth-of-type(7)
+	{
+		text-align:left;
+	}
+	.col-first, .col-second
+	{
+		width:100%;
+		text-align:left;
+	}
+	.col-first input
+	{
+		width:34%;
+	}
+	.statement-col
+	{
+		width:100%;
+		margin:10% 0%;
+	}
+	.freelancer-col-2-details
+	{
+		margin:5% 0%;
+	}
+	.coins-description-container
+	{
+		margin-right:0;
+		margin-bottom:5%;
+	}
+	.coins-label
+	{
+		width:70%;
+		margin-bottom:5%;
+	}
+	.coins-input
+	{
+		width:30%;
+	}
+	.coins-input
+	{
+		margin-left:0;
+	}
+	.send-message-btn
+	{
+		right:5px;
+	}
+	.middle-block2
+	{
+		width:90%;
+		padding:0;
+		margin:0 auto;
+	}
+	.block2-border
+	{
+		padding:0;
+	}
+	.middle-block2 p
+	{
+		font-size:large;
+	}
+	.middle-block1
+	{
+		text-align:center;
+	}
+	.popular-services-block1
+	{
+		margin-top:10%;
+	}
+	.freelancer-after-login-header ul
+	{
+		width:90%;
+	}
+	.freelancer-after-login-header li a
+	{
+		padding:6% 0%;
+		margin-right:25px;
+	}
+	.post-job-list
+	{
+		width:92%;
+		padding:4%;
+	}
+	.select-text2
+	{
+		float:right;
+		width:50%;
+	}
+	.jobs-found
+	{
+		width:100%;
+		text-align:right;
+		margin-top:5%;
+	}
+	.post-job-right-block-hedding h3
+	{
+		width:100%;	
+	}
+	.post-job-list span
+	{		
+	}
+	.post-job-list label, .freelancer-col-2-details label
+	{
+		width:100%;
+	}
+	.payment-status-inner-blocks
+	{
+		width:auto;
+		margin:1% 0%;
+	}
+	.payment-status-inner-blocks span
+	{
+		float:left;
+	}
+	.post-job-list-paggination
+	{
+		width:100%;
+		margin-top:5%;
+	}
+	.proposal-cols
+	{
+		width:47%;
+	}
+	.proposal-terms-col input[type="text"]
+	{
+		width:60%;
+	}
+	.proposal-cols-large
+	{
+		width:100%;
+	}
+	.membership
+	{
+		width:96%;
+		margin-left:0;
+		margin-right:0;
+		padding:0;
+	}
+	.available-coins-left, .available-coins-right
+	{
+		width:100%;
+	}
+	.available-coins-circle
+	{
+		margin:0 auto;
+	}
+	.plan-detail-main-block
+	{
+		width:100%;
+	}
+	.payment-getway-inner-block center
+	{
+		margin:5% 0%;
+	}
+	.tax-information
+	{
+		width:100%;
+	}
+	.contact-information
+	{
+		width:100%;
+	}
+	.user-image
+	{
+		width:100%;
+		margin:0 auto;
+	}
+	.for-web
+	{
+		display:none;
+	}
+	.for-mobile
+	{
+		display:block;
+	}
+	.membership>.freelancer-container, .membership>.my-profile-container
+	{
+		width:100%;
+	}
+	.project-title-block
+	{
+		width:100%;
+	}
+	.project-title-block-left
+	{
+		width:100%;
+		margin-top:2.5%;
+		margin-bottom:2.5%;
+	}
+	.textarea1
+	{
+		padding:2% 2%;
+		width:96%;
+	}
+	.change-password .plan-details-left
+	{
+		width:45%;
+	}
+	.plan-details-right
+	{
+		width:50%;
+	}
+	.job-list-checkbox
+	{
+		font-size:small;
+	}
+	.myfileupload  .ui-fileupload .ui-fileupload-buttonbar .ui-button
+	{
+    	margin-bottom:10px;
+	}
+}

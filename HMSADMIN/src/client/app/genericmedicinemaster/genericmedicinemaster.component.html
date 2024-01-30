@@ -1,0 +1,137 @@
+<p-growl [value]="msgs"></p-growl>
+<p-dialog header="New Chemical Name" [(visible)]="displaynewchemicalname" modal="modal" width="300" [responsive]="true">
+    <input type="text" [(ngModel)]="newchemicalname"  pInputText>
+    <footer>
+            <button type="button" pButton icon="fa-check" (click)="gotoChemicalNew()" label="Yes"></button>
+            <button type="button" pButton icon="fa-close" (click)="displaynewchemicalname=false" label="No"></button>
+    </footer>
+</p-dialog>
+
+    <h1>Create Generic Medicine </h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='genericmedicinemasterVar.GenericMedicinename' formControlName='GenericMedicinename' /> <label>GenericMedicine Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['GenericMedicinename'].valid&&userform.controls['GenericMedicinename'].touched">GenericMedicine Name  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='genericmedicinemasterVar.GenericGenericname' formControlName='GenericGenericname' /> <label>GenericGeneric name</label></span>
+</div>
+</div>
+
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['GenericGenericname'].valid&&userform.controls['GenericGenericname'].touched">GenericGeneric name  Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<p-autoComplete [(ngModel)]="chemselected" [suggestions]="chemresults" (completeMethod)="filterChemicalName($event)" field="label"  formControlName='GenericChemicalIdgenericmedicinemaster' ></p-autoComplete>
+ <label>Chemical Name</label>
+
+<!--<p-dropdown [style]="{'width':'90%'}" [options]="drpgenmedoptions" [(ngModel)]="genericmedicinemasterVar.GenericChemicalIdgenericmedicinemaster" formControlName='GenericChemicalIdgenericmedicinemaster'></p-dropdown> -->
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+    
+      <button pButton (click)="displaynewchemicalname=true" label="NEW"></button>    
+     
+    
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['GenericChemicalIdgenericmedicinemaster'].valid&&userform.controls['GenericChemicalIdgenericmedicinemaster'].touched">Generic Chemical Name  Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" label="Submit"  [disabled]="!userform.valid" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="ui-grid-row" style="width:100%;">
+        <div class="ui-g form-group" style="width:80%;">
+            <div class="ui-g-12 ui-md-4" style="width:100%;">
+
+                <p-fileUpload name="files" url="{{mybaseurl}}fileupload/multiplefiles"  (onUpload)="onUpload($event)">
+                <template pTemplate type="content">
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+                </template>
+                </p-fileUpload>
+            <ul *ngIf="fileuploadarr.length">
+            <li *ngFor="let file1 of fileuploadarr">{{file1.fileName}}</li>
+            </ul>
+
+            </div>
+        </div>
+
+    </div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onImportExcel()" label="Click To Import Excel" ></button>
+
+
+</div> 
+</div>
+</div>
+</div>
+
+</form>
+
+<p-dataTable [value]="vwgenericmedicinechemicalmaster" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectvwgenericmedicinechemicalmaster($event)" 
+	[(selection)]="selectedRow">
+
+ 
+<p-column field="GenericMedicinename" [filter]="true" 
+filterPlaceholder="Search GenericMedicinename"  header="GenericMedicinename">
+</p-column>
+
+  
+ <p-column field="GenericChemicalName" [filter]="true" 
+filterPlaceholder="Search GenericChemicalName"  header="GenericChemicalName">
+</p-column>
+
+ 
+ </p-dataTable>
+

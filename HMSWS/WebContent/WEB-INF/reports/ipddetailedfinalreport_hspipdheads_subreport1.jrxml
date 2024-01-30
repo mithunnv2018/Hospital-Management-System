@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ipddetailedfinalreport_hspipdheads_subreport1" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="64bcbbbe-54fa-4deb-9f01-01a1c5db4f0d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="sub_param_adminid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     vwhspipdbillingheadsdetails.`IPDBillingHeadsDetailsId` AS vwhspipdbillingheadsdetails_IPDBillingHeadsDetailsId,
+     vwhspipdbillingheadsdetails.`IPDBillingHeadsIdHSPIPDBillingHeadsDetails` AS vwhspipdbillingheadsdetails_IPDBillingHeadsIdHSPIPDBillingHeadsD,
+     vwhspipdbillingheadsdetails.`HSPAdminIdHSPIPDBillingHeadsDetails` AS vwhspipdbillingheadsdetails_HSPAdminIdHSPIPDBillingHeadsDetails,
+     vwhspipdbillingheadsdetails.`IPDBillingHeadsDetailsDate` AS vwhspipdbillingheadsdetails_IPDBillingHeadsDetailsDate,
+     vwhspipdbillingheadsdetails.`IPDBillingHeadsDetailsAmount` AS vwhspipdbillingheadsdetails_IPDBillingHeadsDetailsAmount,
+     vwhspipdbillingheadsdetails.`MemberIdHSPIPDBillingHeadsDetails` AS vwhspipdbillingheadsdetails_MemberIdHSPIPDBillingHeadsDetails,
+     vwhspipdbillingheadsdetails.`StatusHSPIPDBillingHeadsDetails` AS vwhspipdbillingheadsdetails_StatusHSPIPDBillingHeadsDetails,
+     vwhspipdbillingheadsdetails.`IPDBillingHeadsId` AS vwhspipdbillingheadsdetails_IPDBillingHeadsId,
+     vwhspipdbillingheadsdetails.`IPDBillingHeadsName` AS vwhspipdbillingheadsdetails_IPDBillingHeadsName,
+     vwhspipdbillingheadsdetails.`IPDBillingHeadsAliasName` AS vwhspipdbillingheadsdetails_IPDBillingHeadsAliasName,
+     vwhspipdbillingheadsdetails.`IPDBillingHeadsAmount` AS vwhspipdbillingheadsdetails_IPDBillingHeadsAmount,
+     vwhspipdbillingheadsdetails.`IPDBillingHeadsTrustAmount` AS vwhspipdbillingheadsdetails_IPDBillingHeadsTrustAmount,
+     vwhspipdbillingheadsdetails.`HospitalIdIPDBillingHeads` AS vwhspipdbillingheadsdetails_HospitalIdIPDBillingHeads
+FROM
+     `vwhspipdbillingheadsdetails` vwhspipdbillingheadsdetails
+WHERE
+     HSPAdminIdHSPIPDBillingHeadsDetails = $P{sub_param_adminid}]]>
+	</queryString>
+	<field name="vwhspipdbillingheadsdetails_IPDBillingHeadsDetailsId" class="java.lang.String"/>
+	<field name="vwhspipdbillingheadsdetails_IPDBillingHeadsIdHSPIPDBillingHeadsD" class="java.lang.String"/>
+	<field name="vwhspipdbillingheadsdetails_HSPAdminIdHSPIPDBillingHeadsDetails" class="java.lang.String"/>
+	<field name="vwhspipdbillingheadsdetails_IPDBillingHeadsDetailsDate" class="java.sql.Timestamp"/>
+	<field name="vwhspipdbillingheadsdetails_IPDBillingHeadsDetailsAmount" class="java.math.BigDecimal"/>
+	<field name="vwhspipdbillingheadsdetails_MemberIdHSPIPDBillingHeadsDetails" class="java.lang.String"/>
+	<field name="vwhspipdbillingheadsdetails_StatusHSPIPDBillingHeadsDetails" class="java.lang.String"/>
+	<field name="vwhspipdbillingheadsdetails_IPDBillingHeadsId" class="java.lang.String"/>
+	<field name="vwhspipdbillingheadsdetails_IPDBillingHeadsName" class="java.lang.String"/>
+	<field name="vwhspipdbillingheadsdetails_IPDBillingHeadsAliasName" class="java.lang.String"/>
+	<field name="vwhspipdbillingheadsdetails_IPDBillingHeadsAmount" class="java.math.BigDecimal"/>
+	<field name="vwhspipdbillingheadsdetails_IPDBillingHeadsTrustAmount" class="java.math.BigDecimal"/>
+	<field name="vwhspipdbillingheadsdetails_HospitalIdIPDBillingHeads" class="java.lang.String"/>
+	<variable name="total" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{vwhspipdbillingheadsdetails_IPDBillingHeadsDetailsAmount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement x="1" y="2" width="554" height="1" uuid="899f3eb8-b188-4957-aa72-947410ade485"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="2" width="554" height="20" uuid="fc94965f-b80f-42f0-b6c8-36cbd4021fdb"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bill Detailed report: -]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="2" width="232" height="20" uuid="c47b06e1-1072-4a5e-8afd-fbcb9b8fbb92"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Head Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="235" y="2" width="100" height="20" uuid="25cfa739-8462-458b-b8c0-fc870b7e4a21"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="2" width="100" height="20" uuid="a74cd8ab-77a7-4865-9db7-9d858b05e515"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="1" width="232" height="20" isPrintWhenDetailOverflows="true" uuid="0a8f0964-8747-4528-9e70-ad6ab4804582"/>
+				<textFieldExpression><![CDATA[$F{vwhspipdbillingheadsdetails_IPDBillingHeadsName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yy">
+				<reportElement stretchType="RelativeToBandHeight" x="235" y="1" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="19ca9b5b-a34c-4602-8055-e522ed8f105b"/>
+				<textFieldExpression><![CDATA[$F{vwhspipdbillingheadsdetails_IPDBillingHeadsDetailsDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement stretchType="RelativeToBandHeight" x="336" y="1" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="7c2de816-800c-437a-8129-d76fbfc7bc39"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{vwhspipdbillingheadsdetails_IPDBillingHeadsDetailsAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement x="336" y="0" width="100" height="20" uuid="a681c957-c8f6-4cfb-a569-120a213e1b84"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

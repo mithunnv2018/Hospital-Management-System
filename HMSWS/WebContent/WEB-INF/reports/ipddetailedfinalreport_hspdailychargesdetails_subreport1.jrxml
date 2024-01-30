@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ipddetailedfinalreport_hspdailychargesdetails_subreport1" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="99a33d61-bc19-4719-aa88-5433369324db">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="sub_param_adminid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     vwhspdailychargesdetails.`DailyChargesDetailsId` AS vwhspdailychargesdetails_DailyChargesDetailsId,
+     vwhspdailychargesdetails.`IPDBillingHeadsIdhspdailychargesdetails` AS vwhspdailychargesdetails_IPDBillingHeadsIdhspdailychargesdetails,
+     vwhspdailychargesdetails.`HSPAdminIdhspdailychargesdetails` AS vwhspdailychargesdetails_HSPAdminIdhspdailychargesdetails,
+     vwhspdailychargesdetails.`DailyChargesDetailsFromDate` AS vwhspdailychargesdetails_DailyChargesDetailsFromDate,
+     vwhspdailychargesdetails.`DailyChargesDetailsToDate` AS vwhspdailychargesdetails_DailyChargesDetailsToDate,
+     vwhspdailychargesdetails.`DailyChargesDetailsAmount` AS vwhspdailychargesdetails_DailyChargesDetailsAmount,
+     vwhspdailychargesdetails.`DailyChargesDetailsRoundOff` AS vwhspdailychargesdetails_DailyChargesDetailsRoundOff,
+     vwhspdailychargesdetails.`MemberIdhspdailychargesdetails` AS vwhspdailychargesdetails_MemberIdhspdailychargesdetails,
+     vwhspdailychargesdetails.`Statushspdailychargesdetails` AS vwhspdailychargesdetails_Statushspdailychargesdetails,
+     vwhspdailychargesdetails.`IPDBillingHeadsId` AS vwhspdailychargesdetails_IPDBillingHeadsId,
+     vwhspdailychargesdetails.`IPDBillingHeadsName` AS vwhspdailychargesdetails_IPDBillingHeadsName,
+     vwhspdailychargesdetails.`IPDBillingHeadsAliasName` AS vwhspdailychargesdetails_IPDBillingHeadsAliasName,
+     vwhspdailychargesdetails.`IPDBillingHeadsAmount` AS vwhspdailychargesdetails_IPDBillingHeadsAmount,
+     vwhspdailychargesdetails.`IPDBillingHeadsTrustAmount` AS vwhspdailychargesdetails_IPDBillingHeadsTrustAmount,
+     vwhspdailychargesdetails.`HospitalIdIPDBillingHeads` AS vwhspdailychargesdetails_HospitalIdIPDBillingHeads,
+     vwhspdailychargesdetails.`DailyChargesDetailsDays` AS vwhspdailychargesdetails_DailyChargesDetailsDays
+FROM
+     `vwhspdailychargesdetails` vwhspdailychargesdetails
+WHERE
+     HSPAdminIdhspdailychargesdetails = $P{sub_param_adminid}]]>
+	</queryString>
+	<field name="vwhspdailychargesdetails_DailyChargesDetailsId" class="java.lang.String"/>
+	<field name="vwhspdailychargesdetails_IPDBillingHeadsIdhspdailychargesdetails" class="java.lang.String"/>
+	<field name="vwhspdailychargesdetails_HSPAdminIdhspdailychargesdetails" class="java.lang.String"/>
+	<field name="vwhspdailychargesdetails_DailyChargesDetailsFromDate" class="java.sql.Timestamp"/>
+	<field name="vwhspdailychargesdetails_DailyChargesDetailsToDate" class="java.sql.Timestamp"/>
+	<field name="vwhspdailychargesdetails_DailyChargesDetailsAmount" class="java.math.BigDecimal"/>
+	<field name="vwhspdailychargesdetails_DailyChargesDetailsRoundOff" class="java.lang.String"/>
+	<field name="vwhspdailychargesdetails_MemberIdhspdailychargesdetails" class="java.lang.String"/>
+	<field name="vwhspdailychargesdetails_Statushspdailychargesdetails" class="java.lang.String"/>
+	<field name="vwhspdailychargesdetails_IPDBillingHeadsId" class="java.lang.String"/>
+	<field name="vwhspdailychargesdetails_IPDBillingHeadsName" class="java.lang.String"/>
+	<field name="vwhspdailychargesdetails_IPDBillingHeadsAliasName" class="java.lang.String"/>
+	<field name="vwhspdailychargesdetails_IPDBillingHeadsAmount" class="java.math.BigDecimal"/>
+	<field name="vwhspdailychargesdetails_IPDBillingHeadsTrustAmount" class="java.math.BigDecimal"/>
+	<field name="vwhspdailychargesdetails_HospitalIdIPDBillingHeads" class="java.lang.String"/>
+	<field name="vwhspdailychargesdetails_DailyChargesDetailsDays" class="java.lang.Integer"/>
+	<variable name="total" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{vwhspdailychargesdetails_DailyChargesDetailsAmount}.doubleValue()*$F{vwhspdailychargesdetails_DailyChargesDetailsDays}.doubleValue()]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement x="1" y="1" width="554" height="1" uuid="c9a7d140-496f-4d9c-a89b-6daa343c0616"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="2" width="554" height="20" uuid="fe43ff76-b9dc-4c4b-863e-61957012813f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Daily Charge Detailed report: -]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="0" width="149" height="20" uuid="f608c82a-bcd6-47a6-b240-16ed10b2aee3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Head Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="0" width="65" height="20" uuid="0c29649a-d44f-4d06-914c-39ea5601414a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[From Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="381" y="0" width="58" height="20" uuid="5dee876b-cf02-4cca-86c1-0e20c6510831"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[No. of days]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="281" y="0" width="100" height="20" uuid="ae050043-232f-4fc3-a4e8-f174c66fc78d"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="0" width="100" height="20" uuid="24e0461f-06ca-439a-9c8d-33b9e891115b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="216" y="0" width="65" height="20" uuid="c41e091d-6356-4c4c-844a-c1ab77fa30a7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[To Date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="0" width="149" height="20" isPrintWhenDetailOverflows="true" uuid="537cd1e9-259e-4f2a-b558-7725899d8704"/>
+				<textFieldExpression><![CDATA[$F{vwhspdailychargesdetails_IPDBillingHeadsName}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yy">
+				<reportElement x="151" y="0" width="65" height="20" uuid="410eacaa-0fc8-4e74-9edf-84dff1e866ec"/>
+				<textFieldExpression><![CDATA[$F{vwhspdailychargesdetails_DailyChargesDetailsFromDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement stretchType="RelativeToBandHeight" x="281" y="0" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="7e6850d8-4615-4b7e-93c9-d3476c93dbcb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{vwhspdailychargesdetails_DailyChargesDetailsAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="0" width="58" height="20" uuid="2efba0b4-c725-4f49-9127-03e50c823d1c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{vwhspdailychargesdetails_DailyChargesDetailsDays}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="440" y="0" width="100" height="20" uuid="bef51a73-d60d-4c82-a0eb-e8dc9f6c8476"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{vwhspdailychargesdetails_DailyChargesDetailsAmount}.doubleValue()*$F{vwhspdailychargesdetails_DailyChargesDetailsDays}.doubleValue()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="216" y="0" width="65" height="20" uuid="f9094f5b-1034-46cb-b538-6c73a232a31a"/>
+				<textFieldExpression><![CDATA[$F{vwhspdailychargesdetails_DailyChargesDetailsToDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement stretchType="RelativeToBandHeight" x="439" y="0" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="cd8dc82e-5d94-4f89-bce8-304a72e86353"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

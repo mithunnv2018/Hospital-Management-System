@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OPDBillsortbyparticularsDetailsReport_subreport1" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="381d8e87-619a-49d4-a590-b39cae6b2100">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_fromdate" class="java.lang.String"/>
+	<parameter name="param_todate" class="java.lang.String"/>
+	<parameter name="param_hospitalid" class="java.lang.String"/>
+	<parameter name="param_OPDBillParticularsId" class="java.lang.String"/>
+	<parameter name="param_OPDBillParticularsName" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     a.`OPDBillDetailsNos`,
+     c.`OPDBillParticularsName`,
+     b.`OPDBillParticularsDetailsAmount`,
+     a.`OPDBillDetailsDate`,
+     d.`member_name`,
+     ipdmaster.`IPDId` AS ipdmaster_IPDId,
+     ipdmaster.`IPDName` AS ipdmaster_IPDName
+FROM
+     `opdbilldetails` a INNER JOIN `opdbillparticularsdetails` b ON a.`OPDBillDetailsId` = b.`OPDBillDetailsIdOPDBillParticularsDetails`
+     INNER JOIN `opdbillparticulars` c ON b.`OPDBillParticularsIdOPDBillParticularsDetails` = c.`OPDBillParticularsId`
+     INNER JOIN `tbl_member_master` d ON a.`MemberIdOPDBillDetails` = d.`member_id`
+     INNER JOIN `ipdmaster` ipdmaster ON a.`IPDIdOPDBillDetails` = ipdmaster.`IPDId`
+WHERE
+     a.OPDBillDetailsDate BETWEEN $P{param_fromdate} AND $P{param_todate}
+ AND a.HospitalIdOPDBillDetails = $P{param_hospitalid}
+ AND a.StatusOPDBillDetails = 'active'
+ AND b.OPDBillParticularsIdOPDBillParticularsDetails=$P{param_OPDBillParticularsId}
+
+ORDER BY
+     a.CreateDateOPDBillDetails ASC]]>
+	</queryString>
+	<field name="OPDBillDetailsNos" class="java.lang.String">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "txt","formcontrolname": "","ngmodel": "","errorstring": "Bill Nos ","drptblpkname": "BedsNos","placeholder": "Bill Nos","options": "drpCityoptions","drpptblname": "tbl_City_master","drptblpk": "City_id","drptblwhere": "country_id","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<field name="OPDBillParticularsName" class="java.lang.String">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "txt","formcontrolname": "","ngmodel": "","errorstring": "OPDBillParticulars Name ","drptblpkname": "BedsNos","placeholder": "OPDBillParticulars Name","options": "drpCityoptions","drpptblname": "tbl_City_master","drptblpk": "City_id","drptblwhere": "country_id","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<field name="OPDBillParticularsDetailsAmount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "txt","formcontrolname": "","ngmodel": "","errorstring": "Amount","drptblpkname": "BedsNos","placeholder": "Amount  ","options": "drpCityoptions","drpptblname": "tbl_City_master","drptblpk": "City_id","drptblwhere": "country_id","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<field name="OPDBillDetailsDate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "date","formcontrolname": "","ngmodel": "","errorstring": "Bill Date","drptblpkname": "BedsNos","placeholder": "Bill Date","options": "drpNameoptions","drpptblname": "tbl_Name_master","drptblpk": "Name_id","drptblwhere": "country_id","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<field name="member_name" class="java.lang.String">
+		<fieldDescription><![CDATA[{"validation":"yes","group":"","controltype":"txt","formcontrolname":"","ngmodel":"","errorstring":"Member Name","placeholder":"Member Name","options":"mycustomoption"}]]></fieldDescription>
+	</field>
+	<field name="ipdmaster_IPDId" class="java.lang.String"/>
+	<field name="ipdmaster_IPDName" class="java.lang.String"/>
+	<variable name="totalamount" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{OPDBillParticularsDetailsAmount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" uuid="903f9d85-dd82-4eb7-aaae-4bbdc0ad9e00"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{param_OPDBillParticularsName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="e46d23c5-2a4b-4ea8-918a-b183f5f203c5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bill No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="99" y="0" width="136" height="20" uuid="ad5030c1-1dc7-4b16-b9ee-5d53dfaa672a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="235" y="0" width="120" height="20" uuid="74ac959e-8fc4-4f69-aa26-e8e368f2c82c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prepared By]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="0" width="100" height="20" uuid="70240094-e05a-4545-a977-fee26065ab6b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bill Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="540f955d-6ab6-4009-a750-be253f8a355b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="6f5e8329-9f9a-4c64-aa48-96271f975f3f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{OPDBillDetailsNos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="99" y="0" width="136" height="20" uuid="96a22651-922f-405d-87e5-af7608b641d2"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ipdmaster_IPDName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="235" y="0" width="120" height="20" uuid="99115794-72ef-4d37-af87-3dfd03bc1c11"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{member_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yy">
+				<reportElement x="355" y="0" width="100" height="20" uuid="2d2c82c3-f8d7-48d7-9457-3e65071813e9"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{OPDBillDetailsDate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="455" y="0" width="100" height="20" uuid="3ff488b9-fadc-4239-a946-884815a195ec"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{OPDBillParticularsDetailsAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="343" y="0" width="75" height="20" uuid="bb87bfaa-543e-4c08-b4d0-775bed36d5bc"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Amount:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="418" y="0" width="100" height="20" uuid="42cd6d0c-dafb-439f-87ed-c20781d5c6a1"/>
+				<textFieldExpression><![CDATA[$V{totalamount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

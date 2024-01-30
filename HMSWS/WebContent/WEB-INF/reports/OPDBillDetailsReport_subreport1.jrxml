@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OPDBillDetailsReport_subreport1" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="60566567-e8ce-4c20-8c61-7ad70eeb95d3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_subreportopdbilldetailsid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     vw_opdbillparticularsdetails.`OPDBillParticularsId` AS vw_opdbillparticularsdetails_OPDBillParticularsId,
+     vw_opdbillparticularsdetails.`OPDBillParticularsName` AS vw_opdbillparticularsdetails_OPDBillParticularsName,
+     vw_opdbillparticularsdetails.`OPDBillParticularsAliasName` AS vw_opdbillparticularsdetails_OPDBillParticularsAliasName,
+     vw_opdbillparticularsdetails.`OPDBillParticularsTrustAmount` AS vw_opdbillparticularsdetails_OPDBillParticularsTrustAmount,
+     vw_opdbillparticularsdetails.`OPDBillParticularsAmount` AS vw_opdbillparticularsdetails_OPDBillParticularsAmount,
+     vw_opdbillparticularsdetails.`HospitalIdOPDBillParticulars` AS vw_opdbillparticularsdetails_HospitalIdOPDBillParticulars,
+     vw_opdbillparticularsdetails.`OPDBillParticularsDetailsId` AS vw_opdbillparticularsdetails_OPDBillParticularsDetailsId,
+     vw_opdbillparticularsdetails.`OPDBillParticularsIdOPDBillParticularsDetails` AS vw_opdbillparticularsdetails_OPDBillParticularsIdOPDBillParticul,
+     vw_opdbillparticularsdetails.`OPDBillDetailsIdOPDBillParticularsDetails` AS vw_opdbillparticularsdetails_OPDBillDetailsIdOPDBillParticularsD,
+     vw_opdbillparticularsdetails.`OPDBillParticularsDetailsAmount` AS vw_opdbillparticularsdetails_OPDBillParticularsDetailsAmount
+FROM
+     `vw_opdbillparticularsdetails` vw_opdbillparticularsdetails
+WHERE
+     OPDBillDetailsIdOPDBillParticularsDetails = $P{param_subreportopdbilldetailsid}]]>
+	</queryString>
+	<field name="vw_opdbillparticularsdetails_OPDBillParticularsId" class="java.lang.String"/>
+	<field name="vw_opdbillparticularsdetails_OPDBillParticularsName" class="java.lang.String"/>
+	<field name="vw_opdbillparticularsdetails_OPDBillParticularsAliasName" class="java.lang.String"/>
+	<field name="vw_opdbillparticularsdetails_OPDBillParticularsTrustAmount" class="java.math.BigDecimal"/>
+	<field name="vw_opdbillparticularsdetails_OPDBillParticularsAmount" class="java.math.BigDecimal"/>
+	<field name="vw_opdbillparticularsdetails_HospitalIdOPDBillParticulars" class="java.lang.String"/>
+	<field name="vw_opdbillparticularsdetails_OPDBillParticularsDetailsId" class="java.lang.Long"/>
+	<field name="vw_opdbillparticularsdetails_OPDBillParticularsIdOPDBillParticul" class="java.lang.String"/>
+	<field name="vw_opdbillparticularsdetails_OPDBillDetailsIdOPDBillParticularsD" class="java.lang.String"/>
+	<field name="vw_opdbillparticularsdetails_OPDBillParticularsDetailsAmount" class="java.math.BigDecimal"/>
+	<columnHeader>
+		<band height="23">
+			<staticText>
+				<reportElement x="2" y="2" width="295" height="20" uuid="a337df46-215e-44cd-b353-0a51679ad81d"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<text><![CDATA[Particulars]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="297" y="2" width="226" height="20" uuid="6331d6bd-4640-4263-a819-f4171b985aee"/>
+				<box rightPadding="5">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="2" y="0" width="295" height="20" isPrintWhenDetailOverflows="true" uuid="df643644-d732-4a30-babb-98fe33e2c965"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{vw_opdbillparticularsdetails_OPDBillParticularsName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="297" y="0" width="226" height="20" isPrintWhenDetailOverflows="true" uuid="b12d4c9a-261f-462d-818c-d3389eae271a"/>
+				<box rightPadding="5">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{vw_opdbillparticularsdetails_OPDBillParticularsDetailsAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

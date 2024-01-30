@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ipdreceiptreport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="de1162fd-caba-463d-90af-023e9393f4cd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_rcppayid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     vwhspipdreceiptpaymentdetails.`RCPPayId` AS vwhspipdreceiptpaymentdetails_RCPPayId,
+     vwhspipdreceiptpaymentdetails.`RCPPayDate` AS vwhspipdreceiptpaymentdetails_RCPPayDate,
+     vwhspipdreceiptpaymentdetails.`RCPPayAmount` AS vwhspipdreceiptpaymentdetails_RCPPayAmount,
+     vwhspipdreceiptpaymentdetails.`RCPPayPaymentType` AS vwhspipdreceiptpaymentdetails_RCPPayPaymentType,
+     vwhspipdreceiptpaymentdetails.`RCPPayType` AS vwhspipdreceiptpaymentdetails_RCPPayType,
+     vwhspipdreceiptpaymentdetails.`RCPPayBankCashDetails` AS vwhspipdreceiptpaymentdetails_RCPPayBankCashDetails,
+     vwhspipdreceiptpaymentdetails.`RCPPayRemarks` AS vwhspipdreceiptpaymentdetails_RCPPayRemarks,
+     vwhspipdreceiptpaymentdetails.`RCPPayStatus` AS vwhspipdreceiptpaymentdetails_RCPPayStatus,
+     vwhspipdreceiptpaymentdetails.`HSPAdminIdhspreceiptpaymentdetails` AS vwhspipdreceiptpaymentdetails_HSPAdminIdhspreceiptpaymentdetails,
+     vwhspipdreceiptpaymentdetails.`MemberIdhspreceiptpaymentdetails` AS vwhspipdreceiptpaymentdetails_MemberIdhspreceiptpaymentdetails,
+     vwhspipdreceiptpaymentdetails.`Statushspreceiptpaymentdetails` AS vwhspipdreceiptpaymentdetails_Statushspreceiptpaymentdetails,
+     vwhspipdreceiptpaymentdetails.`HSPAdminId` AS vwhspipdreceiptpaymentdetails_HSPAdminId,
+     vwhspipdreceiptpaymentdetails.`HSPAdminDate` AS vwhspipdreceiptpaymentdetails_HSPAdminDate,
+     vwhspipdreceiptpaymentdetails.`HSPAdmintime` AS vwhspipdreceiptpaymentdetails_HSPAdmintime,
+     vwhspipdreceiptpaymentdetails.`HSPAdminStatus` AS vwhspipdreceiptpaymentdetails_HSPAdminStatus,
+     vwhspipdreceiptpaymentdetails.`HSPAdminDischargeNos` AS vwhspipdreceiptpaymentdetails_HSPAdminDischargeNos,
+     vwhspipdreceiptpaymentdetails.`HSPAdminDischargeDate` AS vwhspipdreceiptpaymentdetails_HSPAdminDischargeDate,
+     vwhspipdreceiptpaymentdetails.`HSPAdminDischargetime` AS vwhspipdreceiptpaymentdetails_HSPAdminDischargetime,
+     vwhspipdreceiptpaymentdetails.`HSPAdminYear` AS vwhspipdreceiptpaymentdetails_HSPAdminYear,
+     vwhspipdreceiptpaymentdetails.`IPDIdHospitalization` AS vwhspipdreceiptpaymentdetails_IPDIdHospitalization,
+     vwhspipdreceiptpaymentdetails.`PackageIdHospitalization` AS vwhspipdreceiptpaymentdetails_PackageIdHospitalization,
+     vwhspipdreceiptpaymentdetails.`TrustIdHospitalization` AS vwhspipdreceiptpaymentdetails_TrustIdHospitalization,
+     vwhspipdreceiptpaymentdetails.`CategoryIdHospitalizationDepartment` AS vwhspipdreceiptpaymentdetails_CategoryIdHospitalizationDepartmen,
+     vwhspipdreceiptpaymentdetails.`HospitalIdHospitalization` AS vwhspipdreceiptpaymentdetails_HospitalIdHospitalization,
+     vwhspipdreceiptpaymentdetails.`DiseaseIdHospitalization` AS vwhspipdreceiptpaymentdetails_DiseaseIdHospitalization,
+     vwhspipdreceiptpaymentdetails.`MemberIdHospitalization` AS vwhspipdreceiptpaymentdetails_MemberIdHospitalization,
+     vwhspipdreceiptpaymentdetails.`StatusHospitalization` AS vwhspipdreceiptpaymentdetails_StatusHospitalization,
+     vwhspipdreceiptpaymentdetails.`IPDId` AS vwhspipdreceiptpaymentdetails_IPDId,
+     vwhspipdreceiptpaymentdetails.`CategoryIdDepartmentType` AS vwhspipdreceiptpaymentdetails_CategoryIdDepartmentType,
+     vwhspipdreceiptpaymentdetails.`IPDName` AS vwhspipdreceiptpaymentdetails_IPDName,
+     vwhspipdreceiptpaymentdetails.`IPDFName` AS vwhspipdreceiptpaymentdetails_IPDFName,
+     vwhspipdreceiptpaymentdetails.`IPDMName` AS vwhspipdreceiptpaymentdetails_IPDMName,
+     vwhspipdreceiptpaymentdetails.`IPDLName` AS vwhspipdreceiptpaymentdetails_IPDLName,
+     vwhspipdreceiptpaymentdetails.`IPDAddress1` AS vwhspipdreceiptpaymentdetails_IPDAddress1,
+     vwhspipdreceiptpaymentdetails.`IPDAddress2` AS vwhspipdreceiptpaymentdetails_IPDAddress2,
+     vwhspipdreceiptpaymentdetails.`IPDCity` AS vwhspipdreceiptpaymentdetails_IPDCity,
+     vwhspipdreceiptpaymentdetails.`IPDPin` AS vwhspipdreceiptpaymentdetails_IPDPin,
+     vwhspipdreceiptpaymentdetails.`IPDPhone` AS vwhspipdreceiptpaymentdetails_IPDPhone,
+     vwhspipdreceiptpaymentdetails.`IPDMobile` AS vwhspipdreceiptpaymentdetails_IPDMobile,
+     vwhspipdreceiptpaymentdetails.`IPDEmail` AS vwhspipdreceiptpaymentdetails_IPDEmail,
+     vwhspipdreceiptpaymentdetails.`IPDFax` AS vwhspipdreceiptpaymentdetails_IPDFax,
+     vwhspipdreceiptpaymentdetails.`IPDSex` AS vwhspipdreceiptpaymentdetails_IPDSex,
+     vwhspipdreceiptpaymentdetails.`IPDMaritalStatus` AS vwhspipdreceiptpaymentdetails_IPDMaritalStatus,
+     vwhspipdreceiptpaymentdetails.`IPDBG` AS vwhspipdreceiptpaymentdetails_IPDBG,
+     vwhspipdreceiptpaymentdetails.`IPDKeenname` AS vwhspipdreceiptpaymentdetails_IPDKeenname,
+     vwhspipdreceiptpaymentdetails.`IPDKeenrelation` AS vwhspipdreceiptpaymentdetails_IPDKeenrelation,
+     vwhspipdreceiptpaymentdetails.`IPDKeenphone` AS vwhspipdreceiptpaymentdetails_IPDKeenphone,
+     vwhspipdreceiptpaymentdetails.`IPDRef` AS vwhspipdreceiptpaymentdetails_IPDRef,
+     vwhspipdreceiptpaymentdetails.`IPDRemarks` AS vwhspipdreceiptpaymentdetails_IPDRemarks,
+     vwhspipdreceiptpaymentdetails.`IPDComplaint` AS vwhspipdreceiptpaymentdetails_IPDComplaint,
+     vwhspipdreceiptpaymentdetails.`IPDWeight` AS vwhspipdreceiptpaymentdetails_IPDWeight,
+     vwhspipdreceiptpaymentdetails.`IPDBP` AS vwhspipdreceiptpaymentdetails_IPDBP,
+     vwhspipdreceiptpaymentdetails.`IPDFamilydoc` AS vwhspipdreceiptpaymentdetails_IPDFamilydoc,
+     vwhspipdreceiptpaymentdetails.`IPDFamilydocphone` AS vwhspipdreceiptpaymentdetails_IPDFamilydocphone,
+     vwhspipdreceiptpaymentdetails.`IPDPulse` AS vwhspipdreceiptpaymentdetails_IPDPulse,
+     vwhspipdreceiptpaymentdetails.`InsuranceIdIPDMaster` AS vwhspipdreceiptpaymentdetails_InsuranceIdIPDMaster,
+     vwhspipdreceiptpaymentdetails.`CategoryIdInsurancePolicyType` AS vwhspipdreceiptpaymentdetails_CategoryIdInsurancePolicyType,
+     vwhspipdreceiptpaymentdetails.`IPDInsuranceLimit` AS vwhspipdreceiptpaymentdetails_IPDInsuranceLimit,
+     vwhspipdreceiptpaymentdetails.`IPDInsurancePolicyNos` AS vwhspipdreceiptpaymentdetails_IPDInsurancePolicyNos,
+     vwhspipdreceiptpaymentdetails.`HospitalIdIPDMaster` AS vwhspipdreceiptpaymentdetails_HospitalIdIPDMaster,
+     vwhspipdreceiptpaymentdetails.`StatusIPDMaster` AS vwhspipdreceiptpaymentdetails_StatusIPDMaster
+FROM
+     `vwhspipdreceiptpaymentdetails` vwhspipdreceiptpaymentdetails
+WHERE
+     RCPPayId = $P{param_rcppayid}]]>
+	</queryString>
+	<field name="vwhspipdreceiptpaymentdetails_RCPPayId" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_RCPPayDate" class="java.sql.Timestamp"/>
+	<field name="vwhspipdreceiptpaymentdetails_RCPPayAmount" class="java.math.BigDecimal"/>
+	<field name="vwhspipdreceiptpaymentdetails_RCPPayPaymentType" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_RCPPayType" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_RCPPayBankCashDetails" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_RCPPayRemarks" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_RCPPayStatus" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_HSPAdminIdhspreceiptpaymentdetails" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_MemberIdhspreceiptpaymentdetails" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_Statushspreceiptpaymentdetails" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_HSPAdminId" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_HSPAdminDate" class="java.sql.Timestamp"/>
+	<field name="vwhspipdreceiptpaymentdetails_HSPAdmintime" class="java.sql.Time"/>
+	<field name="vwhspipdreceiptpaymentdetails_HSPAdminStatus" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_HSPAdminDischargeNos" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_HSPAdminDischargeDate" class="java.sql.Timestamp"/>
+	<field name="vwhspipdreceiptpaymentdetails_HSPAdminDischargetime" class="java.sql.Time"/>
+	<field name="vwhspipdreceiptpaymentdetails_HSPAdminYear" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDIdHospitalization" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_PackageIdHospitalization" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_TrustIdHospitalization" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_CategoryIdHospitalizationDepartmen" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_HospitalIdHospitalization" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_DiseaseIdHospitalization" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_MemberIdHospitalization" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_StatusHospitalization" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDId" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_CategoryIdDepartmentType" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDName" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDFName" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDMName" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDLName" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDAddress1" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDAddress2" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDCity" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDPin" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDPhone" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDMobile" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDEmail" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDFax" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDSex" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDMaritalStatus" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDBG" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDKeenname" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDKeenrelation" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDKeenphone" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDRef" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDRemarks" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDComplaint" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDWeight" class="java.math.BigDecimal"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDBP" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDFamilydoc" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDFamilydocphone" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDPulse" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_InsuranceIdIPDMaster" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_CategoryIdInsurancePolicyType" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDInsuranceLimit" class="java.math.BigDecimal"/>
+	<field name="vwhspipdreceiptpaymentdetails_IPDInsurancePolicyNos" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_HospitalIdIPDMaster" class="java.lang.String"/>
+	<field name="vwhspipdreceiptpaymentdetails_StatusIPDMaster" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="103" width="553" height="20" uuid="4165af16-3ca5-49c4-b2e8-fdd0872c0d26"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vwhspipdreceiptpaymentdetails_RCPPayType}+" Receipt"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="179" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20" uuid="fefe2c89-f1d3-4824-84d5-053ffc7886e0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[HSP Id/ Bill No:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="100" y="20" width="254" height="20" isPrintWhenDetailOverflows="true" uuid="665390eb-f43d-4833-a31d-628a266743a4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vwhspipdreceiptpaymentdetails_HSPAdminId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="20" uuid="bf12d59d-a42d-4ab0-bce6-92846deb086e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Receipt No. : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="100" y="40" width="254" height="20" isPrintWhenDetailOverflows="true" uuid="ee4a7a6f-da5a-4ae5-9a7f-c547b9eca2e6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vwhspipdreceiptpaymentdetails_RCPPayId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="354" y="40" width="100" height="20" uuid="4a0b9a8a-aded-44eb-8399-db1d979987a4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField pattern="dd-MMM-yy">
+				<reportElement x="454" y="40" width="100" height="20" uuid="404d4226-607d-4e92-981c-f4f535cba0c9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vwhspipdreceiptpaymentdetails_RCPPayDate}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="67" width="554" height="1" uuid="ccf6ea9b-fc4e-4c03-a6d1-4f43043ce885"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="68" width="100" height="20" uuid="5d9978d9-d490-4916-b148-42a06e79a926"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[IPD No.:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="101" y="68" width="453" height="20" isPrintWhenDetailOverflows="true" uuid="4ba21f1a-a025-4693-bc42-329e9341dff9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vwhspipdreceiptpaymentdetails_IPDId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="90" width="100" height="20" uuid="6d1996ac-8b0b-41ff-ab72-badb9c73a14b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient Name:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="101" y="90" width="453" height="20" isPrintWhenDetailOverflows="true" uuid="8a469425-3f20-4e39-90e0-85548f80d84c"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vwhspipdreceiptpaymentdetails_IPDName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="112" width="100" height="20" uuid="6bb4d137-2bc9-4533-89fa-813e8b647728"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Payment Type:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="101" y="112" width="453" height="20" isPrintWhenDetailOverflows="true" uuid="1019cece-ed70-48bc-aad8-7faf80520817"/>
+				<textFieldExpression><![CDATA[$F{vwhspipdreceiptpaymentdetails_RCPPayPaymentType}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="134" width="100" height="20" uuid="03b7cbe1-d3c9-4d0e-959e-47209e8fb111"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Other Details:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="101" y="134" width="123" height="20" isPrintWhenDetailOverflows="true" uuid="c72b5d12-f838-49c6-bbff-6afa670cb03b"/>
+				<textFieldExpression><![CDATA[$F{vwhspipdreceiptpaymentdetails_RCPPayRemarks}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="354" y="134" width="43" height="20" uuid="7da97ed4-a7c8-4fce-8e9c-31f7a5f888fb"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="397" y="133" width="159" height="20" uuid="4acf74fb-5c4b-4a67-a376-6bde2e486cc7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vwhspipdreceiptpaymentdetails_RCPPayAmount}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="157" width="554" height="1" uuid="dc1eaa5a-9542-4e3d-b7da-609a18647892"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="157" width="524" height="20" uuid="8e44ca18-6c48-42c0-85f9-c99a29fdda6c"/>
+				<text><![CDATA[* Note: In case of cheque payment receipt is valid on subject to realization of cheque ]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OPDBillsortbyparticularsDetailsReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9b1d5a6d-1702-4bb0-a76e-ffa9a56d2be8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_fromdate" class="java.lang.String"/>
+	<parameter name="param_todate" class="java.lang.String"/>
+	<parameter name="param_hospitalid" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT OPDBillParticularsId,OPDBillParticularsName FROM opdbillparticulars
+ WHERE HospitalIdOPDBillParticulars=$P{param_hospitalid}]]>
+	</queryString>
+	<field name="OPDBillParticularsId" class="java.lang.String">
+		<fieldDescription><![CDATA[{
+"mailtable":"",
+"pkprefix":"OPDBP",
+"pkid":"OPDBillParticularsId",
+"tsname":"OPDBillParticulars","formmodelname":"OPDBillParticulars","whereclause":"HospitalIdOPDBillParticulars","gridtable":"VwOPDBillHospital",
+"subtables":
+[]
+
+}]]></fieldDescription>
+	</field>
+	<field name="OPDBillParticularsName" class="java.lang.String">
+		<fieldDescription><![CDATA[{"validation": "yes","group": "","controltype": "txt","formcontrolname": "","ngmodel": "","errorstring": "OPDBillParticulars Name ","drptblpkname": "BedsNos","placeholder": "OPDBillParticulars Name","options": "drpCityoptions","drpptblname": "tbl_City_master","drptblpk": "City_id","drptblwhere": "country_id","subdrpjson":[]}]]></fieldDescription>
+	</field>
+	<title>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="f17f6d6e-b738-4994-bf19-6bb7d4282d11"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OPD Bill Sort by Particulars Details]]></text>
+			</staticText>
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement x="0" y="20" width="87" height="20" uuid="ef839d08-d80e-4484-b7f3-bcb14202a504"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new Date($P{param_fromdate})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="87" y="20" width="15" height="20" uuid="80469201-1733-49b6-b384-b8031a53f966"/>
+				<text><![CDATA[ to]]></text>
+			</staticText>
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement x="102" y="20" width="87" height="20" uuid="2600e1eb-e7b8-4aff-b085-941d7ef4a6e1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new Date($P{param_todate})]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<subreport>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="554" height="40" isPrintWhenDetailOverflows="true" uuid="f705cb84-a896-4eb6-a5c6-7585f006881e"/>
+				<subreportParameter name="param_fromdate">
+					<subreportParameterExpression><![CDATA[$P{param_fromdate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="param_OPDBillParticularsName">
+					<subreportParameterExpression><![CDATA[$F{OPDBillParticularsName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="param_todate">
+					<subreportParameterExpression><![CDATA[$P{param_todate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="param_OPDBillParticularsId">
+					<subreportParameterExpression><![CDATA[$F{OPDBillParticularsId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="param_hospitalid">
+					<subreportParameterExpression><![CDATA[$P{param_hospitalid}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "OPDBillsortbyparticularsDetailsReport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

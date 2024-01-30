@@ -1,0 +1,116 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create trust</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='trustVar.TrustName' formControlName='TrustName' /> <label>Trust Name</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['TrustName'].valid&&userform.controls['TrustName'].touched">Trust Name Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='trustVar.TrustDiscountPercentage' formControlName='TrustDiscountPercentage' /> <label>Discount Percentage</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['TrustDiscountPercentage'].valid&&userform.controls['TrustDiscountPercentage'].touched">Discount Percentage Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<!--<input pInputText type='text' [(ngModel)]='trustVar.TrustApplyDiscount' formControlName='TrustApplyDiscount' /> 
+<label>Package Name</label>-->
+<p-dropdown [style]="{'width':'90%'}" [options]="drpapplydiscountoptionss" [(ngModel)]='trustVar.TrustApplyDiscount' formControlName='TrustApplyDiscount'>
+</p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['TrustApplyDiscount'].valid&&userform.controls['TrustApplyDiscount'].touched">Apply Discount Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='trustVar.TrustApplyIndividualPrice' formControlName='TrustApplyIndividualPrice' /> <label>Trust Apply IndividualPrice</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['TrustApplyIndividualPrice'].valid&&userform.controls['TrustApplyIndividualPrice'].touched">Apply Individual Price Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="VwTrustHospital" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectVwTrustHospital($event)" 
+	[(selection)]="selectedRow">
+
+	<p-column field="TrustName" [filter]="true" 
+	filterPlaceholder="Search TrustName"  header="TrustName">
+	</p-column>
+
+	<p-column field="TrustDiscountPercentage" [filter]="true" 
+	filterPlaceholder="Search TrustDiscountPercentage"  header="TrustDiscountPercentage">
+	</p-column>
+
+	<p-column field="TrustApplyDiscount" [filter]="true" 
+	filterPlaceholder="Search TrustApplyDiscount"  header="TrustApplyDiscount">
+	</p-column>
+
+	<p-column field="TrustApplyIndividualPrice" [filter]="true" 
+	filterPlaceholder="Search TrustApplyIndividualPrice"  header="TrustApplyIndividualPrice">
+	</p-column>
+ </p-dataTable>
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CosmeticBillDetailsReport_subreport2" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="60566567-e8ce-4c20-8c61-7ad70eeb95d3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_subreportcosmeticbilldetailsid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     cosmeticbilltaxdetails.`CosmeticBillTaxId` AS cosmeticbilltaxdetails_CosmeticBillTaxId,
+     cosmeticbilltaxdetails.`CosmeticBillDetailsIdCosmeticBillTaxDetails` AS cosmeticbilltaxdetails_CosmeticBillDetailsIdCosmeticBillTaxDetai,
+     cosmeticbilltaxdetails.`CosmeticBillTaxName` AS cosmeticbilltaxdetails_CosmeticBillTaxName,
+     cosmeticbilltaxdetails.`CosmeticBillTaxPercentage` AS cosmeticbilltaxdetails_CosmeticBillTaxPercentage,
+     cosmeticbilltaxdetails.`CosmeticBillTaxAmount` AS cosmeticbilltaxdetails_CosmeticBillTaxAmount
+FROM
+     `cosmeticbilltaxdetails` cosmeticbilltaxdetails
+WHERE
+     CosmeticBillDetailsIdCosmeticBillTaxDetails = $P{param_subreportcosmeticbilldetailsid}]]>
+	</queryString>
+	<field name="cosmeticbilltaxdetails_CosmeticBillTaxId" class="java.lang.Long"/>
+	<field name="cosmeticbilltaxdetails_CosmeticBillDetailsIdCosmeticBillTaxDetai" class="java.lang.String"/>
+	<field name="cosmeticbilltaxdetails_CosmeticBillTaxName" class="java.lang.String"/>
+	<field name="cosmeticbilltaxdetails_CosmeticBillTaxPercentage" class="java.math.BigDecimal"/>
+	<field name="cosmeticbilltaxdetails_CosmeticBillTaxAmount" class="java.math.BigDecimal"/>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="2" y="0" width="185" height="20" isPrintWhenDetailOverflows="true" uuid="df643644-d732-4a30-babb-98fe33e2c965"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{cosmeticbilltaxdetails_CosmeticBillTaxName}+" ("+$F{cosmeticbilltaxdetails_CosmeticBillTaxPercentage}+"%)"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="187" y="0" width="226" height="20" isPrintWhenDetailOverflows="true" uuid="b12d4c9a-261f-462d-818c-d3389eae271a"/>
+				<box rightPadding="5">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{cosmeticbilltaxdetails_CosmeticBillTaxAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

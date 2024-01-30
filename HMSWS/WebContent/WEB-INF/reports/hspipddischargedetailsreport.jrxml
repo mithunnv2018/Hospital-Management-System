@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="hspipddischargedetailsreport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="caeb2e6c-24bf-4e06-8fbd-ddc62d076bb4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_adminid" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     vwhspipddischargedoctordetails.`DischargeId` AS vwhspipddischargedoctordetails_DischargeId,
+     vwhspipddischargedoctordetails.`DischargeDate` AS vwhspipddischargedoctordetails_DischargeDate,
+     vwhspipddischargedoctordetails.`DischargeDiagnosis` AS vwhspipddischargedoctordetails_DischargeDiagnosis,
+     vwhspipddischargedoctordetails.`DischargeHistfPrsntIll` AS vwhspipddischargedoctordetails_DischargeHistfPrsntIll,
+     vwhspipddischargedoctordetails.`DischargeExamination` AS vwhspipddischargedoctordetails_DischargeExamination,
+     vwhspipddischargedoctordetails.`DischargeTreatment` AS vwhspipddischargedoctordetails_DischargeTreatment,
+     vwhspipddischargedoctordetails.`DischargeFollowup` AS vwhspipddischargedoctordetails_DischargeFollowup,
+     vwhspipddischargedoctordetails.`DischargeVerifiedby` AS vwhspipddischargedoctordetails_DischargeVerifiedby,
+     vwhspipddischargedoctordetails.`DoctorIdhspipddischargedetails` AS vwhspipddischargedoctordetails_DoctorIdhspipddischargedetails,
+     vwhspipddischargedoctordetails.`HSPAdminIdhspipddischargedetails` AS vwhspipddischargedoctordetails_HSPAdminIdhspipddischargedetails,
+     vwhspipddischargedoctordetails.`MemberIdhspipddischargedetails` AS vwhspipddischargedoctordetails_MemberIdhspipddischargedetails,
+     vwhspipddischargedoctordetails.`Statushspipddischargedetails` AS vwhspipddischargedoctordetails_Statushspipddischargedetails,
+     vwhspipddischargedoctordetails.`DoctorId` AS vwhspipddischargedoctordetails_DoctorId,
+     vwhspipddischargedoctordetails.`CategoryIdDepartmentDoctorMaster` AS vwhspipddischargedoctordetails_CategoryIdDepartmentDoctorMaster,
+     vwhspipddischargedoctordetails.`CategoryIdConsultantDoctorMaster` AS vwhspipddischargedoctordetails_CategoryIdConsultantDoctorMaster,
+     vwhspipddischargedoctordetails.`HospitalIdDoctorMaster` AS vwhspipddischargedoctordetails_HospitalIdDoctorMaster,
+     vwhspipddischargedoctordetails.`DoctorFName` AS vwhspipddischargedoctordetails_DoctorFName,
+     vwhspipddischargedoctordetails.`DoctorMName` AS vwhspipddischargedoctordetails_DoctorMName,
+     vwhspipddischargedoctordetails.`DoctorLName` AS vwhspipddischargedoctordetails_DoctorLName,
+     vwhspipddischargedoctordetails.`DoctorName` AS vwhspipddischargedoctordetails_DoctorName,
+     vwhspipddischargedoctordetails.`DoctorDob` AS vwhspipddischargedoctordetails_DoctorDob,
+     vwhspipddischargedoctordetails.`DoctorPhoneno` AS vwhspipddischargedoctordetails_DoctorPhoneno,
+     vwhspipddischargedoctordetails.`DoctorMobileno` AS vwhspipddischargedoctordetails_DoctorMobileno,
+     vwhspipddischargedoctordetails.`DoctorEmailid` AS vwhspipddischargedoctordetails_DoctorEmailid,
+     vwhspipddischargedoctordetails.`DoctorFax` AS vwhspipddischargedoctordetails_DoctorFax,
+     vwhspipddischargedoctordetails.`DoctorAddress1` AS vwhspipddischargedoctordetails_DoctorAddress1,
+     vwhspipddischargedoctordetails.`DoctorAddress2` AS vwhspipddischargedoctordetails_DoctorAddress2,
+     vwhspipddischargedoctordetails.`DoctorCity` AS vwhspipddischargedoctordetails_DoctorCity,
+     vwhspipddischargedoctordetails.`DoctorPin` AS vwhspipddischargedoctordetails_DoctorPin,
+     vwhspipddischargedoctordetails.`CategoryIdDoctorType` AS vwhspipddischargedoctordetails_CategoryIdDoctorType,
+     vwhspipddischargedoctordetails.`CategoryIdQualificationType` AS vwhspipddischargedoctordetails_CategoryIdQualificationType,
+     vwhspipddischargedoctordetails.`DoctorQualification` AS vwhspipddischargedoctordetails_DoctorQualification,
+     vwhspipddischargedoctordetails.`DoctorAvailableDays` AS vwhspipddischargedoctordetails_DoctorAvailableDays,
+     vwhspipddischargedoctordetails.`DoctorChargesNormal` AS vwhspipddischargedoctordetails_DoctorChargesNormal,
+     vwhspipddischargedoctordetails.`StatusDoctorMaster` AS vwhspipddischargedoctordetails_StatusDoctorMaster,
+     hospitalization.`HSPAdminId` AS hospitalization_HSPAdminId,
+     hospitalization.`HSPAdminDate` AS hospitalization_HSPAdminDate,
+     hospitalization.`HSPAdmintime` AS hospitalization_HSPAdmintime,
+     hospitalization.`HSPAdminStatus` AS hospitalization_HSPAdminStatus,
+     hospitalization.`HSPAdminDischargeNos` AS hospitalization_HSPAdminDischargeNos,
+     hospitalization.`HSPAdminDischargetime` AS hospitalization_HSPAdminDischargetime,
+     hospitalization.`HSPAdminYear` AS hospitalization_HSPAdminYear,
+     hospitalization.`IPDIdHospitalization` AS hospitalization_IPDIdHospitalization,
+     hospitalization.`HospitalIdHospitalization` AS hospitalization_HospitalIdHospitalization,
+     hospitalization.`StatusHospitalization` AS hospitalization_StatusHospitalization,
+     hospitalization.`HSPAdminDischargeDate` AS hospitalization_HSPAdminDischargeDate,
+     ipdmaster.`IPDId` AS ipdmaster_IPDId,
+     ipdmaster.`CategoryIdDepartmentType` AS ipdmaster_CategoryIdDepartmentType,
+     ipdmaster.`IPDName` AS ipdmaster_IPDName,
+     ipdmaster.`IPDFName` AS ipdmaster_IPDFName,
+     ipdmaster.`IPDMName` AS ipdmaster_IPDMName,
+     ipdmaster.`IPDLName` AS ipdmaster_IPDLName,
+     ipdmaster.`IPDAddress1` AS ipdmaster_IPDAddress1,
+     ipdmaster.`IPDAddress2` AS ipdmaster_IPDAddress2,
+     ipdmaster.`IPDCity` AS ipdmaster_IPDCity,
+     ipdmaster.`IPDPin` AS ipdmaster_IPDPin,
+     ipdmaster.`IPDPhone` AS ipdmaster_IPDPhone,
+     ipdmaster.`IPDMobile` AS ipdmaster_IPDMobile,
+     ipdmaster.`IPDEmail` AS ipdmaster_IPDEmail,
+     ipdmaster.`IPDFax` AS ipdmaster_IPDFax,
+     ipdmaster.`IPDDob` AS ipdmaster_IPDDob,
+     ipdmaster.`IPDSex` AS ipdmaster_IPDSex,
+     ipdmaster.`IPDMaritalStatus` AS ipdmaster_IPDMaritalStatus,
+     ipdmaster.`IPDBG` AS ipdmaster_IPDBG,
+     ipdmaster.`IPDRemarks` AS ipdmaster_IPDRemarks,
+     ipdmaster.`IPDComplaint` AS ipdmaster_IPDComplaint,
+     ipdmaster.`IPDWeight` AS ipdmaster_IPDWeight,
+     ipdmaster.`IPDBP` AS ipdmaster_IPDBP,
+     ipdmaster.`IPDFamilydoc` AS ipdmaster_IPDFamilydoc,
+     ipdmaster.`IPDFamilydocphone` AS ipdmaster_IPDFamilydocphone,
+     ipdmaster.`IPDPulse` AS ipdmaster_IPDPulse,
+     ipdmaster.`InsuranceIdIPDMaster` AS ipdmaster_InsuranceIdIPDMaster,
+     ipdmaster.`CategoryIdInsurancePolicyType` AS ipdmaster_CategoryIdInsurancePolicyType,
+     ipdmaster.`IPDInsuranceLimit` AS ipdmaster_IPDInsuranceLimit,
+     ipdmaster.`IPDInsurancePolicyNos` AS ipdmaster_IPDInsurancePolicyNos,
+     ipdmaster.`IPDAgeMonths` AS ipdmaster_IPDAgeMonths,
+     ipdmaster.`IPDAgeYears` AS ipdmaster_IPDAgeYears,
+     ipdmaster.`HospitalIdIPDMaster` AS ipdmaster_HospitalIdIPDMaster,
+     ipdmaster.`StatusIPDMaster` AS ipdmaster_StatusIPDMaster
+FROM
+     `vwhspipddischargedoctordetails` vwhspipddischargedoctordetails INNER JOIN `hospitalization` hospitalization ON vwhspipddischargedoctordetails.`HSPAdminIdhspipddischargedetails` = hospitalization.`HSPAdminId`
+     INNER JOIN `ipdmaster` ipdmaster ON hospitalization.`IPDIdHospitalization` = ipdmaster.`IPDId`
+WHERE
+     HSPAdminIdhspipddischargedetails = $P{param_adminid}]]>
+	</queryString>
+	<field name="vwhspipddischargedoctordetails_DischargeId" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DischargeDate" class="java.sql.Timestamp"/>
+	<field name="vwhspipddischargedoctordetails_DischargeDiagnosis" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DischargeHistfPrsntIll" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DischargeExamination" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DischargeTreatment" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DischargeFollowup" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DischargeVerifiedby" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorIdhspipddischargedetails" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_HSPAdminIdhspipddischargedetails" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_MemberIdhspipddischargedetails" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_Statushspipddischargedetails" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorId" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_CategoryIdDepartmentDoctorMaster" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_CategoryIdConsultantDoctorMaster" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_HospitalIdDoctorMaster" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorFName" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorMName" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorLName" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorName" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorDob" class="java.sql.Timestamp"/>
+	<field name="vwhspipddischargedoctordetails_DoctorPhoneno" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorMobileno" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorEmailid" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorFax" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorAddress1" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorAddress2" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorCity" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorPin" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_CategoryIdDoctorType" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_CategoryIdQualificationType" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorQualification" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorAvailableDays" class="java.lang.String"/>
+	<field name="vwhspipddischargedoctordetails_DoctorChargesNormal" class="java.math.BigDecimal"/>
+	<field name="vwhspipddischargedoctordetails_StatusDoctorMaster" class="java.lang.String"/>
+	<field name="hospitalization_HSPAdminId" class="java.lang.String"/>
+	<field name="hospitalization_HSPAdminDate" class="java.sql.Timestamp"/>
+	<field name="hospitalization_HSPAdmintime" class="java.sql.Time"/>
+	<field name="hospitalization_HSPAdminStatus" class="java.lang.String"/>
+	<field name="hospitalization_HSPAdminDischargeNos" class="java.lang.String"/>
+	<field name="hospitalization_HSPAdminDischargetime" class="java.sql.Time"/>
+	<field name="hospitalization_HSPAdminYear" class="java.lang.String"/>
+	<field name="hospitalization_IPDIdHospitalization" class="java.lang.String"/>
+	<field name="hospitalization_HospitalIdHospitalization" class="java.lang.String"/>
+	<field name="hospitalization_StatusHospitalization" class="java.lang.String"/>
+	<field name="hospitalization_HSPAdminDischargeDate" class="java.sql.Timestamp"/>
+	<field name="ipdmaster_IPDId" class="java.lang.String"/>
+	<field name="ipdmaster_CategoryIdDepartmentType" class="java.lang.String"/>
+	<field name="ipdmaster_IPDName" class="java.lang.String"/>
+	<field name="ipdmaster_IPDFName" class="java.lang.String"/>
+	<field name="ipdmaster_IPDMName" class="java.lang.String"/>
+	<field name="ipdmaster_IPDLName" class="java.lang.String"/>
+	<field name="ipdmaster_IPDAddress1" class="java.lang.String"/>
+	<field name="ipdmaster_IPDAddress2" class="java.lang.String"/>
+	<field name="ipdmaster_IPDCity" class="java.lang.String"/>
+	<field name="ipdmaster_IPDPin" class="java.lang.String"/>
+	<field name="ipdmaster_IPDPhone" class="java.lang.String"/>
+	<field name="ipdmaster_IPDMobile" class="java.lang.String"/>
+	<field name="ipdmaster_IPDEmail" class="java.lang.String"/>
+	<field name="ipdmaster_IPDFax" class="java.lang.String"/>
+	<field name="ipdmaster_IPDDob" class="java.sql.Timestamp"/>
+	<field name="ipdmaster_IPDSex" class="java.lang.String"/>
+	<field name="ipdmaster_IPDMaritalStatus" class="java.lang.String"/>
+	<field name="ipdmaster_IPDBG" class="java.lang.String"/>
+	<field name="ipdmaster_IPDRemarks" class="java.lang.String"/>
+	<field name="ipdmaster_IPDComplaint" class="java.lang.String"/>
+	<field name="ipdmaster_IPDWeight" class="java.math.BigDecimal"/>
+	<field name="ipdmaster_IPDBP" class="java.lang.String"/>
+	<field name="ipdmaster_IPDFamilydoc" class="java.lang.String"/>
+	<field name="ipdmaster_IPDFamilydocphone" class="java.lang.String"/>
+	<field name="ipdmaster_IPDPulse" class="java.lang.String"/>
+	<field name="ipdmaster_InsuranceIdIPDMaster" class="java.lang.String"/>
+	<field name="ipdmaster_CategoryIdInsurancePolicyType" class="java.lang.String"/>
+	<field name="ipdmaster_IPDInsuranceLimit" class="java.math.BigDecimal"/>
+	<field name="ipdmaster_IPDInsurancePolicyNos" class="java.lang.String"/>
+	<field name="ipdmaster_IPDAgeMonths" class="java.math.BigDecimal"/>
+	<field name="ipdmaster_IPDAgeYears" class="java.lang.Integer"/>
+	<field name="ipdmaster_HospitalIdIPDMaster" class="java.lang.String"/>
+	<field name="ipdmaster_StatusIPDMaster" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="103" width="553" height="20" uuid="622a454f-b641-48af-bc69-665ba3045546"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Discharge Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="391" splitType="Stretch">
+			<staticText>
+				<reportElement x="336" y="20" width="100" height="20" uuid="03c98d95-d216-4f2b-8a2d-c573117eb834"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Discharge No.:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="436" y="20" width="119" height="20" isPrintWhenDetailOverflows="true" uuid="b44b32f5-fe70-47dd-b895-6026fc2729b2"/>
+				<textFieldExpression><![CDATA[$F{vwhspipddischargedoctordetails_DischargeId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="336" y="0" width="100" height="20" uuid="8fcf7dc1-3cce-4e24-86f1-2c91fdf04a63"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Discharge Date:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yy">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="436" y="0" width="119" height="20" isPrintWhenDetailOverflows="true" uuid="d29804e0-862d-46da-8be9-3efd54db2fd3"/>
+				<textFieldExpression><![CDATA[$F{vwhspipddischargedoctordetails_DischargeDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="100" width="553" height="20" uuid="22ecd9e1-c72a-4267-8565-8d7d962aec47"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doctor Name:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="2" y="120" width="551" height="20" isPrintWhenDetailOverflows="true" uuid="51b8fecc-4aa5-4fd8-a7cb-4bdee0dfc5af"/>
+				<textFieldExpression><![CDATA[$F{vwhspipddischargedoctordetails_DoctorName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="140" width="551" height="20" uuid="67e296a5-2c8f-42fe-a784-3e40c56cd70c"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnosis:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="2" y="160" width="551" height="20" isPrintWhenDetailOverflows="true" uuid="5b2f0328-0a66-47c8-9eb2-103f9388c153"/>
+				<textFieldExpression><![CDATA[$F{vwhspipddischargedoctordetails_DischargeDiagnosis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="180" width="549" height="20" uuid="1cc0974b-71ef-4721-a30b-e98bfb7a8f60"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[History of Present Illness:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="200" width="555" height="20" isPrintWhenDetailOverflows="true" uuid="dc89cca1-f382-480d-b59b-ebc60c8cc526"/>
+				<textFieldExpression><![CDATA[$F{vwhspipddischargedoctordetails_DischargeHistfPrsntIll}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="220" width="555" height="20" uuid="83f8e5a1-519d-48c6-b438-35f49f6616af"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Examination:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="240" width="555" height="20" isPrintWhenDetailOverflows="true" uuid="45cc9cfd-a888-4fb0-8bd4-ba21af862595"/>
+				<textFieldExpression><![CDATA[$F{vwhspipddischargedoctordetails_DischargeExamination}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="260" width="555" height="20" uuid="b16570dc-2cd6-49f3-b438-ea2f9c098ad8"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Treatment:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="280" width="555" height="20" isPrintWhenDetailOverflows="true" uuid="ee6987c3-072c-42db-8439-f1f86685b983"/>
+				<textFieldExpression><![CDATA[$F{vwhspipddischargedoctordetails_DischargeTreatment}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="300" width="555" height="20" uuid="363d0f66-47ca-44c2-b886-aceda818fa99"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Followup:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="320" width="555" height="20" isPrintWhenDetailOverflows="true" uuid="5eb7277a-4103-457b-a223-ad9aab9d7d64"/>
+				<textFieldExpression><![CDATA[$F{vwhspipddischargedoctordetails_DischargeFollowup}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="340" width="555" height="20" uuid="cd002b82-f0a8-4ab6-8322-bce54ed9df6c"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Verified By:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="360" width="555" height="20" isPrintWhenDetailOverflows="true" uuid="8cd74343-e3a5-4d6d-a80e-4f278920c98a"/>
+				<textFieldExpression><![CDATA[$F{vwhspipddischargedoctordetails_DischargeVerifiedby}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="0" width="56" height="20" uuid="076541bb-5c00-4ceb-ac66-63b7452ee0c9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[IPD ID:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="58" y="0" width="171" height="20" uuid="1b63c959-e87a-4cc7-96c5-f64a78f82c6a"/>
+				<textFieldExpression><![CDATA[$F{ipdmaster_IPDId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="20" width="56" height="20" uuid="b73d9957-d32a-4dc4-8aa1-9d8a98b78a9d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[HSP ID:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="58" y="20" width="171" height="20" uuid="18391870-586b-48c3-9e60-f39192ff36c2"/>
+				<textFieldExpression><![CDATA[$F{hospitalization_HSPAdminId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="40" width="71" height="20" uuid="fcf5e476-46f7-4819-ad5f-e3596173891a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patient Name:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="73" y="40" width="482" height="20" uuid="1b5cf2b3-278c-4ba5-bd91-8ee900eeaabe"/>
+				<textFieldExpression><![CDATA[$F{ipdmaster_IPDName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="60" width="71" height="20" uuid="8b9c503a-8ec5-4537-9832-48c4c1606c5d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Age/Sex:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="73" y="60" width="263" height="20" uuid="98bf4692-37ef-456d-9d90-56f5294a118b"/>
+				<textFieldExpression><![CDATA[$F{ipdmaster_IPDAgeYears}+" yrs "+$F{ipdmaster_IPDAgeMonths}+" Months / "+$F{ipdmaster_IPDSex}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="80" width="553" height="20" uuid="799be9e2-76bf-44e9-a89a-eaf727e9f42f"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnostic]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="122">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="100" uuid="23dd1bc5-18f4-4ebe-8e7b-a5252d35a445"/>
+				<subreportParameter name="param_dischargeid">
+					<subreportParameterExpression><![CDATA[$F{vwhspipddischargedoctordetails_DischargeId}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "hspipddischargedetailsreport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

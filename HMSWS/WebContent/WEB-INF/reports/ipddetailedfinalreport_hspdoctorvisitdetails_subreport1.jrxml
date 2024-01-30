@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ipddetailedfinalreport_hspdoctorvisitdetails_subreport1" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="91c85695-cc00-4860-86ca-7080983ab106">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="sub_param_adminid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     vwhspdoctorvisitdetails.`DocVisitID` AS vwhspdoctorvisitdetails_DocVisitID,
+     vwhspdoctorvisitdetails.`DocVisitDate` AS vwhspdoctorvisitdetails_DocVisitDate,
+     vwhspdoctorvisitdetails.`DocVisitHeads` AS vwhspdoctorvisitdetails_DocVisitHeads,
+     vwhspdoctorvisitdetails.`DocVisitAmount` AS vwhspdoctorvisitdetails_DocVisitAmount,
+     vwhspdoctorvisitdetails.`DocVisitObservations` AS vwhspdoctorvisitdetails_DocVisitObservations,
+     vwhspdoctorvisitdetails.`DoctorIdhspdoctorvisitdetails` AS vwhspdoctorvisitdetails_DoctorIdhspdoctorvisitdetails,
+     vwhspdoctorvisitdetails.`HSPAdminIdhspdoctorvisitdetails` AS vwhspdoctorvisitdetails_HSPAdminIdhspdoctorvisitdetails,
+     vwhspdoctorvisitdetails.`MemberIdhspdoctorvisitdetails` AS vwhspdoctorvisitdetails_MemberIdhspdoctorvisitdetails,
+     vwhspdoctorvisitdetails.`Statushspdoctorvisitdetails` AS vwhspdoctorvisitdetails_Statushspdoctorvisitdetails,
+     vwhspdoctorvisitdetails.`DoctorId` AS vwhspdoctorvisitdetails_DoctorId,
+     vwhspdoctorvisitdetails.`CategoryIdDepartmentDoctorMaster` AS vwhspdoctorvisitdetails_CategoryIdDepartmentDoctorMaster,
+     vwhspdoctorvisitdetails.`CategoryIdConsultantDoctorMaster` AS vwhspdoctorvisitdetails_CategoryIdConsultantDoctorMaster,
+     vwhspdoctorvisitdetails.`HospitalIdDoctorMaster` AS vwhspdoctorvisitdetails_HospitalIdDoctorMaster,
+     vwhspdoctorvisitdetails.`DoctorFName` AS vwhspdoctorvisitdetails_DoctorFName,
+     vwhspdoctorvisitdetails.`DoctorMName` AS vwhspdoctorvisitdetails_DoctorMName,
+     vwhspdoctorvisitdetails.`DoctorLName` AS vwhspdoctorvisitdetails_DoctorLName,
+     vwhspdoctorvisitdetails.`DoctorName` AS vwhspdoctorvisitdetails_DoctorName,
+     vwhspdoctorvisitdetails.`DoctorDob` AS vwhspdoctorvisitdetails_DoctorDob,
+     vwhspdoctorvisitdetails.`DoctorPhoneno` AS vwhspdoctorvisitdetails_DoctorPhoneno,
+     vwhspdoctorvisitdetails.`DoctorMobileno` AS vwhspdoctorvisitdetails_DoctorMobileno,
+     vwhspdoctorvisitdetails.`DoctorEmailid` AS vwhspdoctorvisitdetails_DoctorEmailid,
+     vwhspdoctorvisitdetails.`DoctorFax` AS vwhspdoctorvisitdetails_DoctorFax,
+     vwhspdoctorvisitdetails.`DoctorAddress1` AS vwhspdoctorvisitdetails_DoctorAddress1,
+     vwhspdoctorvisitdetails.`DoctorAddress2` AS vwhspdoctorvisitdetails_DoctorAddress2,
+     vwhspdoctorvisitdetails.`DoctorCity` AS vwhspdoctorvisitdetails_DoctorCity,
+     vwhspdoctorvisitdetails.`DoctorPin` AS vwhspdoctorvisitdetails_DoctorPin,
+     vwhspdoctorvisitdetails.`CategoryIdDoctorType` AS vwhspdoctorvisitdetails_CategoryIdDoctorType,
+     vwhspdoctorvisitdetails.`CategoryIdQualificationType` AS vwhspdoctorvisitdetails_CategoryIdQualificationType,
+     vwhspdoctorvisitdetails.`DoctorQualification` AS vwhspdoctorvisitdetails_DoctorQualification,
+     vwhspdoctorvisitdetails.`DoctorAvailableDays` AS vwhspdoctorvisitdetails_DoctorAvailableDays,
+     vwhspdoctorvisitdetails.`DoctorChargesNormal` AS vwhspdoctorvisitdetails_DoctorChargesNormal,
+     vwhspdoctorvisitdetails.`StatusDoctorMaster` AS vwhspdoctorvisitdetails_StatusDoctorMaster,
+     categorymaster.`CategoryId` AS categorymaster_CategoryId,
+     categorymaster.`CategoryName` AS categorymaster_CategoryName,
+     categorymaster.`CategoryAliasname` AS categorymaster_CategoryAliasname
+FROM
+     `vwhspdoctorvisitdetails` vwhspdoctorvisitdetails INNER JOIN `categorymaster` categorymaster ON vwhspdoctorvisitdetails.`CategoryIdDoctorType` = categorymaster.`CategoryId`
+WHERE
+     HSPAdminIdhspdoctorvisitdetails = $P{sub_param_adminid}]]>
+	</queryString>
+	<field name="vwhspdoctorvisitdetails_DocVisitID" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DocVisitDate" class="java.sql.Timestamp"/>
+	<field name="vwhspdoctorvisitdetails_DocVisitHeads" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DocVisitAmount" class="java.math.BigDecimal"/>
+	<field name="vwhspdoctorvisitdetails_DocVisitObservations" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorIdhspdoctorvisitdetails" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_HSPAdminIdhspdoctorvisitdetails" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_MemberIdhspdoctorvisitdetails" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_Statushspdoctorvisitdetails" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorId" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_CategoryIdDepartmentDoctorMaster" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_CategoryIdConsultantDoctorMaster" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_HospitalIdDoctorMaster" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorFName" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorMName" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorLName" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorName" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorDob" class="java.sql.Timestamp"/>
+	<field name="vwhspdoctorvisitdetails_DoctorPhoneno" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorMobileno" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorEmailid" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorFax" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorAddress1" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorAddress2" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorCity" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorPin" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_CategoryIdDoctorType" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_CategoryIdQualificationType" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorQualification" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorAvailableDays" class="java.lang.String"/>
+	<field name="vwhspdoctorvisitdetails_DoctorChargesNormal" class="java.math.BigDecimal"/>
+	<field name="vwhspdoctorvisitdetails_StatusDoctorMaster" class="java.lang.String"/>
+	<field name="categorymaster_CategoryId" class="java.lang.String"/>
+	<field name="categorymaster_CategoryName" class="java.lang.String"/>
+	<field name="categorymaster_CategoryAliasname" class="java.lang.String"/>
+	<variable name="total" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{vwhspdoctorvisitdetails_DocVisitAmount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="23" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="2" width="555" height="1" uuid="a0494c84-dd97-4c96-9a2f-fcd5d33d4a91"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="3" width="555" height="20" uuid="e262a52a-92a5-4fff-9439-d7fd240f9d1e"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doctor Visit Detailed report: -]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="0" width="211" height="20" uuid="baf99408-e6ef-4d80-b66b-a8a4d48dd499"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doctor Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="0" width="57" height="20" uuid="1151781e-21bb-47ae-bac7-833c91ac523e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="68" height="20" uuid="09b12616-c40e-4a77-b83f-7dd4367e3809"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="0" width="77" height="20" uuid="6603867d-30f5-4f00-a18b-f2aa35a671a7"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Head]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="415" y="0" width="140" height="20" uuid="e62304e8-e44f-49e9-a9b4-45d74a73739a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observation]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="0" width="211" height="20" isPrintWhenDetailOverflows="true" uuid="6c745263-bcb0-4de3-9b48-6422661e9a5b"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vwhspdoctorvisitdetails_DoctorName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yy">
+				<reportElement stretchType="RelativeToBandHeight" x="213" y="0" width="57" height="20" isPrintWhenDetailOverflows="true" uuid="c8229cd8-d367-4dca-a7b9-a41450c04e87"/>
+				<textFieldExpression><![CDATA[$F{vwhspdoctorvisitdetails_DocVisitDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement stretchType="RelativeToBandHeight" x="270" y="0" width="68" height="20" isPrintWhenDetailOverflows="true" uuid="49892bb0-d205-4d7d-b986-ae65164c9548"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{vwhspdoctorvisitdetails_DocVisitAmount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="338" y="0" width="77" height="20" isPrintWhenDetailOverflows="true" uuid="bf3253d0-0e82-442f-a8b9-d9a76d856b0b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{categorymaster_CategoryName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="415" y="0" width="140" height="20" isPrintWhenDetailOverflows="true" uuid="413891ab-b03d-45fe-91ba-6514277a19e5"/>
+				<textFieldExpression><![CDATA[$F{vwhspdoctorvisitdetails_DocVisitObservations}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement x="270" y="0" width="100" height="20" uuid="e2f61f96-e86b-4e2d-b911-8469b9eda444"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

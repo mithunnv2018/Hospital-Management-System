@@ -1,0 +1,147 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create rooms</h1><br>
+<form [formGroup]="userform">
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpcategorytypeoptions" [(ngModel)]="roomsVar.CategoryIdRoomsTypeRooms" formControlName="CategoryIdRoomsTypeRooms"></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CategoryIdRoomsTypeRooms'].valid&&userform.controls['CategoryIdRoomsTypeRooms'].touched">Room Type  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="roomsVar.RoomsNameNos" formControlName="RoomsNameNos"> <label>Rooms Nos </label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RoomsNameNos'].valid&&userform.controls['RoomsNameNos'].touched">Rooms Nos  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="roomsVar.RoomsFloorNos" formControlName="RoomsFloorNos"> <label>Floor Nos </label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RoomsFloorNos'].valid&&userform.controls['RoomsFloorNos'].touched">Floor Nos  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="roomsVar.RoomsPerdayCharges" formControlName="RoomsPerdayCharges"> <label>Per Day Charges </label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RoomsPerdayCharges'].valid&&userform.controls['RoomsPerdayCharges'].touched">Per Day Charges  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="roomsVar.RoomsTrustPerdayCharges" formControlName="RoomsTrustPerdayCharges"> <label>Trust Per Day Charges </label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RoomsTrustPerdayCharges'].valid&&userform.controls['RoomsTrustPerdayCharges'].touched">Trust Per Day Charges  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="roomsVar.RoomsOtherDetails" formControlName="RoomsOtherDetails"> <label>Rooms Other Details </label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RoomsOtherDetails'].valid&&userform.controls['RoomsOtherDetails'].touched">Rooms Other Details  Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton (click)="onSubmit()" [disabled]="!userform.valid" label="Submit"></button>
+<br>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton (click)="clear()" label="Clear"></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="VwRoomsRoomTypeHospital" selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectVwRoomsRoomTypeHospital($event)" [(selection)]="selectedRow">
+
+  
+ <p-column field="RoomsNameNos" [filter]="true" filterPlaceholder="Search RoomsNameNos" header="RoomsNameNos">
+</p-column>
+
+<p-column field="RoomsFloorNos" [filter]="true" filterPlaceholder="Search RoomsFloorNos" header="RoomsFloorNos">
+</p-column>
+
+<p-column field="RoomsPerdayCharges" [filter]="true" filterPlaceholder="Search RoomsPerdayCharges" header="RoomsPerdayCharges">
+</p-column>
+
+<p-column field="HospitalName" [filter]="true" filterPlaceholder="Search HospitalName" header="HospitalName">
+</p-column>
+
+        
+<p-column field="CityName" [filter]="true" filterPlaceholder="Search CityName" header="CityName">
+</p-column>
+
+       
+<p-column field="CategoryName" [filter]="true" filterPlaceholder="Search CategoryName" header="CategoryName">
+</p-column>
+  
+</p-dataTable>

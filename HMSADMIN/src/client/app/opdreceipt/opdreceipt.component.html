@@ -1,0 +1,198 @@
+
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create opdreceipt</h1><br>
+<form [formGroup]="userform">
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+ 
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+Receipt Date:<p-calendar [(ngModel)]="OPDReceiptDate" dateFormat="mm/dd/yy" formControlName="OPDReceiptDate"> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDReceiptDate'].valid&&userform.controls['OPDReceiptDate'].touched">Receipt Date Required
+</div>
+</div>
+</div>
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+
+<!--<p-dropdown [options]="drpipdoptions" [(ngModel)]="opdreceiptVar.IPDIdOPDReceipt" formControlName="IPDIdOPDReceipt"></p-dropdown> -->
+<p-autoComplete [(ngModel)]="ipdselected" [suggestions]="ipdresults" (completeMethod)="filterIPDName($event)" field="label" formControlName='IPDIdOPDReceipt'></p-autoComplete>
+<label>Enter Patient Name</label>
+</span>
+
+</div>
+</div>
+
+<div class="ui-grid-col-4">  
+    <button pButton (click)="gotoIPDNew()" label="NEW"></button> 
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['IPDIdOPDReceipt'].valid&&userform.controls['IPDIdOPDReceipt'].touched">Patient  Required
+</div>
+</div>
+</div>
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+
+<!--<p-dropdown [style]="{'width':'90%'}" [options]="drpdoctoroptions" [(ngModel)]="opdreceiptVar.DoctorIdOPDReceipt" formControlName="DoctorIdOPDReceipt"></p-dropdown> -->
+<p-autoComplete [(ngModel)]="docselected" [suggestions]="docresults" (completeMethod)="filterDOCName($event)" (onSelect)="doGetAmountDocChargesByDoctorId($event2)" field="label"  formControlName='DoctorIdOPDReceipt' ></p-autoComplete>
+ <label>Doctor Name</label>
+
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['DoctorIdOPDReceipt'].valid&&userform.controls['DoctorIdOPDReceipt'].touched">Doctor  Required
+</div>
+</div>
+</div>
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<!--<input type="text" pInputText [(ngModel)]="opdreceiptVar.OPDReceiptAppointmentType" formControlName="OPDReceiptAppointmentType"> 
+<label>Appointment Type</label>-->
+<p-dropdown [style]="{'width':'90%'}" [options]="drpappointtypeoptions" [(ngModel)]="opdreceiptVar.OPDReceiptAppointmentType" (onChange)="doGetAmountDocChargesByDoctorId($event)" formControlName="OPDReceiptAppointmentType"></p-dropdown> 
+
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDReceiptAppointmentType'].valid&&userform.controls['OPDReceiptAppointmentType'].touched">Appointment Type  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="opdreceiptVar.OPDReceiptAmount" formControlName="OPDReceiptAmount"> <label>Receipt Amount</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDReceiptAmount'].valid&&userform.controls['OPDReceiptAmount'].touched">Receipt Amount  Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+<input type="text" pInputText [(ngModel)]="opdreceiptVar.OPDReceiptSuffering" formControlName="OPDReceiptSuffering"> <label>Suffering From</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDReceiptSuffering'].valid&&userform.controls['OPDReceiptSuffering'].touched">Suffering From  Required
+</div>
+</div>
+</div>
+
+
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+From Date:<p-calendar [(ngModel)]="OPDReceiptFromDate" dateFormat="mm/dd/yy" formControlName="OPDReceiptFromDate"> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDReceiptFromDate'].valid&&userform.controls['OPDReceiptFromDate'].touched">From Date Required
+</div>
+</div>
+</div>
+
+
+<div class="ui-grid-row" style="width:100%;">
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;">
+<span class="md-inputfield">
+To Date:<p-calendar [(ngModel)]="OPDReceiptToDate" dateFormat="mm/dd/yy" formControlName="OPDReceiptToDate"> </p-calendar></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['OPDReceiptToDate'].valid&&userform.controls['OPDReceiptToDate'].touched">To Date Required
+</div>
+</div>
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton (click)="onSubmit()" [disabled]="!userform.valid" label="Submit"></button>
+<br>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton (click)="clear()" label="Clear"></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="VwOPDReceiptPatientDoctorHospital" sortField="OPDReceiptDate" sortOrder="-1" selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectVwOPDReceiptPatientDoctorHospital($event)" [(selection)]="selectedRow">
+
+ 
+<p-column field="OPDReceiptNos" [filter]="true" filterPlaceholder="Search OPDReceiptNos" header="OPDReceiptNos">
+</p-column>
+
+<p-column field="OPDReceiptDate" sortable="custom" (sortFunction)="mysort($event)" [filter]="true" filterPlaceholder="Search OPDReceiptDate" header="OPDReceiptDate">
+</p-column>
+ 
+<p-column field="OPDReceiptAmount" [filter]="true" filterPlaceholder="Search OPDReceiptAmount" header="OPDReceiptAmount">
+</p-column>
+           
+<p-column field="IPDName" [filter]="true" filterPlaceholder="Search IPDName" filterMatchMode="contains" header="IPDName">
+</p-column>
+
+       
+<p-column field="DoctorName" [filter]="true" filterPlaceholder="Search DoctorName" filterMatchMode="contains" header="DoctorName">
+</p-column>
+
+<p-column styleClass="col-button">
+        <template pTemplate="header">
+            <button type="button" pButton icon="ui-icon-search"></button>
+        </template>
+        <template let-receipt="rowData" pTemplate="body">
+            <button type="button" pButton (click)="printReceipt(receipt)" icon="ui-icon-print"></button>
+        </template>
+</p-column>
+    
+</p-dataTable>

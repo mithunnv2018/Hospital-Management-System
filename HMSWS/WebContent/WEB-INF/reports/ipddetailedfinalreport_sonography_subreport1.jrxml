@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ipddetailedfinalreport_sonography_subreport1" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3b113d5c-1f15-4132-8a34-52d8bb5a094b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="sub_param_adminid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     vwhspsonographyheadsdetails.`SonographyHeadsDetId` AS vwhspsonographyheadsdetails_SonographyHeadsDetId,
+     vwhspsonographyheadsdetails.`SonographyHeadsDetDate` AS vwhspsonographyheadsdetails_SonographyHeadsDetDate,
+     vwhspsonographyheadsdetails.`SonographyHeadsDetAmount` AS vwhspsonographyheadsdetails_SonographyHeadsDetAmount,
+     vwhspsonographyheadsdetails.`SonographyHeadsIdhspsonographyheadsdetails` AS vwhspsonographyheadsdetails_SonographyHeadsIdhspsonographyheadsd,
+     vwhspsonographyheadsdetails.`HSPAdminIdhspsonographyheadsdetails` AS vwhspsonographyheadsdetails_HSPAdminIdhspsonographyheadsdetails,
+     vwhspsonographyheadsdetails.`MemberIdhspsonographyheadsdetails` AS vwhspsonographyheadsdetails_MemberIdhspsonographyheadsdetails,
+     vwhspsonographyheadsdetails.`SonographyHeadsId` AS vwhspsonographyheadsdetails_SonographyHeadsId,
+     vwhspsonographyheadsdetails.`SonographyHeadsName` AS vwhspsonographyheadsdetails_SonographyHeadsName,
+     vwhspsonographyheadsdetails.`SonographyHeadsAliasName` AS vwhspsonographyheadsdetails_SonographyHeadsAliasName,
+     vwhspsonographyheadsdetails.`SonographyHeadsTrustAmount` AS vwhspsonographyheadsdetails_SonographyHeadsTrustAmount,
+     vwhspsonographyheadsdetails.`SonographyHeadsAmount` AS vwhspsonographyheadsdetails_SonographyHeadsAmount,
+     vwhspsonographyheadsdetails.`HospitalIdSonographyHeads` AS vwhspsonographyheadsdetails_HospitalIdSonographyHeads
+FROM
+     `vwhspsonographyheadsdetails` vwhspsonographyheadsdetails
+WHERE
+     HSPAdminIdhspsonographyheadsdetails = $P{sub_param_adminid}]]>
+	</queryString>
+	<field name="vwhspsonographyheadsdetails_SonographyHeadsDetId" class="java.lang.String"/>
+	<field name="vwhspsonographyheadsdetails_SonographyHeadsDetDate" class="java.sql.Timestamp"/>
+	<field name="vwhspsonographyheadsdetails_SonographyHeadsDetAmount" class="java.math.BigDecimal"/>
+	<field name="vwhspsonographyheadsdetails_SonographyHeadsIdhspsonographyheadsd" class="java.lang.String"/>
+	<field name="vwhspsonographyheadsdetails_HSPAdminIdhspsonographyheadsdetails" class="java.lang.String"/>
+	<field name="vwhspsonographyheadsdetails_MemberIdhspsonographyheadsdetails" class="java.lang.String"/>
+	<field name="vwhspsonographyheadsdetails_SonographyHeadsId" class="java.lang.String"/>
+	<field name="vwhspsonographyheadsdetails_SonographyHeadsName" class="java.lang.String"/>
+	<field name="vwhspsonographyheadsdetails_SonographyHeadsAliasName" class="java.lang.String"/>
+	<field name="vwhspsonographyheadsdetails_SonographyHeadsTrustAmount" class="java.math.BigDecimal"/>
+	<field name="vwhspsonographyheadsdetails_SonographyHeadsAmount" class="java.math.BigDecimal"/>
+	<field name="vwhspsonographyheadsdetails_HospitalIdSonographyHeads" class="java.lang.String"/>
+	<variable name="total" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{vwhspsonographyheadsdetails_SonographyHeadsDetAmount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="23" splitType="Stretch">
+			<line>
+				<reportElement x="1" y="2" width="554" height="1" uuid="081ed0c6-c28e-4c40-b577-13b2508ce070"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="3" width="554" height="20" uuid="b2e5ebd6-067b-4f7d-ac76-d057379db2bf"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sonography Detailed report: -]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20">
+			<staticText>
+				<reportElement x="1" y="0" width="155" height="20" uuid="80073c5b-9a9e-45da-9f3b-c00259ca3d29"/>
+				<box leftPadding="5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Heads]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="0" width="100" height="20" uuid="a62f9bf7-35d0-49fc-9d0d-f7ec544c4c5c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="0" width="100" height="20" uuid="55b74655-706e-45d1-912a-9563cd8918c6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="1" y="1" width="155" height="20" isPrintWhenDetailOverflows="true" uuid="fd013f01-3e37-4ff9-9da1-2ab2f58385de"/>
+				<box leftPadding="5"/>
+				<textFieldExpression><![CDATA[$F{vwhspsonographyheadsdetails_SonographyHeadsName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd-MMM-yy">
+				<reportElement stretchType="RelativeToBandHeight" x="156" y="1" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="0157e81a-8cb0-421c-a8ed-dd1f6b11bb37"/>
+				<textFieldExpression><![CDATA[$F{vwhspsonographyheadsdetails_SonographyHeadsDetDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement stretchType="RelativeToBandHeight" x="259" y="1" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="d7f542de-8e00-48cc-86a4-7b3df0470ae4"/>
+				<textFieldExpression><![CDATA[$F{vwhspsonographyheadsdetails_SonographyHeadsDetAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="10"/>
+	</pageFooter>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement x="259" y="0" width="100" height="20" uuid="c08bd405-5a6f-4d65-8b69-7a73dff53229"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

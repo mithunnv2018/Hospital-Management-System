@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CosmeticBillDetailsReport_subreport1" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="60566567-e8ce-4c20-8c61-7ad70eeb95d3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="param_subreportcosmeticbilldetailsid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     vwcosmeticbillparticularsdetails.`CosmeticBillParticularsDetailsId` AS vwcosmeticbillparticularsdetails_CosmeticBillParticularsDetailsI,
+     vwcosmeticbillparticularsdetails.`CosmeticBillParticularsIdCosmeticBillParticularsDetails` AS vwcosmeticbillparticularsdetails_CosmeticBillParticularsIdCosmet,
+     vwcosmeticbillparticularsdetails.`CosmeticBillDetailsIdCosmeticBillParticularsDetails` AS vwcosmeticbillparticularsdetails_CosmeticBillDetailsIdCosmeticBi,
+     vwcosmeticbillparticularsdetails.`CosmeticBillParticularsDetailsAmount` AS vwcosmeticbillparticularsdetails_CosmeticBillParticularsDetailsA,
+     vwcosmeticbillparticularsdetails.`CosmeticBillParticularsId` AS vwcosmeticbillparticularsdetails_CosmeticBillParticularsId,
+     vwcosmeticbillparticularsdetails.`CosmeticBillParticularsName` AS vwcosmeticbillparticularsdetails_CosmeticBillParticularsName,
+     vwcosmeticbillparticularsdetails.`CosmeticBillParticularsAliasName` AS vwcosmeticbillparticularsdetails_CosmeticBillParticularsAliasNam,
+     vwcosmeticbillparticularsdetails.`CosmeticBillParticularsTrustAmount` AS vwcosmeticbillparticularsdetails_CosmeticBillParticularsTrustAmo,
+     vwcosmeticbillparticularsdetails.`CosmeticBillParticularsAmount` AS vwcosmeticbillparticularsdetails_CosmeticBillParticularsAmount,
+     vwcosmeticbillparticularsdetails.`HospitalIdCosmeticBillParticulars` AS vwcosmeticbillparticularsdetails_HospitalIdCosmeticBillParticula
+FROM
+     `vwcosmeticbillparticularsdetails` vwcosmeticbillparticularsdetails
+WHERE
+     CosmeticBillDetailsIdCosmeticBillParticularsDetails =$P{param_subreportcosmeticbilldetailsid}]]>
+	</queryString>
+	<field name="vwcosmeticbillparticularsdetails_CosmeticBillParticularsDetailsI" class="java.lang.Long"/>
+	<field name="vwcosmeticbillparticularsdetails_CosmeticBillParticularsIdCosmet" class="java.lang.String"/>
+	<field name="vwcosmeticbillparticularsdetails_CosmeticBillDetailsIdCosmeticBi" class="java.lang.String"/>
+	<field name="vwcosmeticbillparticularsdetails_CosmeticBillParticularsDetailsA" class="java.math.BigDecimal"/>
+	<field name="vwcosmeticbillparticularsdetails_CosmeticBillParticularsId" class="java.lang.String"/>
+	<field name="vwcosmeticbillparticularsdetails_CosmeticBillParticularsName" class="java.lang.String"/>
+	<field name="vwcosmeticbillparticularsdetails_CosmeticBillParticularsAliasNam" class="java.lang.String"/>
+	<field name="vwcosmeticbillparticularsdetails_CosmeticBillParticularsTrustAmo" class="java.math.BigDecimal"/>
+	<field name="vwcosmeticbillparticularsdetails_CosmeticBillParticularsAmount" class="java.math.BigDecimal"/>
+	<field name="vwcosmeticbillparticularsdetails_HospitalIdCosmeticBillParticula" class="java.lang.String"/>
+	<columnHeader>
+		<band height="23">
+			<staticText>
+				<reportElement x="2" y="2" width="295" height="20" uuid="a337df46-215e-44cd-b353-0a51679ad81d"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<text><![CDATA[Particulars]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="297" y="2" width="226" height="20" uuid="6331d6bd-4640-4263-a819-f4171b985aee"/>
+				<box rightPadding="5">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="2" y="0" width="295" height="20" isPrintWhenDetailOverflows="true" uuid="df643644-d732-4a30-babb-98fe33e2c965"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{vwcosmeticbillparticularsdetails_CosmeticBillParticularsName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="297" y="0" width="226" height="20" isPrintWhenDetailOverflows="true" uuid="b12d4c9a-261f-462d-818c-d3389eae271a"/>
+				<box rightPadding="5">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{vwcosmeticbillparticularsdetails_CosmeticBillParticularsDetailsA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

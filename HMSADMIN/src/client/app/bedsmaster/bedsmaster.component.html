@@ -1,0 +1,151 @@
+<p-growl [value]="msgs"></p-growl>
+
+    <h1>Create beds</h1><br/>
+<form [formGroup]="userform" >
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px;width:80%;">
+
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drpcategorytypeoptions" [(ngModel)]="bedsVar.CategoryIdBedsTypeBeds" formControlName='CategoryIdBedsTypeBeds'></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['CategoryIdBedsTypeBeds'].valid&&userform.controls['CategoryIdBedsTypeBeds'].touched">Bed Type  Required
+</div>
+</div>
+</div>
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+
+<p-dropdown [style]="{'width':'90%'}" [options]="drproomsoptions" [(ngModel)]="bedsVar.RoomsIdBeds" formControlName='RoomsIdBeds'></p-dropdown> 
+</span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['RoomsIdBeds'].valid&&userform.controls['RoomsIdBeds'].touched">Rooms  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='bedsVar.BedsNos' formControlName='BedsNos' /> <label>Beds Nos</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['BedsNos'].valid&&userform.controls['BedsNos'].touched">Beds Nos  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='bedsVar.BedsPerdayCharges' formControlName='BedsPerdayCharges' /> <label>Per Day Charges</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['BedsPerdayCharges'].valid&&userform.controls['BedsPerdayCharges'].touched">Per Day Charges  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='bedsVar.BedsTrustPerdayCharges' formControlName='BedsTrustPerdayCharges' /> <label>Trust Per Day Charges</label></span>
+</div>
+</div>
+
+
+<div class="ui-grid-col-4">   
+<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['BedsTrustPerdayCharges'].valid&&userform.controls['BedsTrustPerdayCharges'].touched">Trust Per Day Charges  Required
+</div>
+</div>
+</div>
+
+
+<div class='ui-grid-row' style='width:100%;'>
+<div class='ui-g form-group' style='width:80%;'>
+<div class='ui-g-12 ui-md-4' style='width:100%;'>
+<span class='md-inputfield'>
+<input pInputText type='text' [(ngModel)]='bedsVar.BedsOtherDetails' [ngModelOptions]="{standalone: true}" /> <label>Other Details</label></span>
+</div>
+</div>
+
+
+</div>
+<div class="ui-grid-row" style="width:100%;"> 
+<div class="ui-g form-group" style="width:80%;">
+<div class="ui-g-12 ui-md-4" style="width:100%;float:left;">
+<div style="width:50%">
+<button pButton  (click)="onSubmit()" [disabled]="!userform.valid" label="Submit" ></button>
+<br/>
+
+</div>  
+<div style="width:50%;float:right;">
+<button pButton  (click)="clear()" label="Clear" ></button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+</form>
+
+<p-dataTable [value]="VwBedsRoomsBedTypeHospital" 
+	selectionMode="single" [rows]="10" [paginator]="true" (onRowSelect)="onRowSelectVwBedsRoomsBedTypeHospital($event)" 
+	[(selection)]="selectedRow">
+
+ 
+ 
+ 
+<p-column field="RoomsNameNos" [filter]="true" 
+filterPlaceholder="Search RoomsNameNos"  header="RoomsNameNos">
+</p-column>
+
+<p-column field="BedsNos" [filter]="true" 
+filterPlaceholder="Search BedsNos"  header="BedsNos">
+</p-column>
+
+<p-column field="BedsPerdayCharges" [filter]="true" 
+filterPlaceholder="Search BedsPerdayCharges"  header="BedsPerdayCharges">
+</p-column>
+
+<p-column field="BedsTrustPerdayCharges" [filter]="true" 
+filterPlaceholder="Search BedsTrustPerdayCharges"  header="BedsTrustPerdayCharges">
+</p-column>
+
+<p-column field="CategoryName" [filter]="true" 
+filterPlaceholder="Search CategoryName"  header="CategoryName">
+</p-column>
+
+ 
+</p-dataTable>
+
+
